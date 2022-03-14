@@ -1,0 +1,25 @@
+#include<stdio.h>
+void main() {
+	int stu_n,kech_n;
+	printf("多少人 ");
+	scanf("%d",&stu_n);
+	printf("多少课 ");
+	scanf("%d",&kech_n);
+	printf("平均分不及格的有%d人",count(stu_n,kech_n));
+}
+int count(int s_n,k_n) {
+	int count=0,sum,i,j,score,max;
+	for(j=1; j<=s_n; j++) {
+		sum=0;
+		for(i=1; i<=k_n; i++) {
+			scanf("%d",&score);
+			sum+=score;
+			if(max<score)
+				max=score;
+		}
+		if(sum/k_n<60)
+			count++;
+		printf("第%d个学生max=%d\n",j,max);
+	}
+	return count;
+}
