@@ -76,3 +76,18 @@ int factorial(int n) {
 		s *= i;
 	return s;
 }
+
+
+//求和
+#include<stdio.h>
+int main() {
+	int n,i;
+	long long fact=1,sum=0;
+	scanf("%d",&n);
+	for(i=1; i<=n; i++) {
+		fact*=i;
+		sum+=fact;
+	}
+	printf("%lld\n",sum);
+	return 0;
+}
