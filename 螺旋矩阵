@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<algorithm>
+int m,n;
+int main(){
+    m = 5;
+    n = 6;
+    int maritx[m+1][n+1] = {0};
+    int now = 1;
+    int U = 1,D = m,L = 1,R = n;
+    int i = 1,j = 1;
+    while(now <= m*n){
+        while(now <= m*n && j < R){
+            maritx[i][j] = now++;
+            j++;
+        }
+        while(now <= m*n && i < D){
+            maritx[i][j] = now++;
+            i++;
+        }
+        while(now <= m*n && j > L){
+            maritx[i][j] = now++;
+            j--;
+        }
+        while(now <= m*n && i > U){
+            maritx[i][j] = now++;
+            i--;
+        }
+        U++,D--,L++,R--;
+        i++,j++;
+        if(now == m*n) {
+            maritx[i][j] = now++;
+        }
+    }
+    for(int i=1;i<=m;i++){
+        for(int j=1;j<=n;j++){
+            printf("%d\t",maritx[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
