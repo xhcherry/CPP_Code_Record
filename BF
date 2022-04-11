@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+int sel(char * S,char *T){
+    int i=0,j=0;
+    while (i<strlen(S) && j<strlen(T)) {
+        if (S[i]==T[j]) {
+            i++;
+            j++;
+        }else{
+            i=i-j+1;
+            j=0;
+        }
+    }
+    if (j==strlen(T)) {
+        return i-strlen(T)+1;
+    }
+    return 0;
+}
+int main() {
+    int add=sel("aaacbabbbcaab", "bbcaa");
+    printf("%d",add);
+    return 0;
+}
