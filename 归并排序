@@ -1,4 +1,4 @@
-//分治
+//     分治
 #include <stdio.h>
 void MergeSortArr(int arr[], int left, int mid, int right){
     int temp[right-left+1];
