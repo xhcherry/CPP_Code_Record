@@ -1,4 +1,3 @@
-//åŠ¨æ€è§„åˆ’
 #include <stdio.h>
 #define N 50
 int data[N][N];
@@ -23,8 +22,8 @@ void tower_walk() {
 }
 
 void print_result() {
-	printf("æœ€å¤§è·¯å¾„å’Œï¼š%d\n",dp[0][0]);
-	printf("æœ€å¤§è·¯å¾„ï¼š%d",data[0][0]);
+	printf("×î´óÂ·¾¶ºÍ£º%d\n",dp[0][0]);
+	printf("×î´óÂ·¾¶£º%d",data[0][0]);
 	int node_value;
 	int j = 0,i;
 	for (i = 1; i < n; ++i) {
@@ -36,9 +35,9 @@ void print_result() {
 
 int main() {
 	int i,j;
-	printf("è¾“å…¥å¡”çš„å±‚æ•°ï¼š");
+	printf("ÊäÈëËşµÄ²ãÊı£º");
 	scanf("%d",&n);
-	printf("è¾“å…¥å¡”çš„èŠ‚ç‚¹æ•°æ®(ç¬¬iå±‚æœ‰iä¸ªèŠ‚ç‚¹)ï¼š\n");
+	printf("ÊäÈëËşµÄ½ÚµãÊı¾İ(µÚi²ãÓĞi¸ö½Úµã)£º\n");
 	for (i = 0; i < n; ++i) {
 		for (j = 0; j <= i; ++j) {
 			scanf("%d",&data[i][j]);

@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\操作系统">
+      <UniqueIdentifier>{b3b5f214-5313-477c-8621-703449aebf24}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Hello.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kmp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="2^2!+3^2!.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BMS.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="digui.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="extern全局.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="extern外部.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fibonacci.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kmp改进.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="register求阶乘.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rpn.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdarg.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="啊.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="百元百鸡.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="表达式求值.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="传递结构体变量.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="传值.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="单科最高分.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="单链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="单链表基本操作.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="递归求阶乘.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="分治.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="根据用户输入拓展内存.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="共用体.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="归并排序分治.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="哈夫曼.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="函数1加到n.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="函数指针.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="函数指针做参数.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="函数指针做返回值.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="汉诺塔.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="合并链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="换值.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="简单选择.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="简单选择稳定.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="简单选择效率.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="简单选择效率1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="结构体.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="静态变量.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="局部，全局变量.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="局部.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="快速排序.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="快速排序递归.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="快速排序非递归.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="链表的插入.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="两个整数较大的.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="螺旋矩阵分治.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="枚举类型.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="枚举类型不以0起点.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="内存规律.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="平均分不及格人数.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="平均值.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="全班前三.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="全局，长方体.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="全局.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="全局数组.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="闰年.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="数独.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="数塔.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="数塔.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="顺序表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="顺序和折半.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="题1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="图.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="图2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="希尔.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="小题目思考.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="一元多项式.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="医院挂号.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="有表头单链表.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="约瑟夫.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="约瑟夫1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="约瑟夫1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="运输计费.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="栈.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="直接插入.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="指针比较两数大小.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="指针变量访问整型变量.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="指针变量作为函数参数，顺序输出.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="指针函数.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="指针三个数比大小.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="总分全班前三.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="最简单结构体.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="最简单结构体优化.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="1 动态顺序表_图书信息管理系统.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="run_start.cpp">
+      <Filter>源文件\操作系统</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
