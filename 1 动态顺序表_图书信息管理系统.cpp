@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>		// 输入输出函数所有文件
 #include <stdlib.h>		// malloc()函数所在头文件
 #include <string.h>		// strcmp()函数所在头文件
