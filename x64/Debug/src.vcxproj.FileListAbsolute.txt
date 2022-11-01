@@ -1,2 +1,0 @@
-D:\All_SRC\c_c++\src\x64\Debug\src.exe
-D:\All_SRC\Git\C-CPP\x64\Debug\src.exe
