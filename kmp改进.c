@@ -18,7 +18,7 @@ void get_nextval(char *c, int *nextval, int c_len) {
 		}
 	}
 }
-
+//a
 int main() {
 	int nextval[N];
 	int i = 1,j;
