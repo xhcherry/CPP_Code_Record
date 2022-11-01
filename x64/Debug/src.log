@@ -1,3 +1,13 @@
-﻿  1 动态顺序表_图书信息管理系统.cpp
-  LINK : 没有找到 D:\All_SRC\Git\C-CPP\x64\Debug\src.exe 或上一个增量链接没有生成它；正在执行完全链接
-  src.vcxproj -> D:\All_SRC\Git\C-CPP\x64\Debug\src.exe
+﻿  银行家.cpp
+D:\All_SRC\Git\C-CPP\银行家.cpp(66,13): error C2131: 表达式的计算结果不是常数
+D:\All_SRC\Git\C-CPP\银行家.cpp(66,13): message : 非常量参数或对非常量符号的引用导致了故障
+D:\All_SRC\Git\C-CPP\银行家.cpp(66,13): message : 请参见“p”的用法
+D:\All_SRC\Git\C-CPP\银行家.cpp(67,11): error C2131: 表达式的计算结果不是常数
+D:\All_SRC\Git\C-CPP\银行家.cpp(67,11): message : 非常量参数或对非常量符号的引用导致了故障
+D:\All_SRC\Git\C-CPP\银行家.cpp(67,11): message : 请参见“r”的用法
+D:\All_SRC\Git\C-CPP\银行家.cpp(70,13): error C3863: 不可指定数组类型“int [p]”
+D:\All_SRC\Git\C-CPP\银行家.cpp(75,11): error C3863: 不可指定数组类型“int [r]”
+D:\All_SRC\Git\C-CPP\银行家.cpp(91,16): error C3863: 不可指定数组类型“int [p]”
+D:\All_SRC\Git\C-CPP\银行家.cpp(106,14): warning C4477: “printf”: 格式字符串“%2d”需要类型“int”的参数，但可变参数 1 拥有了类型“int [r]”
+D:\All_SRC\Git\C-CPP\银行家.cpp(106,14): warning C4313: "printf": 格式字符串中的 "%d" 与类型为 "int [r]" 的参数 1 冲突
+D:\All_SRC\Git\C-CPP\银行家.cpp(110,15): error C3863: 不可指定数组类型“int [r]”

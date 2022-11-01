@@ -279,5 +279,8 @@
     <ClCompile Include="run_start.cpp">
       <Filter>源文件\操作系统</Filter>
     </ClCompile>
+    <ClCompile Include="银行家.cpp">
+      <Filter>源文件\操作系统</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
