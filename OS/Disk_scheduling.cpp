@@ -1,7 +1,4 @@
-#include<stdio.h>
-#include<stdlib.h>
 #include<iostream>
-#include<math.h>
 using namespace std;
 #define maxsize 1000
 /*********************判断输入数据是否有效**************************/
