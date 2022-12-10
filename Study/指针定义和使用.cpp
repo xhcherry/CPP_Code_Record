@@ -4,8 +4,8 @@ int main() {
 	int a = 100;
 	int* p;
 	p = &a;
-	cout << "p的地址" << p << endl;
-	cout << "a的地址" << &a << endl;
+	cout << "p地址" << p << endl;
+	cout << "a地址" << &a << endl;
 	*p = 200;
 	cout << "*p=" << *p << endl;
 	cout << "a=" << a << endl;
