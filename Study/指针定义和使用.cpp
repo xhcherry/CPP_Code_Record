@@ -4,8 +4,8 @@ int main() {
 	int a = 100;
 	int* p;
 	p = &a;
-	cout << "pµØÖ·" << p << endl;
-	cout << "aµØÖ·" << &a << endl;
+	cout << "påœ°å€" << p << endp;
+	cout << "aåœ°å€" << &a << endl;
 	*p = 200;
 	cout << "*p=" << *p << endl;
 	cout << "a=" << a << endl;
