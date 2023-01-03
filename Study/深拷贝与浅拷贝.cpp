@@ -26,8 +26,8 @@ public:
 		}
 		cout << "Person的析构函数调用" << endl;
 	}
-	int m_Age;
-	int* m_Height;
+	int m_Age = 0;
+	int* m_Height = 0;
 };
 void test01() {
 	Person p1(18, 160);
