@@ -23,4 +23,16 @@ public:
 	void init_Emp();
 	//显示职工
 	void Show_Emp();
+	//删除职工
+	void Del_Emp();
+	//按照职工编号判断职工是否存在, 若存在返回职工在数组中位置，不存在返回 - 1
+	int IsExist(int id);
+	//修改职工
+	void Mod_Emp();
+	//查找职工
+	void Find_Emp();
+	//排序职工
+	void Sort_Emp();
+	//清空文件
+	void Clean_File();
 };
