@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
+//改写5.5，使用条件运算符代替if else语句
 using namespace std;
 
 int main() {
