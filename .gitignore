@@ -1,0 +1,10 @@
+x64/
+.vs/
+*.log
+*.suo
+*.vsidx
+.vs/src/v17/.suo
+.idea/
+cmake-build-debug/
+CMakeLists.txt
+*.exe
