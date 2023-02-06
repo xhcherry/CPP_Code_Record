@@ -48,5 +48,8 @@
     <ClCompile Include="Disk_Management.cpp">
       <Filter>源文件\磁盘存储空间的管理</Filter>
     </ClCompile>
+    <ClCompile Include="页面置换.cpp">
+      <Filter>源文件\页面置换</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

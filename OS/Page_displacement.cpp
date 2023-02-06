@@ -1,37 +1,37 @@
-#include <stdlib.h>
+ï»¿#include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-#define  L  20//Ò³Ãæ×ßÏò³¤¶È×î´óÎª20
-int M;        //ÄÚ´æ¿é
-struct Pro//¶¨ÒåÒ»¸ö½á¹¹Ìå
+#define  L  20//é¡µé¢èµ°å‘é•¿åº¦æœ€å¤§ä¸º20
+int M;        //å†…å­˜å—
+struct Pro//å®šä¹‰ä¸€ä¸ªç»“æ„ä½“
 {
 	int num, time;
 };
-int Input(int m, Pro p[L])//´òÓ¡Ò³Ãæ×ßÏò×´Ì¬
+int Input(int m, Pro p[L])//æ‰“å°é¡µé¢èµ°å‘çŠ¶æ€
 {
 	int i, j, c;
-	cout << "ÇëÊäÈëÊµ¼ÊÒ³Ãæ×ßÏò³¤¶ÈL(15<=L<=20)£º";
+	cout << "è¯·è¾“å…¥å®é™…é¡µé¢èµ°å‘é•¿åº¦L(15<=L<=20)ï¼š";
 	do
 	{
 		cin >> m;
-		if (m > 20 || m < 15)cout << "Êµ¼ÊÒ³Ãæ³¤¶ÈĞëÔÚ15¡«20Ö®¼ä;ÇëÖØĞÂÊäÈëL£º ";
+		if (m > 20 || m < 15)cout << "å®é™…é¡µé¢é•¿åº¦é¡»åœ¨15ï½20ä¹‹é—´;è¯·é‡æ–°è¾“å…¥Lï¼š ";
 		else break;
 	} while (1);
-	j = time(NULL);//È¡Ê±ÖÓÊ±¼ä
-	srand(j);//ÒÔÊ±ÖÓÊ±¼äxÎªÖÖ×Ó£¬³õÊ¼»¯Ëæ»úÊı·¢ÉúÆ÷
-	cout << "Êä³öËæ»úÊı:  ";
+	j = time(NULL);//å–æ—¶é’Ÿæ—¶é—´
+	srand(j);//ä»¥æ—¶é’Ÿæ—¶é—´xä¸ºç§å­ï¼Œåˆå§‹åŒ–éšæœºæ•°å‘ç”Ÿå™¨
+	cout << "è¾“å‡ºéšæœºæ•°:  ";
 	for (i = 0; i < m; i++)
 	{
-		p[i].num = rand() % 10 + 1;//²úÉú1µ½10Ö®¼äµÄËæ¼´Êı·Åµ½Êı×épÖĞ
+		p[i].num = rand() % 10 + 1;//äº§ç”Ÿ1åˆ°10ä¹‹é—´çš„éšå³æ•°æ”¾åˆ°æ•°ç»„pä¸­
 		p[i].time = 0;
 		cout << p[i].num << " ";
 	}
 	cout << endl;
 	return m;
 }
-void print(Pro* page1)//´òÓ¡µ±Ç°µÄÒ³Ãæ
+void print(Pro* page1)//æ‰“å°å½“å‰çš„é¡µé¢
 {
 	Pro* page = new Pro[M];
 	page = page1;
@@ -40,39 +40,39 @@ void print(Pro* page1)//´òÓ¡µ±Ç°µÄÒ³Ãæ
 			cout << "   ";
 		else
 			cout << page[i].num << "  ";
-	cout << "¡Ì" << endl;
+	cout << "âˆš" << endl;
 }
-int  Search(int e, Pro* page1)//Ñ°ÕÒÄÚ´æ¿éÖĞÓëeÏàÍ¬µÄ¿éºÅ
+int  Search(int e, Pro* page1)//å¯»æ‰¾å†…å­˜å—ä¸­ä¸eç›¸åŒçš„å—å·
 {
 	Pro* page = new Pro[M];
 	page = page1;
-	for (int i = 0; i < M; i++) if (e == page[i].num) return i;//·µ»ØiÖµ
+	for (int i = 0; i < M; i++) if (e == page[i].num) return i;//è¿”å›iå€¼
 	return -1;
 }
-int Max(Pro* page1)//Ñ°ÕÒ×î½ü×î³¤Î´Ê¹ÓÃµÄÒ³Ãæ
+int Max(Pro* page1)//å¯»æ‰¾æœ€è¿‘æœ€é•¿æœªä½¿ç”¨çš„é¡µé¢
 {
 	Pro* page = new Pro[M];
 	page = page1;
 	int e = page[0].time, i = 0;
-	while (i < M)         //ÕÒ³öÀëÏÖÔÚÊ±¼ä×î³¤µÄÒ³Ãæ
+	while (i < M)         //æ‰¾å‡ºç¦»ç°åœ¨æ—¶é—´æœ€é•¿çš„é¡µé¢
 	{
 		if (e < page[i].time)  e = page[i].time;
 		i++;
 	}
-	for (i = 0; i < M; i++) if (e == page[i].time) return i;//ÕÒµ½ÀëÏÖÔÚÊ±¼ä×î³¤µÄÒ³Ãæ·µ»ØÆä¿éºÅ
+	for (i = 0; i < M; i++) if (e == page[i].time) return i;//æ‰¾åˆ°ç¦»ç°åœ¨æ—¶é—´æœ€é•¿çš„é¡µé¢è¿”å›å…¶å—å·
 	return -1;
 }
-int Count(Pro* page1, int i, int t, Pro p[L])//¼ÇÂ¼µ±Ç°ÄÚ´æ¿éÖĞÒ³ÃæÀëÏÂ´ÎÊ¹ÓÃ¼ä¸ô³¤¶È
+int Count(Pro* page1, int i, int t, Pro p[L])//è®°å½•å½“å‰å†…å­˜å—ä¸­é¡µé¢ç¦»ä¸‹æ¬¡ä½¿ç”¨é—´éš”é•¿åº¦
 {
 	Pro* page = new Pro[M];
 	page = page1;
 	int count = 0;
 	for (int j = i; j < L; j++)
 	{
-		if (page[t].num == p[j].num)break;//µ±Ç°Ò³ÃæÔÙ´Î±»·ÃÎÊÊ±Ñ­»·½áÊø
-		else count++;//·ñÔòcount+1
+		if (page[t].num == p[j].num)break;//å½“å‰é¡µé¢å†æ¬¡è¢«è®¿é—®æ—¶å¾ªç¯ç»“æŸ
+		else count++;//å¦åˆ™count+1
 	}
-	return count;//·µ»ØcountµÄÖµ 
+	return count;//è¿”å›countçš„å€¼ 
 }
 int main()
 {
@@ -81,125 +81,124 @@ int main()
 	float n = 0;
 	Pro p[L];
 	cout << "        *********************************************         " << endl;
-	cout << "        *               Ò³Ê½´æ´¢¹ÜÀí               *          " << endl;
+	cout << "        *               é¡µå¼å­˜å‚¨ç®¡ç†               *          " << endl;
 	cout << "        *********************************************         " << endl;
-	cout << "ÇëÊäÈë¿ÉÓÃÄÚ´æÒ³ÃæÊım(3¡«5): ";
+	cout << "è¯·è¾“å…¥å¯ç”¨å†…å­˜é¡µé¢æ•°m(3ï½5): ";
 	do
 	{
 		cin >> M;
 		if (M > 5 || M < 3)
-			cout << "ÄÚ´æ¿éMĞëÔÚ3¡«5Ö®¼ä£¬ÇëÖØĞÂÊäÈëM£º ";
+			cout << "å†…å­˜å—Mé¡»åœ¨3ï½5ä¹‹é—´ï¼Œè¯·é‡æ–°è¾“å…¥Mï¼š ";
 		else break;
 	} while (1);
-	m = Input(m, p);//µ÷ÓÃinputº¯Êı£¬·µ»ØmÖµ
+	m = Input(m, p);//è°ƒç”¨inputå‡½æ•°ï¼Œè¿”å›må€¼
 	Pro* page = new Pro[M];
-	cout << "^-^»¶Ó­½øÈë²Ù×÷ÏµÍ³½çÃæ^-^" << endl;
-	cout << "1:FIFOÒ³ÃæÖÃ»»" << endl;
-	cout << "2:LRUÒ³ÃæÖÃ»»" << endl;
-	cout << "3:OPTÒ³ÃæÖÃ»»" << endl;
-	cout << "4:ÍË³ö" << endl;
+	cout << "^-^æ¬¢è¿è¿›å…¥æ“ä½œç³»ç»Ÿç•Œé¢^-^" << endl;
+	cout << "1:FIFOé¡µé¢ç½®æ¢" << endl;
+	cout << "2:LRUé¡µé¢ç½®æ¢" << endl;
+	cout << "3:OPTé¡µé¢ç½®æ¢" << endl;
+	cout << "4:é€€å‡º" << endl;
 	do {
-		cout << "°´1¡«4¼ü²Ù×÷£º" << endl;
+		cout << "æŒ‰1ï½4é”®æ“ä½œï¼š" << endl;
 		cin >> c;
-		system("cls");
-		for (int i = 0; i < M; i++)//³õÊÔ»¯Ò³Ãæ»ù±¾Çé¿ö
+		for (int i = 0; i < M; i++)//åˆè¯•åŒ–é¡µé¢åŸºæœ¬æƒ…å†µ
 		{
 			page[i].num = -1;
 			page[i].time = m - 1 - i;
 		}
 		int i = 0;
-		if (c == 1)//FIFOÒ³ÃæÖÃ»»
+		if (c == 1)//FIFOé¡µé¢ç½®æ¢
 		{
 			n = 0;
 			cout << "******************************************" << endl;
 			cout << endl;
-			cout << "          FIFOËã·¨Ò³ÃæÖÃ»»Çé¿öÈçÏÂ:       " << endl;			cout << endl;
+			cout << "          FIFOç®—æ³•é¡µé¢ç½®æ¢æƒ…å†µå¦‚ä¸‹:       " << endl;			cout << endl;
 			cout << "******************************************" << endl;
 			while (i < m)
 			{
-				if (Search(p[i].num, page) >= 0)     //µ±Ç°Ò³ÃæÔÚÄÚ´æÖĞ
+				if (Search(p[i].num, page) >= 0)     //å½“å‰é¡µé¢åœ¨å†…å­˜ä¸­
 				{
-					cout << p[i].num << "  "; //Êä³öµ±Ç°p[i].num
-					cout << "²»È±Ò³" << endl;
-					i++;         //i¼Ó1
+					cout << p[i].num << "  "; //è¾“å‡ºå½“å‰p[i].num
+					cout << "ä¸ç¼ºé¡µ" << endl;
+					i++;         //iåŠ 1
 				}
-				else                            //µ±Ç°Ò³²»ÔÚÄÚ´æÖĞ
+				else                            //å½“å‰é¡µä¸åœ¨å†…å­˜ä¸­
 				{
 					if (t == M)t = 0;
 					else
 					{
-						n++;                    //È±Ò³´ÎÊı¼Ó1
-						page[t].num = p[i].num;//°Ñµ±Ç°Ò³Ãæ·ÅÈëÄÚ´æ
+						n++;                    //ç¼ºé¡µæ¬¡æ•°åŠ 1
+						page[t].num = p[i].num;//æŠŠå½“å‰é¡µé¢æ”¾å…¥å†…å­˜
 						cout << p[i].num << "  ";
-						print(page);            //´òÓ¡µ±Ç°Ò³Ãæ
-						t++;                    //ÏÂÒ»¸öÄÚ´æ¿é
-						i++;                    //Ö¸ÏòÏÂÒ»¸öÒ³Ãæ
+						print(page);            //æ‰“å°å½“å‰é¡µé¢
+						t++;                    //ä¸‹ä¸€ä¸ªå†…å­˜å—
+						i++;                    //æŒ‡å‘ä¸‹ä¸€ä¸ªé¡µé¢
 					}
 				}
 			}
-			cout << "È±Ò³´ÎÊı£º" << n << "    È±Ò³ÂÊ£º" << n / m << endl;
+			cout << "ç¼ºé¡µæ¬¡æ•°ï¼š" << n << "    ç¼ºé¡µç‡ï¼š" << n / m << endl;
 		}
-		if (c == 2)//LRUÒ³ÃæÖÃ»»
+		if (c == 2)//LRUé¡µé¢ç½®æ¢
 		{
 			n = 0;
 			cout << "******************************************" << endl;
 			cout << endl;
-			cout << "          LRUËã·¨Ò³ÃæÖÃ»»Çé¿öÈçÏÂ:        " << endl;
+			cout << "          LRUç®—æ³•é¡µé¢ç½®æ¢æƒ…å†µå¦‚ä¸‹:        " << endl;
 			cout << endl;
 			cout << "******************************************" << endl;
 			while (i < m)
 			{
 				int a;
 				t = Search(p[i].num, page);
-				if (t >= 0)//Èç¹ûÒÑÔÚÄÚ´æ¿éÖĞ  
+				if (t >= 0)//å¦‚æœå·²åœ¨å†…å­˜å—ä¸­  
 				{
-					page[t].time = 0;//°ÑÓëËüÏàÍ¬µÄÄÚ´æ¿éµÄÊ±¼äÖÃ0
+					page[t].time = 0;//æŠŠä¸å®ƒç›¸åŒçš„å†…å­˜å—çš„æ—¶é—´ç½®0
 					for (a = 0; a < M; a++)
-						if (a != t)page[a].time++;//ÆäËüµÄÊ±¼ä¼Ó1
+						if (a != t)page[a].time++;//å…¶å®ƒçš„æ—¶é—´åŠ 1
 					cout << p[i].num << "  ";
-					cout << "²»È±Ò³" << endl;
+					cout << "ä¸ç¼ºé¡µ" << endl;
 				}
-				else    //Èç¹û²»ÔÚÄÚ´æ¿éÖĞ
+				else    //å¦‚æœä¸åœ¨å†…å­˜å—ä¸­
 				{
-					n++;           //È±Ò³´ÎÊı¼Ó1
-					t = Max(page);     //·µ»Ø×î½ü×î¾ÃÎ´Ê¹ÓÃµÄ¿éºÅ¸³Öµ¸øt
-					page[t].num = p[i].num;    //½øĞĞÌæ»»
-					page[t].time = 0;          //Ìæ»»ºóÊ±¼äÖÃÎª0
+					n++;           //ç¼ºé¡µæ¬¡æ•°åŠ 1
+					t = Max(page);     //è¿”å›æœ€è¿‘æœ€ä¹…æœªä½¿ç”¨çš„å—å·èµ‹å€¼ç»™t
+					page[t].num = p[i].num;    //è¿›è¡Œæ›¿æ¢
+					page[t].time = 0;          //æ›¿æ¢åæ—¶é—´ç½®ä¸º0
 					cout << p[i].num << "  ";
 					print(page);
 					for (a = 0; a < M; a++)
-						if (a != t)page[a].time++;//ÆäËüµÄÊ±¼ä¼Ó1            
+						if (a != t)page[a].time++;//å…¶å®ƒçš„æ—¶é—´åŠ 1            
 				}
 				i++;
 			}
-			cout << "È±Ò³´ÎÊı£º" << n << "    È±Ò³ÂÊ£º" << n / m << endl;
+			cout << "ç¼ºé¡µæ¬¡æ•°ï¼š" << n << "    ç¼ºé¡µç‡ï¼š" << n / m << endl;
 		}
-		if (c == 3)//OPTÒ³ÃæÖÃ»»
+		if (c == 3)//OPTé¡µé¢ç½®æ¢
 		{
 			n = 0;
 			cout << "******************************************" << endl;
 			cout << endl;
-			cout << "           OPTËã·¨ÖÃ»»Çé¿öÈçÏÂ:           " << endl;
+			cout << "           OPTç®—æ³•ç½®æ¢æƒ…å†µå¦‚ä¸‹:           " << endl;
 			cout << endl;
 			cout << "******************************************" << endl;
 			while (i < m)
 			{
-				if (Search(p[i].num, page) >= 0)//Èç¹ûÒÑÔÚÄÚ´æ¿éÖĞ
+				if (Search(p[i].num, page) >= 0)//å¦‚æœå·²åœ¨å†…å­˜å—ä¸­
 				{
 					cout << p[i].num << "  ";
-					cout << "²»È±Ò³" << endl;
+					cout << "ä¸ç¼ºé¡µ" << endl;
 					i++;
 				}
-				else//Èç¹û²»ÔÚÄÚ´æ¿éÖĞ
+				else//å¦‚æœä¸åœ¨å†…å­˜å—ä¸­
 				{
 					int a = 0;
 					for (t = 0; t < M; t++)
-						if (page[t].num == 0)a++;//¼ÇÂ¼¿ÕµÄÄÚ´æ¿éÊı
-					if (a != 0) //ÓĞ¿ÕÄÚ´æ¿é
+						if (page[t].num == 0)a++;//è®°å½•ç©ºçš„å†…å­˜å—æ•°
+					if (a != 0) //æœ‰ç©ºå†…å­˜å—
 					{
 						int q = M;
 						for (t = 0; t < M; t++)
-							if (page[t].num == 0 && q > t)q = t;//°Ñ¿ÕÄÚ´æ¿éÖĞ¿éºÅ×îĞ¡µÄÕÒ³öÀ´
+							if (page[t].num == 0 && q > t)q = t;//æŠŠç©ºå†…å­˜å—ä¸­å—å·æœ€å°çš„æ‰¾å‡ºæ¥
 						page[q].num = p[i].num;
 						n++;
 						cout << p[i].num << "  ";
@@ -209,12 +208,12 @@ int main()
 					else
 					{
 						int temp = 0, s;
-						for (t = 0; t < M; t++)//Ñ°ÕÒÄÚ´æ¿éÖĞÏÂ´ÎÊ¹ÓÃÀëÏÖÔÚ×î¾ÃµÄÒ³Ãæ							
+						for (t = 0; t < M; t++)//å¯»æ‰¾å†…å­˜å—ä¸­ä¸‹æ¬¡ä½¿ç”¨ç¦»ç°åœ¨æœ€ä¹…çš„é¡µé¢							
 							if (temp < Count(page, i, t, p))
 							{
 								temp = Count(page, i, t, p);
 								s = t;
-							}//°ÑÕÒµ½µÄ¿éºÅ¸³¸øs
+							}//æŠŠæ‰¾åˆ°çš„å—å·èµ‹ç»™s
 						page[s].num = p[i].num;
 						n++;
 						cout << p[i].num << "  ";
@@ -223,11 +222,11 @@ int main()
 					}
 				}
 			}
-			cout << "È±Ò³´ÎÊı£º" << n << "    È±Ò³ÂÊ£º" << n / m << endl;
+			cout << "ç¼ºé¡µæ¬¡æ•°ï¼š" << n << "    ç¼ºé¡µç‡ï¼š" << n / m << endl;
 		}
 		if (c == 4)
 		{
-			cout << " ^-^ÔÙ¼û£¡^-^ " << endl;
+			cout << " ^-^å†è§ï¼^-^ " << endl;
 		}
 	} while (c == 1 || c == 2 || c == 3 || c == 4);
 	return 0;
