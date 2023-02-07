@@ -8,3 +8,4 @@ x64/
 cmake-build-debug/
 CMakeLists.txt
 *.exe
+.history/

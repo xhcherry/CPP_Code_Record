@@ -1,7 +1,6 @@
 #include<iostream>
 #include<vector>
 #include<string>
-
 using namespace std;
 //使用if else 语句实现把数字转换为字母成绩
 int main() {
