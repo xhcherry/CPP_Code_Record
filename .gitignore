@@ -6,6 +6,5 @@ x64/
 .vs/src/v17/.suo
 .idea/
 cmake-build-debug/
-CMakeLists.txt
 *.exe
 .history/
