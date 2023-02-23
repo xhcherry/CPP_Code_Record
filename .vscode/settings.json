@@ -32,5 +32,8 @@
         "typeinfo": "cpp",
         "utility": "cpp",
         "cerrno": "cpp"
-    }
+    },
+    "window.closeWhenEmpty": true,
+    "window.commandCenter": true,
+    "window.autoDetectColorScheme": false
 }

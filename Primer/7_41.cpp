@@ -50,6 +50,7 @@ std::ostream &print(std::ostream &os, const Sales_data &item)
 
 int main()
 {
+    system("pause");
     Sales_data first("978-7-121-15535-2", 85, 128, 109);
     Sales_data second;
     Sales_data third("978-7-121-15535-2");
