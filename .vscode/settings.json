@@ -31,7 +31,8 @@
         "tuple": "cpp",
         "typeinfo": "cpp",
         "utility": "cpp",
-        "cerrno": "cpp"
+        "cerrno": "cpp",
+        "list": "cpp"
     },
     "window.closeWhenEmpty": true,
     "window.commandCenter": true,
