@@ -30,5 +30,6 @@ int main()
     for (; !stk.empty(); stk.pop())
         output.insert(output.begin(), stk.top());
     cout << output << endl; // "This is # and # over"
+    cout << __cplusplus << endl;
     return 0;
 }
