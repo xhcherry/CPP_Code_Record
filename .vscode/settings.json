@@ -32,7 +32,9 @@
         "typeinfo": "cpp",
         "utility": "cpp",
         "cerrno": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "deque": "cpp",
+        "numeric": "cpp"
     },
     "window.closeWhenEmpty": true,
     "window.commandCenter": true,
