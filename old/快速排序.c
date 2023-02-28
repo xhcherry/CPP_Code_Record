@@ -7,17 +7,17 @@ void quick_sort(int array[],int left,int right)
 	pivot = array[(left + right) / 2];
 	while (i <= j)
 	{
-		//从左到右找到大于基准点的元素
+		//浠庡乏鍒板彸鎵惧埌澶т簬鍩哄噯鐐圭殑鍏冪礌
 		while(array[i] < pivot)
 		{
 			i++;
 		} 
-		//从右到左找到小于等于基准点的元素
+		//浠庡彸鍒板乏鎵惧埌灏忎簬绛変簬鍩哄噯鐐圭殑鍏冪礌
 		while (array[j] > pivot)
 		{
 			j--;
 		}
-		//如果i <= j,互换
+		//濡傛灉i <= j,浜掓崲
 		if(i <= j)
 		{
 			temp = array[i];
@@ -42,7 +42,7 @@ int main(void)
     int i,length;
     length = sizeof(array) / sizeof(array[0]);
     quick_sort(array,0,length - 1);
-    printf("排序后的结果是：");
+    printf("鎺掑簭鍚庣殑缁撴灉鏄細");
     for(i = 0;i < length;i++)
     {
     	printf("%d ",array[i]);

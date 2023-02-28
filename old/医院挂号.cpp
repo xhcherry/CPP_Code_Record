@@ -4,36 +4,36 @@
 #include <io.h>
 #include <conio.h>
 
-#define MAXNUM 100    /*Ò½ÉúĞÅÏ¢±í¿ÉÄÜ´ïµ½µÄ×î´ó³¤¶È*/
+#define MAXNUM 100    /*åŒ»ç”Ÿä¿¡æ¯è¡¨å¯èƒ½è¾¾åˆ°çš„æœ€å¤§é•¿åº¦*/
 
-typedef struct Node { //½ÚµãÀàĞÍ¶¨Òå
-	int data;    //Êı¾İÓò
-	struct Node* next;  //Ö¸ÕëÓò
+typedef struct Node { //èŠ‚ç‚¹ç±»å‹å®šä¹‰
+	int data;    //æ•°æ®åŸŸ
+	struct Node* next;  //æŒ‡é’ˆåŸŸ
 } Node,*LinkList;
 
-typedef struct {      /*Ò½ÉúĞÅÏ¢¶¨Òå*/
-	char dtno[10];		/*¿ÆÊÒ*/
-	char dtname[20];		/*Ò½Éú*/
-	char time[10];		/*Ê±¼ä¶Î*/
-	int totalnum; 			/*×ÜºÅÊı*/
+typedef struct {      /*åŒ»ç”Ÿä¿¡æ¯å®šä¹‰*/
+	char dtno[10];		/*ç§‘å®¤*/
+	char dtname[20];		/*åŒ»ç”Ÿ*/
+	char time[10];		/*æ—¶é—´æ®µ*/
+	int totalnum; 			/*æ€»å·æ•°*/
 	LinkList p;
 } DOCTOR;
 
 typedef struct {
-	DOCTOR dt[MAXNUM];      /*Í¨¹ıÀàĞÍ¶¨Òå±äÁ¿£¬¿ÆÊÒ¼°Ò½ÉúĞÅÏ¢Êı×é*/
-	int TotalDoctor;       /*×îºóÒ»¸öÔªËØÔÚÊı×éÖĞµÄÎ»ÖÃ£¬¼´ÏÂ±ê£¬¿Õ±íÎª-1 */
-} DoctorList;              /*Ò½ÉúĞÅÏ¢±íµÄË³Ğò´æ´¢½á¹¹ÀàĞÍÎªDoctorList */
-DoctorList  doctor_list;     /*¶¨Òå¿ÆÊÒ¼°Ò½ÉúĞÅÏ¢Ë³Ğò±í*/
+	DOCTOR dt[MAXNUM];      /*é€šè¿‡ç±»å‹å®šä¹‰å˜é‡ï¼Œç§‘å®¤åŠåŒ»ç”Ÿä¿¡æ¯æ•°ç»„*/
+	int TotalDoctor;       /*æœ€åä¸€ä¸ªå…ƒç´ åœ¨æ•°ç»„ä¸­çš„ä½ç½®ï¼Œå³ä¸‹æ ‡ï¼Œç©ºè¡¨ä¸º-1 */
+} DoctorList;              /*åŒ»ç”Ÿä¿¡æ¯è¡¨çš„é¡ºåºå­˜å‚¨ç»“æ„ç±»å‹ä¸ºDoctorList */
+DoctorList  doctor_list;     /*å®šä¹‰ç§‘å®¤åŠåŒ»ç”Ÿä¿¡æ¯é¡ºåºè¡¨*/
 
 void search_queue(LinkList L);
 
-void InitList(LinkList *L) { //³õÊ¼»¯µ¥Á´±í
-	*L=(LinkList)malloc(sizeof(Node));  //½¨Á¢Í·½áµã£¬ÎªÍ·½áµã·ÖÅä´æ´¢¿Õ¼ä
+void InitList(LinkList *L) { //åˆå§‹åŒ–å•é“¾è¡¨
+	*L=(LinkList)malloc(sizeof(Node));  //å»ºç«‹å¤´ç»“ç‚¹ï¼Œä¸ºå¤´ç»“ç‚¹åˆ†é…å­˜å‚¨ç©ºé—´
 	(*L)->next=NULL;
-	(*L)->data=0;     //Á´±íµÄÍ·½áµã×ö±ê¼Ç
+	(*L)->data=0;     //é“¾è¡¨çš„å¤´ç»“ç‚¹åšæ ‡è®°
 }
 
-LinkList p1,p2,p3,p4,p5,p6,p7,p8;   //8¸öÁ´±í¶ÔÓ¦°Ë¸öÍ·Ö¸Õë
+LinkList p1,p2,p3,p4,p5,p6,p7,p8;   //8ä¸ªé“¾è¡¨å¯¹åº”å…«ä¸ªå¤´æŒ‡é’ˆ
 
 
 void ReadList(LinkList L, FILE *p) {
@@ -43,7 +43,7 @@ void ReadList(LinkList L, FILE *p) {
 	fread(&temp2, sizeof(char), 1, p);
 //	InitList(L);
 	if(temp2=='*')
-		while (fread(&temp, sizeof(int), 1, p)) { //Ã¿´Î¶Á³öÒ»¸öElemtype ĞÍµÄtempÍ¨¹ıÎ²²å·¨´´½¨Á´±í
+		while (fread(&temp, sizeof(int), 1, p)) { //æ¯æ¬¡è¯»å‡ºä¸€ä¸ªElemtype å‹çš„tempé€šè¿‡å°¾æ’æ³•åˆ›å»ºé“¾è¡¨
 			//	printf("%d",temp);getch();
 			LinkList node = (LinkList)malloc(sizeof(Node));
 			node->data = temp;
@@ -53,7 +53,7 @@ void ReadList(LinkList L, FILE *p) {
 		}
 }
 
-void ReadData() {	//½«Ó²ÅÌdoctordataÎÄ¼şÖĞµÄÊı¾İ¶ÁÈëÄÚ´æË³Ğò±ídoctor_listÖĞ
+void ReadData() {	//å°†ç¡¬ç›˜doctordataæ–‡ä»¶ä¸­çš„æ•°æ®è¯»å…¥å†…å­˜é¡ºåºè¡¨doctor_listä¸­
 	FILE *fp;
 	int i;
 	if ((fp=fopen("doctordata.txt","rb"))==NULL) {
@@ -92,7 +92,7 @@ void WriteList(LinkList L, FILE *p) {
 
 }
 
-void WriteData() {	//½«ÄÚ´æÖĞË³Ğò±ídoctor_listµÄ±ä»¯£¬´æÈëÓ²ÅÌÎÄ¼şdoctordataÖĞ
+void WriteData() {	//å°†å†…å­˜ä¸­é¡ºåºè¡¨doctor_listçš„å˜åŒ–ï¼Œå­˜å…¥ç¡¬ç›˜æ–‡ä»¶doctordataä¸­
 	FILE *fp;
 	int i;
 	if ( (fp=fopen("doctordata.txt","wb"))==NULL) {
@@ -110,81 +110,81 @@ void WriteData() {	//½«ÄÚ´æÖĞË³Ğò±ídoctor_listµÄ±ä»¯£¬´æÈëÓ²ÅÌÎÄ¼şdoctordataÖĞ
 }
 
 
-void  Locate(DoctorList L,char e[]) {      /*²éÕÒÒ½ÉúĞÅÏ¢*/
-	int i=0 ;      /*iÎªÉ¨Ãè¼ÆÊıÆ÷£¬³õÖµÎª0£¬¼´´ÓµÚÒ»¸öÔªËØ¿ªÊ¼±È½Ï*/
+void  Locate(DoctorList L,char e[]) {      /*æŸ¥æ‰¾åŒ»ç”Ÿä¿¡æ¯*/
+	int i=0 ;      /*iä¸ºæ‰«æè®¡æ•°å™¨ï¼Œåˆå€¼ä¸º0ï¼Œå³ä»ç¬¬ä¸€ä¸ªå…ƒç´ å¼€å§‹æ¯”è¾ƒ*/
 	for(i=0; i<=L.TotalDoctor; i++) {
 		if(strcmp(L.dt[i].dtname,e)==0) {
 			printf("\n\n\n\t\t--------------------------------------------------\n");
 			printf("\t\t%-8s%-20s%-10s%-8s\n",
-			       "¿ÆÊÒ","Ò½Éú","Ê±¼ä¶Î","×ÜºÅÊı");
+			       "ç§‘å®¤","åŒ»ç”Ÿ","æ—¶é—´æ®µ","æ€»å·æ•°");
 			printf("\t\t--------------------------------------------------\n");
 			printf("\t\t%-8s%-20s%-10s%-8d\n", doctor_list.dt[i].dtno, doctor_list.dt[i].dtname,
-			       doctor_list.dt[i].time, doctor_list.dt[i].totalnum);  /*ÈôÕÒµ½£¬ÔòÊä³ö¸ÃÒ½ÉúĞÅÏ¢*/
+			       doctor_list.dt[i].time, doctor_list.dt[i].totalnum);  /*è‹¥æ‰¾åˆ°ï¼Œåˆ™è¾“å‡ºè¯¥åŒ»ç”Ÿä¿¡æ¯*/
 			printf("\t\t--------------------------------------------------\n");
 		} else
 			break;
 	}
-	if(i>L.TotalDoctor) printf("²éÎŞ´ËÈË£¡");  /*ÈôÃ»ÕÒµ½£¬ÔòÊä³öÎŞ*/
+	if(i>L.TotalDoctor) printf("æŸ¥æ— æ­¤äººï¼");  /*è‹¥æ²¡æ‰¾åˆ°ï¼Œåˆ™è¾“å‡ºæ— */
 
 }
 
-void InsList(DoctorList *L,int i,DOCTOR e) { /*²åÈëÒ½ÉúĞÅÏ¢*/
+void InsList(DoctorList *L,int i,DOCTOR e) { /*æ’å…¥åŒ»ç”Ÿä¿¡æ¯*/
 	int k;
-	if( (i<1)||(i>L->TotalDoctor+2) ) {   /*Ê×ÏÈÅĞ¶Ï²åÈëÎ»ÖÃÊÇ·ñºÏ·¨*/
-		printf("²åÈëÎ»ÖÃiÖµ²»ºÏ·¨\n");
-		printf("ĞÅÏ¢²åÈëÊ§°Ü£¡\n");
+	if( (i<1)||(i>L->TotalDoctor+2) ) {   /*é¦–å…ˆåˆ¤æ–­æ’å…¥ä½ç½®æ˜¯å¦åˆæ³•*/
+		printf("æ’å…¥ä½ç½®iå€¼ä¸åˆæ³•\n");
+		printf("ä¿¡æ¯æ’å…¥å¤±è´¥ï¼\n");
 	}
 	if(L->TotalDoctor>=MAXNUM-1) {
-		printf("±íÒÑÂúÎŞ·¨²åÈë\n");
-		printf("ĞÅÏ¢²åÈëÊ§°Ü£¡\n");
+		printf("è¡¨å·²æ»¡æ— æ³•æ’å…¥\n");
+		printf("ä¿¡æ¯æ’å…¥å¤±è´¥ï¼\n");
 	}
 
-	for(k=L->TotalDoctor-1; k>=i-1; k--)   /*ÆäºóÔªËØºóÒÆ*/
+	for(k=L->TotalDoctor-1; k>=i-1; k--)   /*å…¶åå…ƒç´ åç§»*/
 		L->dt[k+1]=L->dt[k];
-	L->dt[i-1]=e; /*Êı¾İ²åÈë£¬µÚi¸öÔªËØµÄÏÂ±êÎªi-1*/
+	L->dt[i-1]=e; /*æ•°æ®æ’å…¥ï¼Œç¬¬iä¸ªå…ƒç´ çš„ä¸‹æ ‡ä¸ºi-1*/
 	InitList(&L->dt[i-1].p);
 	L->TotalDoctor++;
-	printf("ĞÅÏ¢²åÈë³É¹¦£¡\n");
+	printf("ä¿¡æ¯æ’å…¥æˆåŠŸï¼\n");
 	WriteData();
 }
 
-void  DelList(DoctorList *L,int i,DOCTOR *e)     /*É¾³ı*/
-/*ÔÚË³Ğò±íLÖĞÉ¾³ıµÚi¸öÊı¾İÔªËØ£¬²¢ÓÃÖ¸Õë²ÎÊıe·µ»ØÆäÖµ*/
+void  DelList(DoctorList *L,int i,DOCTOR *e)     /*åˆ é™¤*/
+/*åœ¨é¡ºåºè¡¨Lä¸­åˆ é™¤ç¬¬iä¸ªæ•°æ®å…ƒç´ ï¼Œå¹¶ç”¨æŒ‡é’ˆå‚æ•°eè¿”å›å…¶å€¼*/
 {
 	int k;
 	if((i<1)||(i>L->TotalDoctor+1)) {
-		printf("É¾³ıÎ»ÖÃ²»ºÏ·¨£¡\n");
-		printf("ĞÅÏ¢É¾³ıÊ§°Ü£¡\n");
+		printf("åˆ é™¤ä½ç½®ä¸åˆæ³•ï¼\n");
+		printf("ä¿¡æ¯åˆ é™¤å¤±è´¥ï¼\n");
 	}
-	*e= L->dt[i-1];      /* ½«É¾³ıµÄÔªËØ´æ·Åµ½eËùÖ¸ÏòµÄ±äÁ¿ÖĞ*/
+	*e= L->dt[i-1];      /* å°†åˆ é™¤çš„å…ƒç´ å­˜æ”¾åˆ°eæ‰€æŒ‡å‘çš„å˜é‡ä¸­*/
 	for(k=i; k<L->TotalDoctor; k++)
-		L->dt[k-1]=L->dt[k];     /*½«ºóÃæµÄÔªËØÒÀ´ÎÇ°ÒÆ*/
+		L->dt[k-1]=L->dt[k];     /*å°†åé¢çš„å…ƒç´ ä¾æ¬¡å‰ç§»*/
 	L->TotalDoctor--;
-	printf("ĞÅÏ¢É¾³ı³É¹¦£¡\n");
+	printf("ä¿¡æ¯åˆ é™¤æˆåŠŸï¼\n");
 	WriteData();
 }
 
 
-int showx(DoctorList L) {	//´òÓ¡Çåµ¥(²éÕÒÒ³Ãæ£©
+int showx(DoctorList L) {	//æ‰“å°æ¸…å•(æŸ¥æ‰¾é¡µé¢ï¼‰
 	int i,x;
 	printf("\t\t%-8s%-20s%-10s%-8s\n",
-	       "¿ÆÊÒ","Ò½Éú","Ê±¼ä¶Î","×ÜºÅÊı");
+	       "ç§‘å®¤","åŒ»ç”Ÿ","æ—¶é—´æ®µ","æ€»å·æ•°");
 	printf("\t\t--------------------------------------------------\n");
 	for (i=0; i<L.TotalDoctor; i++)
 		printf("\t\t%-8s%-20s%-10s%-8d\n", L.dt[i].dtno, L.dt[i].dtname,
 		       L.dt[i].time, L.dt[i].totalnum);
 	printf("\t\t--------------------------------------------------\n");
-	printf("\t\t0. ÍË³ö\n");
-	printf("\t\t1. ²éÕÒ\n");
-	printf("\t\t2. ²åÈë\n");
-	printf("\t\t3. É¾³ı\n");
+	printf("\t\t0. é€€å‡º\n");
+	printf("\t\t1. æŸ¥æ‰¾\n");
+	printf("\t\t2. æ’å…¥\n");
+	printf("\t\t3. åˆ é™¤\n");
 	printf("\t\t--------------------------------------------------\n");
-	printf("\t\tÇëÊäÈëÒªÑ¡ÔñµÄ¹¦ÄÜ±àºÅ£º");
+	printf("\t\tè¯·è¾“å…¥è¦é€‰æ‹©çš„åŠŸèƒ½ç¼–å·ï¼š");
 	scanf("%d",&x);
 	return x;
 }
 
-void doctorlist() {    /*²é¿´¿ÆÊÒ¼°Ò½ÉúĞÅÏ¢¹¦ÄÜ*/
+void doctorlist() {    /*æŸ¥çœ‹ç§‘å®¤åŠåŒ»ç”Ÿä¿¡æ¯åŠŸèƒ½*/
 	int i,w,x;
 	char a[10];
 	DOCTOR add;
@@ -193,28 +193,28 @@ void doctorlist() {    /*²é¿´¿ÆÊÒ¼°Ò½ÉúĞÅÏ¢¹¦ÄÜ*/
 	do {
 		system("cls");
 		x=showx(doctor_list);
-		switch(x) {	//¸ù¾İÑ¡ÔñÏîµ÷ÓÃ¶ÔÓ¦µÄº¯Êı
+		switch(x) {	//æ ¹æ®é€‰æ‹©é¡¹è°ƒç”¨å¯¹åº”çš„å‡½æ•°
 			case 0:
 				break;
 			case 1:
 				system("cls");
-				printf("ÊäÈëÒª²éÕÒÒ½ÉúµÄĞÕÃû£º");
+				printf("è¾“å…¥è¦æŸ¥æ‰¾åŒ»ç”Ÿçš„å§“åï¼š");
 				scanf("%s",a);
-				Locate(doctor_list,a);    /*²éÕÒ*/
+				Locate(doctor_list,a);    /*æŸ¥æ‰¾*/
 				getch();
 				break;
 			case 2:
-				system("cls");          /*²åÈë*/
-				printf("ÇëÊäÈëĞÅÏ¢Òª²åÈëµÄÎ»ÖÃ£º");
+				system("cls");          /*æ’å…¥*/
+				printf("è¯·è¾“å…¥ä¿¡æ¯è¦æ’å…¥çš„ä½ç½®ï¼š");
 				scanf("%d",&w);
-				printf("ÇëÊäÈëÒª²åÈëµÄĞÅÏ¢£¬¿ÆÊÒ¡¢Ò½ÉúĞÕÃû¡¢Ê±¼ä¶Î¡¢×ÜºÅÊı£º");
+				printf("è¯·è¾“å…¥è¦æ’å…¥çš„ä¿¡æ¯ï¼Œç§‘å®¤ã€åŒ»ç”Ÿå§“åã€æ—¶é—´æ®µã€æ€»å·æ•°ï¼š");
 				scanf("%s %s %s %d",add.dtno,add.dtname,add.time,&add.totalnum);
 				InsList(l,w,add);
 				getch();
 				break;
 			case 3:
-				system("cls");        /*É¾³ı*/
-				printf("ÇëÊäÈëÒªÉ¾³ıĞÅÏ¢ËùÔÚµÄÎ»ÖÃ£º");
+				system("cls");        /*åˆ é™¤*/
+				printf("è¯·è¾“å…¥è¦åˆ é™¤ä¿¡æ¯æ‰€åœ¨çš„ä½ç½®ï¼š");
 				scanf("%d",&w);
 				DOCTOR E,*e;
 				e=&E;
@@ -226,58 +226,58 @@ void doctorlist() {    /*²é¿´¿ÆÊÒ¼°Ò½ÉúĞÅÏ¢¹¦ÄÜ*/
 }
 
 
-int  ListLength_L(LinkList L) { //Çó±í³¤
-	//·µ»ØLÖĞÊı¾İÔªËØ¸öÊı
+int  ListLength_L(LinkList L) { //æ±‚è¡¨é•¿
+	//è¿”å›Lä¸­æ•°æ®å…ƒç´ ä¸ªæ•°
 	LinkList p;
 	int i;
-	p=L->next;  //pÖ¸ÏòµÚÒ»¸ö½áµã
+	p=L->next;  //pæŒ‡å‘ç¬¬ä¸€ä¸ªç»“ç‚¹
 	i=0;
 	while(p) {
-		//±éÀúµ¥Á´±í,Í³¼Æ½áµãÊı
+		//éå†å•é“¾è¡¨,ç»Ÿè®¡ç»“ç‚¹æ•°
 		i++;
 		p=p->next;
 	}
 	return i;
 }
 
-Node*  ListLength_p(LinkList L) { //Çó±íÎ²½áµã
-	//·µ»ØLÖĞÊı¾İÔªËØ¸öÊı
+Node*  ListLength_p(LinkList L) { //æ±‚è¡¨å°¾ç»“ç‚¹
+	//è¿”å›Lä¸­æ•°æ®å…ƒç´ ä¸ªæ•°
 	LinkList p;
-	p=L;  //pÖ¸ÏòµÚÒ»¸ö½áµã
+	p=L;  //pæŒ‡å‘ç¬¬ä¸€ä¸ªç»“ç‚¹
 	while(p->next!=NULL) {
-		//±éÀúµ¥Á´±í
+		//éå†å•é“¾è¡¨
 		p=p->next;
 	}
 	return p;
 }
 
-void CreateFromTail(LinkList L,DoctorList Q,int x) {  //ÅÅºÅ (ÅĞ¶ÏÊÇ·ñ»¹ÓĞÊ£ÓàºÅÂë£¬ÏÔÊ¾ÅÅºÅ³É¹¦»òÊ§°Ü£©
+void CreateFromTail(LinkList L,DoctorList Q,int x) {  //æ’å· (åˆ¤æ–­æ˜¯å¦è¿˜æœ‰å‰©ä½™å·ç ï¼Œæ˜¾ç¤ºæ’å·æˆåŠŸæˆ–å¤±è´¥ï¼‰
 	Node *r,*s;
-	int a;   //aÎªÁ´±íLµÄ³¤¶È
-	r=ListLength_p(L);   /*rÖ¸ÕëÊ¼ÖÕ¶¯Ì¬Ö¸ÏòÁ´±íµÄµ±Ç°±íÎ²*/
-	a=ListLength_L(L);     //·µ»ØLÖĞÊı¾İÔªËØ¸öÊıµ½aÖĞ
-	if(a<Q.dt[x].totalnum) {     //ÈôÒ½Éú¸ÃÊ±¼ä¶ÎµÄ×ÜºÅÊıÎ´Âú£¬Ôò¿É½øĞĞÅÅºÅ
+	int a;   //aä¸ºé“¾è¡¨Lçš„é•¿åº¦
+	r=ListLength_p(L);   /*ræŒ‡é’ˆå§‹ç»ˆåŠ¨æ€æŒ‡å‘é“¾è¡¨çš„å½“å‰è¡¨å°¾*/
+	a=ListLength_L(L);     //è¿”å›Lä¸­æ•°æ®å…ƒç´ ä¸ªæ•°åˆ°aä¸­
+	if(a<Q.dt[x].totalnum) {     //è‹¥åŒ»ç”Ÿè¯¥æ—¶é—´æ®µçš„æ€»å·æ•°æœªæ»¡ï¼Œåˆ™å¯è¿›è¡Œæ’å·
 
-		s=(Node*)malloc(sizeof(Node));    //½¨Á¢Ò»¸öĞÂ½áµã
-		s->data=(r->data)+1;    //ÅÅºÅÊıÓÉÉÏÒ»ºÅ¼ÓÒ»
+		s=(Node*)malloc(sizeof(Node));    //å»ºç«‹ä¸€ä¸ªæ–°ç»“ç‚¹
+		s->data=(r->data)+1;    //æ’å·æ•°ç”±ä¸Šä¸€å·åŠ ä¸€
 		r->next=s;
 		s->next=NULL;
-		printf("ÅÅºÅ³É¹¦£¡");
+		printf("æ’å·æˆåŠŸï¼");
 		L->data=s->data;
-	} else printf("ÅÅºÅÊ§°Ü£¬¸ÃÒ½Éú¸ÃÊ±¶ÎÒÑÅÅÂú£¡");
+	} else printf("æ’å·å¤±è´¥ï¼Œè¯¥åŒ»ç”Ÿè¯¥æ—¶æ®µå·²æ’æ»¡ï¼");
 	WriteData();
 }
 
-void search_queue(LinkList L) { //ÏÔÊ¾ÒÑÅÅºÃÇé¿ö
+void search_queue(LinkList L) { //æ˜¾ç¤ºå·²æ’å¥½æƒ…å†µ
 	LinkList p;
 	if(L->next==NULL) {
-		printf("ÏÖÔÚ»¹Ã»ÓĞÅÅ¶ÓµÄ²¡ÈËßÏ");
+		printf("ç°åœ¨è¿˜æ²¡æœ‰æ’é˜Ÿçš„ç—…äººå‘¦");
 		return ;
 	}
 
 	else {
 		p=L->next;
-		printf("ÕıÔÚÅÅ¶ÓµÄ²¡ÈËºÅÂë·Ö±ğÊÇ");
+		printf("æ­£åœ¨æ’é˜Ÿçš„ç—…äººå·ç åˆ†åˆ«æ˜¯");
 		while(p!=NULL) {
 			printf("%d",p->data);
 			p=p->next;
@@ -286,46 +286,46 @@ void search_queue(LinkList L) { //ÏÔÊ¾ÒÑÅÅºÃÇé¿ö
 }
 
 
-int showuser(DoctorList L) {	//ÅÅºÅÑ¡ÔñÒ³Ãæ
+int showuser(DoctorList L) {	//æ’å·é€‰æ‹©é¡µé¢
 	int ph,i,s=0;
 	printf("\t\t%-8s%-20s%-10s%-8s\n",
-	       "¿ÆÊÒ","Ò½Éú","Ê±¼ä¶Î","×ÜºÅÊı");
+	       "ç§‘å®¤","åŒ»ç”Ÿ","æ—¶é—´æ®µ","æ€»å·æ•°");
 	printf("\t\t--------------------------------------------------\n");
 	for (i=0; i<L.TotalDoctor; i++,s++)
 		printf("\t\t%d.%-8s%-20s%-10s%-8d\n",s, L.dt[i].dtno, L.dt[i].dtname,
 		       L.dt[i].time, L.dt[i].totalnum);
 	printf("\t\t--------------------------------------------------\n");
-	printf("\t\tÇëÊäÈëÏëÒªÑ¡ÔñÅÅºÅµÄ±àºÅ£º");
+	printf("\t\tè¯·è¾“å…¥æƒ³è¦é€‰æ‹©æ’å·çš„ç¼–å·ï¼š");
 	scanf("%d",&ph);
 	return ph;
 }
 
-void rnumber() {  //ÅÅºÅ¹¦ÄÜ
+void rnumber() {  //æ’å·åŠŸèƒ½
 	int user;
-	system("cls");   //ÇåÆÁ
+	system("cls");   //æ¸…å±
 	user=showuser(doctor_list);
-	CreateFromTail(doctor_list.dt[user].p,doctor_list,user);   //µ÷ÓÃº¯ÊıÅÅºÅ
+	CreateFromTail(doctor_list.dt[user].p,doctor_list,user);   //è°ƒç”¨å‡½æ•°æ’å·
 }
 
 
-void rsearch() {  //ÅÅºÅ²é¿´¹¦ÄÜ
+void rsearch() {  //æ’å·æŸ¥çœ‹åŠŸèƒ½
 	int user;
-	system("cls");   //ÇåÆÁ
+	system("cls");   //æ¸…å±
 	user=showuser(doctor_list);
 	search_queue(doctor_list.dt[user].p);
 }
 
-void dttake(LinkList L) { //Ò½ÉúÈ¡ºÅ
+void dttake(LinkList L) { //åŒ»ç”Ÿå–å·
 	LinkList p;
 	if(L->next==NULL) {
-		printf("Ã»ÓĞ²¡ÈËÅÅ¶Ó");
+		printf("æ²¡æœ‰ç—…äººæ’é˜Ÿ");
 	} else if(L->next==ListLength_p(L)) {
-		printf("%dºÅ²¡ÈËÇë½øÀ´¾ÍÕï",L->next->data);
+		printf("%då·ç—…äººè¯·è¿›æ¥å°±è¯Š",L->next->data);
 		p=L->next;
 		L->next=NULL;
 		free(p);
 	} else {
-		printf("%dºÅ²¡ÈËÇë½øÀ´¾ÍÕï",L->next->data);
+		printf("%då·ç—…äººè¯·è¿›æ¥å°±è¯Š",L->next->data);
 		p=L->next;
 		L->next=p->next;
 		free(p);
@@ -333,64 +333,64 @@ void dttake(LinkList L) { //Ò½ÉúÈ¡ºÅ
 
 }
 
-void dtsearch() {  //ÅÅºÅ²é¿´¹¦ÄÜ
+void dtsearch() {  //æ’å·æŸ¥çœ‹åŠŸèƒ½
 	int user;
-	system("cls");   //ÇåÆÁ
+	system("cls");   //æ¸…å±
 	user=showuser(doctor_list);
 	dttake(doctor_list.dt[user].p);
 }
 
-int showsel() {  	//ÏÔÊ¾Ö÷²Ëµ¥
+int showsel() {  	//æ˜¾ç¤ºä¸»èœå•
 	int sel;
-	printf("\t\t¼òÒ×Ò½ÔºÅÅºÅÏµÍ³\n");
+	printf("\t\tç®€æ˜“åŒ»é™¢æ’å·ç³»ç»Ÿ\n");
 	printf("\t---------------------------------\n");
-	printf("\t\t0. ÍË³ö\n");
-	printf("\t\t1. ²é¿´¿ÆÊÒ¼°Ò½ÉúĞÅÏ¢\n");
-	printf("\t\t2. ÅÅºÅ\n");
-	printf("\t\t3. ²é¿´ÒÑÅÅºÅÇé¿ö\n");
-	printf("\t\t4. Ò½ÉúÈ¡ºÅ\n");
+	printf("\t\t0. é€€å‡º\n");
+	printf("\t\t1. æŸ¥çœ‹ç§‘å®¤åŠåŒ»ç”Ÿä¿¡æ¯\n");
+	printf("\t\t2. æ’å·\n");
+	printf("\t\t3. æŸ¥çœ‹å·²æ’å·æƒ…å†µ\n");
+	printf("\t\t4. åŒ»ç”Ÿå–å·\n");
 	printf("\t----------------------------------\n");
-	printf("\t\tÇëÊäÈëÒªÑ¡ÔñµÄ¹¦ÄÜ±àºÅ£º");
+	printf("\t\tè¯·è¾“å…¥è¦é€‰æ‹©çš„åŠŸèƒ½ç¼–å·ï¼š");
 	scanf("%d",&sel);
 	return sel;
 }
 
 int main() {
 	int sel;
-	ReadData();		//ÏÈ½«Ó²ÅÌÖĞdoctordata¼ÇÊÂ±¾ÖĞµÄÊı¾İ¶ÁÈëµ½Ë³Ğò±ídoctor_listÖĞ
+	ReadData();		//å…ˆå°†ç¡¬ç›˜ä¸­doctordataè®°äº‹æœ¬ä¸­çš„æ•°æ®è¯»å…¥åˆ°é¡ºåºè¡¨doctor_listä¸­
 	do {
-		system("cls");		//ÇåÆÁ
-		sel=showsel();		//·µ»ØÖ÷²Ëµ¥ÖĞµÄÑ¡ÔñÏî
-		switch(sel) {	//¸ù¾İÑ¡ÔñÏîµ÷ÓÃ¶ÔÓ¦µÄº¯Êı
+		system("cls");		//æ¸…å±
+		sel=showsel();		//è¿”å›ä¸»èœå•ä¸­çš„é€‰æ‹©é¡¹
+		switch(sel) {	//æ ¹æ®é€‰æ‹©é¡¹è°ƒç”¨å¯¹åº”çš„å‡½æ•°
 			case 0:
 				break;
 			case 1:
 				system("cls");
 				doctorlist();
 				getch();
-				break;   /*²é¿´¿ÆÊÒ¼°Ò½ÉúĞÅÏ¢¹¦ÄÜ*/
+				break;   /*æŸ¥çœ‹ç§‘å®¤åŠåŒ»ç”Ÿä¿¡æ¯åŠŸèƒ½*/
 			case 2:
 				system("cls");
 				rnumber();
 				getch();
-				break;      //ÅÅºÅ¹¦ÄÜ
+				break;      //æ’å·åŠŸèƒ½
 			case 3:
 				system("cls");
 				rsearch();
 				getch();
-				break;     //²é¿´ÅÅºÅÇé¿ö
+				break;     //æŸ¥çœ‹æ’å·æƒ…å†µ
 			case 4:
 				system("cls");
-				dtsearch();       //Ò½ÉúÈ¡ºÅ¹¦ÄÜ
+				dtsearch();       //åŒ»ç”Ÿå–å·åŠŸèƒ½
 				getch();
 				break;
 			case 5:
 				system("cls");
 				dtsearch();
 				getch();
-				break;	   //ºóĞòÓÃ»§¿É½øÈë²éÑ¯¡¢É¾³ı²¢ÖØĞÂÔ¤Ô¼(Î´Íê³É£©
+				break;	   //ååºç”¨æˆ·å¯è¿›å…¥æŸ¥è¯¢ã€åˆ é™¤å¹¶é‡æ–°é¢„çº¦(æœªå®Œæˆï¼‰
 		}
-	} while(sel);	//µ±Ñ¡ÔñÖ÷²Ëµ¥ÖĞĞòºÅ0Ê±£¬½áÊø³ÌĞò
+	} while(sel);	//å½“é€‰æ‹©ä¸»èœå•ä¸­åºå·0æ—¶ï¼Œç»“æŸç¨‹åº
 	return 0;
 }
 

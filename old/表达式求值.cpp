@@ -1,20 +1,20 @@
 #include<stdio.h>
 #define StackSize 100
 #define QueueSize 100
-//¶ÓÁÐµÄÏà¹Ø²Ù×÷
+//é˜Ÿåˆ—çš„ç›¸å…³æ“ä½œ
 typedef char DataType;
 typedef struct {
 	char data[100];
 	int front, rear;
-} SeqQueue; //¶¨Òå¶ÓÁÐÀàÐÍ
-void InitQueue(SeqQueue* Q) { //³õÊ¼»¯¶ÓÁÐ
+} SeqQueue; //å®šä¹‰é˜Ÿåˆ—ç±»åž‹
+void InitQueue(SeqQueue* Q) { //åˆå§‹åŒ–é˜Ÿåˆ—
 	Q->front = 0;
 	Q->rear = 0;
 }
-int QueueEmpty(SeqQueue* Q) { //ÅÐ¿Õ¶ÓÁÐ
+int QueueEmpty(SeqQueue* Q) { //åˆ¤ç©ºé˜Ÿåˆ—
 	return Q->rear == Q->front;
 }
-void EnQueue(SeqQueue* Q, DataType x) { //Èë¶ÓÁÐ
+void EnQueue(SeqQueue* Q, DataType x) { //å…¥é˜Ÿåˆ—
 	if ((Q->rear + 1) % QueueSize == Q->front)
 		printf("Queue overflow");
 	else {
@@ -23,7 +23,7 @@ void EnQueue(SeqQueue* Q, DataType x) { //Èë¶ÓÁÐ
 		Q->rear = (Q->rear + 1) % QueueSize;
 	}
 }
-DataType DeQueue(SeqQueue* Q) { //É¾³ý¶ÓÁÐ
+DataType DeQueue(SeqQueue* Q) { //åˆ é™¤é˜Ÿåˆ—
 	DataType e;
 	if (Q == NULL)
 		printf("No Queue!");
@@ -33,15 +33,15 @@ DataType DeQueue(SeqQueue* Q) { //É¾³ý¶ÓÁÐ
 	}
 	return e;
 }
-//Õ»µÄÏà¹Ø²Ù×÷
+//æ ˆçš„ç›¸å…³æ“ä½œ
 typedef struct {
 	DataType data[100];
 	int top;
-} SeqStack; //Õ»ÀàÐÍµÄ¶¨Òå
-void InitStack(SeqStack* S) { //³õÊ¼»¯Õ»
+} SeqStack; //æ ˆç±»åž‹çš„å®šä¹‰
+void InitStack(SeqStack* S) { //åˆå§‹åŒ–æ ˆ
 	S->top = -1;
 }
-void Push(SeqStack* S, DataType x) { //ÈëÕ»£¨½øÕ»£©
+void Push(SeqStack* S, DataType x) { //å…¥æ ˆï¼ˆè¿›æ ˆï¼‰
 	if (S->top == StackSize - 1)
 		printf("stack overflow");
 	else {
@@ -49,7 +49,7 @@ void Push(SeqStack* S, DataType x) { //ÈëÕ»£¨½øÕ»£©
 		S->data[S->top] = x;
 	}
 }
-DataType Pop(SeqStack* S) { //ÍËÕ»£¨³öÕ»£©
+DataType Pop(SeqStack* S) { //é€€æ ˆï¼ˆå‡ºæ ˆï¼‰
 	if (S->top == -1) {
 		printf("stack underflow");
 		return 0;
@@ -57,7 +57,7 @@ DataType Pop(SeqStack* S) { //ÍËÕ»£¨³öÕ»£©
 	else
 		return S->data[S->top--];
 }
-DataType GetTop(SeqStack* S) { //È¡Õ»¶¥ÔªËØ
+DataType GetTop(SeqStack* S) { //å–æ ˆé¡¶å…ƒç´ 
 	if (S->top == -1) {
 		printf("stack empty");
 		return 0;
@@ -66,7 +66,7 @@ DataType GetTop(SeqStack* S) { //È¡Õ»¶¥ÔªËØ
 		return S->data[S->top];
 }
 
-int Priority(DataType op) { //ÇóÔËËã·ûÓÅÏÈ¼¶
+int Priority(DataType op) { //æ±‚è¿ç®—ç¬¦ä¼˜å…ˆçº§
 	switch (op) {
 	case '(':
 	case'#':
@@ -81,17 +81,17 @@ int Priority(DataType op) { //ÇóÔËËã·ûÓÅÏÈ¼¶
 	return -1;
 }
 void CTPostExp(SeqQueue* Q) {
-	SeqStack OS;//ÔËËã·ûÕ»
+	SeqStack OS;//è¿ç®—ç¬¦æ ˆ
 	char c, t;
 	SeqStack* S;
 	S = &OS;
-	InitStack(S);//³õÊ¼»¯Õ»
-	Push(S, '#'); //Ñ¹ÈëÕ»µ×ÔªËØ££
-	do { //É¨ÃèÖÐ×º±í´ïÊ½
+	InitStack(S);//åˆå§‹åŒ–æ ˆ
+	Push(S, '#'); //åŽ‹å…¥æ ˆåº•å…ƒç´ ï¼ƒ
+	do { //æ‰«æä¸­ç¼€è¡¨è¾¾å¼
 		c = getchar();
 		switch (c) {
 		case ' ':
-			break;//È¥³ý¿Õ¸ñ·û
+			break;//åŽ»é™¤ç©ºæ ¼ç¬¦
 		case '1':
 		case '2':
 		case '3':
@@ -124,7 +124,7 @@ void CTPostExp(SeqQueue* Q) {
 			Push(S, c);
 			break;
 		}//EndSwitch
-	} while (c != '#'); //ÒÔ££½áÊø±í´ïÊ½É¨Ãè
+	} while (c != '#'); //ä»¥ï¼ƒç»“æŸè¡¨è¾¾å¼æ‰«æ
 }
 int CPostExp(SeqQueue* Q) {
 	SeqStack VS, * S;
@@ -161,17 +161,17 @@ int CPostExp(SeqQueue* Q) {
 	return GetTop(S);
 }
 int main() {
-	printf("ÊäÈë±í´ïÊ½#½áÊø\n");
+	printf("è¾“å…¥è¡¨è¾¾å¼#ç»“æŸ\n");
 	SeqQueue* Q;
-	SeqQueue PostQ;//¶¨Òå¶ÓÁÐ£¬ ´æ·Åºó×º±í´ïÊ½
+	SeqQueue PostQ;//å®šä¹‰é˜Ÿåˆ—ï¼Œ å­˜æ”¾åŽç¼€è¡¨è¾¾å¼
 	Q = &PostQ;
-	InitQueue(Q);//³õÊ¼»¯¶ÓÁÐ
-	CTPostExp(Q);//µ÷ÓÃ×ª»»º¯Êý½«ÖÐ×º±í´ïÊ½×ª»»³Éºó×º±í´ïÊ½
-	printf("ºó×º±í´ïÊ½£º");
-	while (!QueueEmpty(Q))//Êä³öºó×º±í´ïÊ½
+	InitQueue(Q);//åˆå§‹åŒ–é˜Ÿåˆ—
+	CTPostExp(Q);//è°ƒç”¨è½¬æ¢å‡½æ•°å°†ä¸­ç¼€è¡¨è¾¾å¼è½¬æ¢æˆåŽç¼€è¡¨è¾¾å¼
+	printf("åŽç¼€è¡¨è¾¾å¼ï¼š");
+	while (!QueueEmpty(Q))//è¾“å‡ºåŽç¼€è¡¨è¾¾å¼
 		printf("%2c", DeQueue(Q));
 	printf("\n");
 	Q->front = 0;
-	printf("½á¹û=");
+	printf("ç»“æžœ=");
 	printf("%d\n", CPostExp(Q));
 }

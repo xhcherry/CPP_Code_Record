@@ -13,20 +13,20 @@ struct Book
 	struct Date date;
 	char publisher[40];
 }book = {
-	"¡¶Ò»Êé¡·",
-	"Öø×÷",
+	"ã€Šä¸€ä¹¦ã€‹",
+	"è‘—ä½œ",
 	48.8 ,
 	{2017, 11, 11},
-	"³ö°æÉç"
+	"å‡ºç‰ˆç¤¾"
 }; 
 int main(void)
 {
 	struct Book *pt;
 	pt = &book;
-	printf("ÊéÃû £º%s\n",book.title);
-	printf("×÷Õß £º%s\n",book.author);
-	printf("ÊÛ¼Û £º%.2f\n",book.price);
-	printf("³ö°æÊ±¼ä £º%d.%d.%d\n",book.date.year,book.date.month,book.date.day);
-	printf("³ö°æÉç £º%s\n",book.publisher);
+	printf("ä¹¦å ï¼š%s\n",book.title);
+	printf("ä½œè€… ï¼š%s\n",book.author);
+	printf("å”®ä»· ï¼š%.2f\n",book.price);
+	printf("å‡ºç‰ˆæ—¶é—´ ï¼š%d.%d.%d\n",book.date.year,book.date.month,book.date.day);
+	printf("å‡ºç‰ˆç¤¾ ï¼š%s\n",book.publisher);
 	return 0;
 }

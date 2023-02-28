@@ -40,13 +40,13 @@ void quicksort(int * arr, int p, int r) {
 
 int main() {
 	int arr[] = {2,5,35,6,17,11,12,8},i;
-	printf("ÅÅĞòÇ°£º");
+	printf("æ’åºå‰ï¼š");
 	for (i = 0; i < X; ++i) {
 		printf("%d ", arr[i]);
 	}
 	printf("\n");
 	quicksort(arr, 0, X-1);
-	printf("ÅÅĞòºó£º");
+	printf("æ’åºåï¼š");
 	for (i = 0; i < X; ++i) {
 		printf("%d ", arr[i]);
 	}

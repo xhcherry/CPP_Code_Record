@@ -1,13 +1,13 @@
 #include<iostream>
 using namespace std;
-/**************¶¨Òå²éÕÒÓ²±ÒµÄº¯Êıfind_false()**********************/
+/**************å®šä¹‰æŸ¥æ‰¾ç¡¬å¸çš„å‡½æ•°find_false()**********************/
 int find_false(int a[],int low,int high)
 {
-	int i=0;						//×÷Îª±éÀúµÄ¼ÆÊıÆ÷ 
-	int re=0;						//re×÷Îª·µ»ØÖµ
-	int sum1,sum2,sum3;			//Èı¸öÓÃÀ´ÀÛ¼ÓµÄ±äÁ¿
+	int i=0;						//ä½œä¸ºéå†çš„è®¡æ•°å™¨ 
+	int re=0;						//reä½œä¸ºè¿”å›å€¼
+	int sum1,sum2,sum3;			//ä¸‰ä¸ªç”¨æ¥ç´¯åŠ çš„å˜é‡
 	sum1=sum2=sum3=0;
-	if(low+1==high)				//µ±±éÀúµ½×îºóÁ½¸öÔªËØµÄÊ±ºò 
+	if(low+1==high)				//å½“éå†åˆ°æœ€åä¸¤ä¸ªå…ƒç´ çš„æ—¶å€™ 
 	{
 		if(a[low]<a[high])
 		{
@@ -20,39 +20,39 @@ int find_false(int a[],int low,int high)
 			return re;
 		}
 	} 
-	if((high-low+1)%2==0)				//µ±³¤¶ÈÎªÅ¼ÊıµÄÊ±ºò
+	if((high-low+1)%2==0)				//å½“é•¿åº¦ä¸ºå¶æ•°çš„æ—¶å€™
 	{
-		for(i=low;i<=low+(high-low+1)/2-1;i++)	//¶ÔÇ°°ë¶ÎÇóºÍ 
+		for(i=low;i<=low+(high-low+1)/2-1;i++)	//å¯¹å‰åŠæ®µæ±‚å’Œ 
 		{
 			sum1+=a[i];
 		}
-		for(i=low+(high-low+1)/2;i<=high;i++)	//¶Ôºó°ë¶ÎÇóºÍ 
+		for(i=low+(high-low+1)/2;i<=high;i++)	//å¯¹ååŠæ®µæ±‚å’Œ 
 		{
 			sum2+=a[i];
 		}
-		if(sum1<sum2)				//¼Ù±ÒÔÚÇ°°ë¶Î 
+		if(sum1<sum2)				//å‡å¸åœ¨å‰åŠæ®µ 
 		{
 			re=find_false(a,low,low+(high-low+1)/2-1);
 			return re;
 		}
-		else if(sum2<sum1)			//¼Ù±ÒÔÚºó°ë¶Î 
+		else if(sum2<sum1)			//å‡å¸åœ¨ååŠæ®µ 
 		{
 			re=find_false(a,low+(high-low+1)/2,high);
 			return re;	
 		}	
 	}
-	else						//µ±³¤¶ÈÎªÆæÊıµÄÊ±ºò 
+	else						//å½“é•¿åº¦ä¸ºå¥‡æ•°çš„æ—¶å€™ 
 	{
-		for(i=low;i<=low+(high-low)/2-1;i++)	//¶ÔÇ°°ë¶ÎÇóºÍ
+		for(i=low;i<=low+(high-low)/2-1;i++)	//å¯¹å‰åŠæ®µæ±‚å’Œ
 		{
 			sum1+=a[i];
 		}
-		for(i=low+(high-low)/2+1;i<=high;i++)//¶Ôºó°ë¶ÎÇóºÍ
+		for(i=low+(high-low)/2+1;i<=high;i++)//å¯¹ååŠæ®µæ±‚å’Œ
 		{
 			sum2+=a[i];
 		}
-		sum3=a[low+(high-low)/2];			//sum3ÓÃÓÚ´æ·ÅÖĞ¼äÊı¾İ 
-		if(sum1<sum2)					//¼Ù±ÒÔÚÇ°°ë¶Î 
+		sum3=a[low+(high-low)/2];			//sum3ç”¨äºå­˜æ”¾ä¸­é—´æ•°æ® 
+		if(sum1<sum2)					//å‡å¸åœ¨å‰åŠæ®µ 
 		{
 			re=find_false(a,low,low+(high-low)/2-1);
 			return re; 
@@ -62,7 +62,7 @@ int find_false(int a[],int low,int high)
 			re=find_false(a,low+(high-low)/2,high);
 			return re;
 		}
-		else if(sum1+sum3==sum2+sum3)	//ÖĞ¼äµÄÄÇ¸ö¾ÍÊÇ¼Ù±Ò£¡
+		else if(sum1+sum3==sum2+sum3)	//ä¸­é—´çš„é‚£ä¸ªå°±æ˜¯å‡å¸ï¼
 		{
 			re=(high-low)/2+1;
 			return re;
@@ -73,14 +73,14 @@ int main()
 {
 	int a[100];
 	int n,i,re;
-	cout<<"ÇëÊäÈëÓ²±ÒµÄ¸öÊı£º";
+	cout<<"è¯·è¾“å…¥ç¡¬å¸çš„ä¸ªæ•°ï¼š";
 	cin>>n;
-	cout<<"Çë·Ö±ğÊäÈëÕâ¸ö"<<n<<"¸öÓ²±ÒµÄÖØÁ¿£º"<<endl;
+	cout<<"è¯·åˆ†åˆ«è¾“å…¥è¿™ä¸ª"<<n<<"ä¸ªç¡¬å¸çš„é‡é‡ï¼š"<<endl;
 	for(i=1;i<=n;i++)
 	{
 		cin>>a[i];	
 	}
 	re=find_false(a,1,n);
-	cout<<"¼Ù±ÒÊÇµÚ"<<re<<"Ó²±Ò"<<endl;
+	cout<<"å‡å¸æ˜¯ç¬¬"<<re<<"ç¡¬å¸"<<endl;
 	return 0;	
 }

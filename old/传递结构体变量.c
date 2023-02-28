@@ -18,24 +18,24 @@
 	void printBook(struct Book *book);
 	void getInput(struct Book *book)
 	{
-		printf("ÇëÊäÈëÊéÃû£º");
+		printf("è¯·è¾“å…¥ä¹¦åï¼š");
 		scanf("%s",book->title);
-		printf("ÇëÊäÈë×÷Õß£º");
+		printf("è¯·è¾“å…¥ä½œè€…ï¼š");
 		scanf("%s",book->author);
-		printf("ÇëÊäÈëÊÛ¼Û£º");
+		printf("è¯·è¾“å…¥å”®ä»·ï¼š");
 		scanf("%f",&book->price);
-		printf("ÇëÊäÈë³ö°æÈÕÆÚ£º");
+		printf("è¯·è¾“å…¥å‡ºç‰ˆæ—¥æœŸï¼š");
 		scanf("%d.%d.%d",&book->date.year,&book->date.month,&book->date.day);
-		printf("ÇëÊäÈë³ö°æÉç£º");
+		printf("è¯·è¾“å…¥å‡ºç‰ˆç¤¾ï¼š");
 		scanf("%s",book->publisher);
 	}
 	void printBook(struct Book *book)
 	{
-		printf("ÊéÃû£º%s\n",book->title);
-		printf("×÷Õß£º%s\n",book->author);
-		printf("ÊÛ¼Û£º%.2f\n",book->price);
-		printf("³ö°æÊ±¼ä £º%d.%d.%d\n",book->date.year,book->date.month,book->date.day);
-		printf("³ö°æÉç £º%s\n",book->publisher);
+		printf("ä¹¦åï¼š%s\n",book->title);
+		printf("ä½œè€…ï¼š%s\n",book->author);
+		printf("å”®ä»·ï¼š%.2f\n",book->price);
+		printf("å‡ºç‰ˆæ—¶é—´ ï¼š%d.%d.%d\n",book->date.year,book->date.month,book->date.day);
+		printf("å‡ºç‰ˆç¤¾ ï¼š%s\n",book->publisher);
 	} 
  
 	int main(void)
@@ -46,19 +46,19 @@
 		b2 = (struct Book *)malloc(sizeof(struct Book));
 		if(b1 == NULL || b2 == NULL)
 		{
-			printf("ÄÚ´æ·ÖÅäÊ§°Ü£¡");
+			printf("å†…å­˜åˆ†é…å¤±è´¥ï¼");
 			exit(1);
 		}
-		printf("ÇëÂ¼ÈëµÚÒ»±¾ÊéµÄĞÅÏ¢...\n");
+		printf("è¯·å½•å…¥ç¬¬ä¸€æœ¬ä¹¦çš„ä¿¡æ¯...\n");
 		getInput(b1);
 		putchar('\n');
-		printf("ÇëÂ¼ÈëµÚ¶ş±¾ÊéµÄĞÅÏ¢...\n");
+		printf("è¯·å½•å…¥ç¬¬äºŒæœ¬ä¹¦çš„ä¿¡æ¯...\n");
 		getInput(b2);
-		printf("\n\nÂ¼ÈëÍê±Ï£¬ÏÖÔÚ¿ªÊ¼´òÓ¡ÑéÖ¤...\n\n");
-		printf("´òÓ¡µÚÒ»±¾ÊéµÄĞÅÏ¢...\n");
+		printf("\n\nå½•å…¥å®Œæ¯•ï¼Œç°åœ¨å¼€å§‹æ‰“å°éªŒè¯...\n\n");
+		printf("æ‰“å°ç¬¬ä¸€æœ¬ä¹¦çš„ä¿¡æ¯...\n");
 		printBook(b1);
 		putchar('\n'); 
-		printf("´òÓ¡µÚ¶ş±¾ÊéµÄĞÅÏ¢...\n");
+		printf("æ‰“å°ç¬¬äºŒæœ¬ä¹¦çš„ä¿¡æ¯...\n");
 		printBook(b2); 
 		free(b1);
 		free(b2);

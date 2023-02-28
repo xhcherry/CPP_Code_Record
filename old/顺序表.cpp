@@ -1,61 +1,61 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define N 10 //Ë³Ğò±íµÄ×î´óÈİÁ¿
-int length=0; //Ë³Ğò±íµÄµ±Ç°ÔªËØ¸öÊı
+#define N 10 //é¡ºåºè¡¨çš„æœ€å¤§å®¹é‡
+int length=0; //é¡ºåºè¡¨çš„å½“å‰å…ƒç´ ä¸ªæ•°
 #define TRUE 1
 #define FALSE 0
 #define OK 1
 #define ERROR 0
 #define INFEASIBLE -1
 #define OVERFLOW -2
-#define LIST_INIT_SIZE 100//ÏßĞÔ±í´æ´¢µÄ¿Õ¼ä³õÊ¼»¯·ÖÅäÁ¿
-#define LISTINCREAMENT 10 //ÏßĞÔ±í´æ´¢¿Õ¼äµÄ·ÖÅäÔöÁ¿
-typedef struct LNode { //ÏßĞÔµ¥Á´±í´æ´¢½á¹¹
+#define LIST_INIT_SIZE 100//çº¿æ€§è¡¨å­˜å‚¨çš„ç©ºé—´åˆå§‹åŒ–åˆ†é…é‡
+#define LISTINCREAMENT 10 //çº¿æ€§è¡¨å­˜å‚¨ç©ºé—´çš„åˆ†é…å¢é‡
+typedef struct LNode { //çº¿æ€§å•é“¾è¡¨å­˜å‚¨ç»“æ„
 	int data;
 	struct LNode *next;
 } LNode,*LinkList;
-int CreatList_L(LinkList&L) { //´´½¨Ò»¸öÏßĞÔÁ´±í
-	L=(LinkList)malloc(sizeof(LNode));//·ÖÅäÒ»¸ö¿Õ¼ä¸øÁ´±í£¬×÷ÎªÍ·½áµã
+int CreatList_L(LinkList&L) { //åˆ›å»ºä¸€ä¸ªçº¿æ€§é“¾è¡¨
+	L=(LinkList)malloc(sizeof(LNode));//åˆ†é…ä¸€ä¸ªç©ºé—´ç»™é“¾è¡¨ï¼Œä½œä¸ºå¤´ç»“ç‚¹
 	if(!L) exit(OVERFLOW);
 	L->next=NULL;
 	return OK;
 }
-int DestroyList_L(LinkList &L) { //Ïú»ÙÁ´±í
+int DestroyList_L(LinkList &L) { //é”€æ¯é“¾è¡¨
 	if(L) free(L);
 	return OK;
 }
-int ListInsert_L(LinkList&L,int i,int e) { //ÔÙÁ·±íµÄµÚi¸öÔªËØÇ°²åÈëÒ»¸öÔªËØe
-	LinkList p=L;//pÖ¸Õë¶¨Î»ÓÚi-1
+int ListInsert_L(LinkList&L,int i,int e) { //å†ç»ƒè¡¨çš„ç¬¬iä¸ªå…ƒç´ å‰æ’å…¥ä¸€ä¸ªå…ƒç´ e
+	LinkList p=L;//pæŒ‡é’ˆå®šä½äºi-1
 	LNode *s;
 	int j=0;
 	while(p&&j<i-1) {
-		p=p->next;    //¶¨Î»
+		p=p->next;    //å®šä½
 		j++;
 	}
-	if(!p||j>i-1) return ERROR;//Èç¹ûi<1»ò´óÓÚÁ´±íÔªËØ¸öÊı+1
+	if(!p||j>i-1) return ERROR;//å¦‚æœi<1æˆ–å¤§äºé“¾è¡¨å…ƒç´ ä¸ªæ•°+1
 	s=(LNode*)malloc(sizeof(LNode));
 	if(!s) exit(OVERFLOW);
-	s->data=e; //Íê³É²åÈë²Ù×÷
+	s->data=e; //å®Œæˆæ’å…¥æ“ä½œ
 	s->next=p->next;
 	p->next=s;
 	return OK;
 }
-int ListDelet_L(LinkList&L,int i,int&e) { //É¾³ıÁ´±íLÖĞµÄµÚi¸öÔªËØ£¬²¢·µ»Ø¸øe;
+int ListDelet_L(LinkList&L,int i,int&e) { //åˆ é™¤é“¾è¡¨Lä¸­çš„ç¬¬iä¸ªå…ƒç´ ï¼Œå¹¶è¿”å›ç»™e;
 	LinkList p=L;
 	LNode* q;
 	int j=0;
 	while(!p&&j<i-1) {
-		p=p->next;    //pÖ¸Õë¶¨Î»ÓÚi-1£»
+		p=p->next;    //pæŒ‡é’ˆå®šä½äºi-1ï¼›
 		j++;
 	}
 	if(!p->next||j>i-1) return ERROR;
-	e=p->next->data; //Íê³ÉÉ¾³ı²Ù×÷
+	e=p->next->data; //å®Œæˆåˆ é™¤æ“ä½œ
 	q=p->next;
 	p->next=p->next->next;
 	free(q);
 	return OK;
 }
-int ListTraverse_L(LinkList L,int n) { //Á´±íµÄ±éÀú
+int ListTraverse_L(LinkList L,int n) { //é“¾è¡¨çš„éå†
 	int i=0;
 	if(!L)return ERROR;
 	L=L->next;
@@ -67,15 +67,15 @@ int ListTraverse_L(LinkList L,int n) { //Á´±íµÄ±éÀú
 	return FALSE;
 }
 int InverseSingleList_L(LinkList &L) {
-	if(!L->next||!L->next->next)//Èç¹ûÁ´±íÉÙÓÚ2¸öNodeÄÇÃ´Á´±í²»ĞèÒª¸Ä±äË³Ğò
+	if(!L->next||!L->next->next)//å¦‚æœé“¾è¡¨å°‘äº2ä¸ªNodeé‚£ä¹ˆé“¾è¡¨ä¸éœ€è¦æ”¹å˜é¡ºåº
 		return OK;
 	LNode *p,*q;
-	p=L->next; //µÚÒ»´ÎÒòÎªpÊÇ×îºóÒ»¸öÁ¬½ÓËùÒÔ°Ñp->nextÉèÎª¿Õ
+	p=L->next; //ç¬¬ä¸€æ¬¡å› ä¸ºpæ˜¯æœ€åä¸€ä¸ªè¿æ¥æ‰€ä»¥æŠŠp->nextè®¾ä¸ºç©º
 	q=p->next;
 	p->next=NULL;
 	p=q;
 	while(p) {
-		q=p->next; //ÓÃqÈ¥±£ÁôpºóÃæÒ»¸öNode;
+		q=p->next; //ç”¨qå»ä¿ç•™påé¢ä¸€ä¸ªNode;
 		p->next=L->next;
 		L->next=p;
 		p=q;
@@ -89,31 +89,31 @@ int main() {
 	do {
 		system("CLS");
 		printf("\t\t********************************************\n");
-		printf("\t\t*³Â×¿ 20050045\n");
-		printf("\t\t* 1.´´½¨Ò»¸öË³Ğò±í .........(1) *\n");
-		printf("\t\t* 2.ÔÚË³Ğò±íÖĞ²éÕÒÔª±í.........(2) *\n");
-		printf("\t\t* 3.ÔÚË³Ğò±íÖĞ²åÈëÔª±í.........(3) *\n");
-		printf("\t\t* 4.ÔÚË³Ğò±íÖĞÉ¾³ıÔª±í.........(4) *\n");
-		printf("\t\t* 5.ÍË³ö .........(5) *\n");
+		printf("\t\t*é™ˆå“ 20050045\n");
+		printf("\t\t* 1.åˆ›å»ºä¸€ä¸ªé¡ºåºè¡¨ .........(1) *\n");
+		printf("\t\t* 2.åœ¨é¡ºåºè¡¨ä¸­æŸ¥æ‰¾å…ƒè¡¨.........(2) *\n");
+		printf("\t\t* 3.åœ¨é¡ºåºè¡¨ä¸­æ’å…¥å…ƒè¡¨.........(3) *\n");
+		printf("\t\t* 4.åœ¨é¡ºåºè¡¨ä¸­åˆ é™¤å…ƒè¡¨.........(4) *\n");
+		printf("\t\t* 5.é€€å‡º .........(5) *\n");
 		printf("\t\t********************************************\n");
-		printf("\nÇëÑ¡Ôñ²Ù×÷´úÂë£º");
+		printf("\nè¯·é€‰æ‹©æ“ä½œä»£ç ï¼š");
 		ch=getchar();
 		switch(ch) {
 			case '1':
-				printf("\nÇëÊäÈëÊ®¸öÔªËØ");
+				printf("\nè¯·è¾“å…¥åä¸ªå…ƒç´ ");
 				CreatList_L(L);
 				for(length=0; length<N; length++) {
 					scanf("%d",&List[length]);
 					getchar();
 					ListInsert_L(L,length+1,List[length]);
 				}
-				printf("\n´´½¨³É¹¦£¡");
+				printf("\nåˆ›å»ºæˆåŠŸï¼");
 				getchar();
 				break;
 			case '2':
 				scanf("%d",&List[0]);
-				if(ListTraverse_L(L,List[0]))printf("¸ÃÔªËØ´æÔÚ¸ÃÄê±íµÄµÚ%d¸öÎ»ÖÃ",ListTraverse_L(L,List[0]));
-				else printf("²»´æÔÚ¸ÃÔªËØ");
+				if(ListTraverse_L(L,List[0]))printf("è¯¥å…ƒç´ å­˜åœ¨è¯¥å¹´è¡¨çš„ç¬¬%dä¸ªä½ç½®",ListTraverse_L(L,List[0]));
+				else printf("ä¸å­˜åœ¨è¯¥å…ƒç´ ");
 				getchar();
 				break;
 			case '3':
@@ -127,13 +127,13 @@ int main() {
 				system("pause");
 				break;
 			case '5':
-				printf("\nÄúÊÇ·ñÕæµÄÒªÍË³ö³ÌĞò(Y/N):");
+				printf("\næ‚¨æ˜¯å¦çœŸçš„è¦é€€å‡ºç¨‹åº(Y/N):");
 				getchar();
 				exit=getchar();
 				break;
 			default:
 				getchar();
-				printf("\nÎŞĞ§ÊäÈë£¬ÇëÖØĞÂÑ¡Ôñ...:");
+				printf("\næ— æ•ˆè¾“å…¥ï¼Œè¯·é‡æ–°é€‰æ‹©...:");
 				getchar();
 				break;
 		}

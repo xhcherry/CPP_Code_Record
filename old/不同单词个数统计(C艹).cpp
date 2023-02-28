@@ -1,4 +1,4 @@
-问题描述
+/*问题描述
 　　编写一个程序，输入一个句子，然后统计出这个句子当中不同的单词个数。例如：对于句子“one little two little three little boys”，总共有5个不同的单词：one, little, two, three, boys。
 　　说明：
 　　（1）由于句子当中包含有空格，所以应该用gets函数来输入这个句子；
@@ -12,7 +12,7 @@
 one little two little three little boys
 样例输出
 5
-
+*/
 
 
 #include <iostream>

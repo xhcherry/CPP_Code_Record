@@ -4,31 +4,31 @@ void Initbitmap(int map[8][8])
 {
 	int cylinder, track, sector;
 	char choice = 'Y';
-	printf("³õÊ¼»¯Î»ÊÓÍ¼...\n");
+	printf("åˆå§‹åŒ–ä½è§†å›¾...\n");
 	while (choice == 'y' || choice == 'Y')
 	{
-		printf("ÖùÃæºÅ£¨0~7£©:");
+		printf("æŸ±é¢å·ï¼ˆ0~7ï¼‰:");
 		scanf("%d", &cylinder);
 		for (; cylinder < 0 || cylinder>7;)
 		{
-			printf("ÖùÃæºÅÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n");
-			printf("ÖùÃæºÅ£¨0~7£©:");
+			printf("æŸ±é¢å·è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+			printf("æŸ±é¢å·ï¼ˆ0~7ï¼‰:");
 			scanf("%d", &cylinder);
 		}
-		printf("´ÅµÀºÅ£¨0~1£©:");
+		printf("ç£é“å·ï¼ˆ0~1ï¼‰:");
 		scanf("%d", &track);
 		for (; track < 0 || track>1;)
 		{
-			printf("´ÅµÀºÅÊäÈëÊı¾İ´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n");
-			printf("´ÅµÀºÅ£¨0~1£©:");
+			printf("ç£é“å·è¾“å…¥æ•°æ®é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+			printf("ç£é“å·ï¼ˆ0~1ï¼‰:");
 			scanf("%d", &track);
 		}
-		printf("ÎïÀí¼ÇÂ¼ºÅ£¨0~3£©:");
+		printf("ç‰©ç†è®°å½•å·ï¼ˆ0~3ï¼‰:");
 		scanf("%d", &sector);
 		for (; sector < 0 || sector>3;)
 		{
-			printf("ÎïÀí¼ÇÂ¼ºÅÊäÈëÊı¾İ´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n");
-			printf("ÎïÀí¼ÇÂ¼ºÅ£¨0~3£©:");
+			printf("ç‰©ç†è®°å½•å·è¾“å…¥æ•°æ®é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+			printf("ç‰©ç†è®°å½•å·ï¼ˆ0~3ï¼‰:");
 			scanf("%d", &sector);
 		}
 		map[cylinder][4 * track + sector] = 1;
@@ -54,31 +54,31 @@ void allocate(int map[8][8])
 		cylinder = i;
 		track = j / 4;
 		sector = j % 4;
-		printf("·ÖÅäµ½µÄÖùÃæºÅ¡¢´ÅµÀºÅ¡¢ÎïÀí¼ÇÂ¼Êı");
+		printf("åˆ†é…åˆ°çš„æŸ±é¢å·ã€ç£é“å·ã€ç‰©ç†è®°å½•æ•°");
 		printf("%d\t%d\t%d", cylinder, track, sector);
 		printf("\n");
 	}
-	else printf("¿Õ¼ä²»×ã£¬·ÖÅäÊ§°Ü!");
+	else printf("ç©ºé—´ä¸è¶³ï¼Œåˆ†é…å¤±è´¥!");
 }
 
 void reclaim(int map[8][8])
 {
 	int cylinder, track, sector;
-	printf("ÖùÃæºÅ:");
+	printf("æŸ±é¢å·:");
 	scanf("%d", &cylinder);
-	printf("´ÅµÀºÅ:");
+	printf("ç£é“å·:");
 	scanf("%d", &track);
-	printf("ÎïÀí¼ÇÂ¼ºÅ:");
+	printf("ç‰©ç†è®°å½•å·:");
 	scanf("%d", &sector);
 	if (map[cylinder][4 * track + sector] == 0)
 	{
-		printf("´Ë¿éÎªÎ´·ÖÅä¿é£¡»ØÊÕ³ö´í£¡");
+		printf("æ­¤å—ä¸ºæœªåˆ†é…å—ï¼å›æ”¶å‡ºé”™ï¼");
 		getchar();
 	}
 	else
 	{
 		map[cylinder][4 * track + sector] = 0;
-		printf("»ØÊÕ¿é¶ÔÓ¦µÄ×Ö½ÚºÅ:%4d\tÎ»Êı:%4d\n", cylinder, 4 * track + sector);
+		printf("å›æ”¶å—å¯¹åº”çš„å­—èŠ‚å·:%4d\tä½æ•°:%4d\n", cylinder, 4 * track + sector);
 	}
 }
 void main()
@@ -89,8 +89,8 @@ void main()
 	Initbitmap(bitmap);
 	while (1)
 	{
-		printf("\nÇëÊäÈëÑ¡Ôñ:");
-		printf("1--·ÖÅä£¬2---»ØÊÕ£¬3--ÏÔÊ¾Î»Ê¾Í¼£¬0--ÍË³ö\n");
+		printf("\nè¯·è¾“å…¥é€‰æ‹©:");
+		printf("1--åˆ†é…ï¼Œ2---å›æ”¶ï¼Œ3--æ˜¾ç¤ºä½ç¤ºå›¾ï¼Œ0--é€€å‡º\n");
 		scanf("%d", &choice);
 		switch (choice)
 		{
@@ -104,7 +104,7 @@ void main()
 		}
 			  break;
 		case 0:exit(0);
-		default:printf("´íÎóÑ¡Ôñ£¡");
+		default:printf("é”™è¯¯é€‰æ‹©ï¼");
 			break;
 		}
 	}

@@ -5,12 +5,12 @@ typedef struct Lnode {
 	ElemType data;
 	struct Lnode *next;
 } Lnode, *LinkList;
-//创建链表
+//鍒涘缓閾捐〃
 Lnode *CreatList(void) {
 	LinkList p,q,head;
 	int n,x;
 	head = q = (LinkList)malloc(sizeof(Lnode));
-	printf("输入数据个数为：\n");
+	printf("杈撳叆鏁版嵁涓暟涓猴細\n");
 	scanf( "%d",&n);
 	for(int i = 0; i<n; i++) {
 		p =(LinkList)malloc(sizeof(Lnode));
@@ -22,7 +22,7 @@ Lnode *CreatList(void) {
 	p->next =NULL;
 	return head;
 }
-//输出链表
+//杈撳嚭閾捐〃
 void PrintList(LinkList L) {
 	LinkList p;
 	p =L->next;
@@ -32,7 +32,7 @@ void PrintList(LinkList L) {
 	}
 	printf("\n");
 }
-//合并链表
+//鍚堝苟閾捐〃
 void MergeList(LinkList La,LinkList Lb,LinkList Lc) {
 	LinkList pa,pb,pc;
 	pa=La->next;
@@ -51,7 +51,7 @@ void MergeList(LinkList La,LinkList Lb,LinkList Lc) {
 	}
 	pc ->next =pa?pa:pb;
 	free(Lb);
-	printf("合并链表为：\n");
+	printf("鍚堝苟閾捐〃涓猴細\n");
 	PrintList(Lc);
 }
 int main() {

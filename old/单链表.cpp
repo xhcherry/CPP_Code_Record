@@ -8,9 +8,9 @@ struct Book
 };
 void getInput(struct Book *book)
 {
-	printf("ÇëÊäÈëÊéÃû£º"); 
+	printf("è¯·è¾“å…¥ä¹¦åï¼š"); 
 	scanf("%s",book->title);
-	printf("ÇëÊäÈë×÷Õß£º");
+	printf("è¯·è¾“å…¥ä½œè€…ï¼š");
 	scanf("%s",book->author); 
 }
 void addBook(struct Book **library)
@@ -19,7 +19,7 @@ void addBook(struct Book **library)
 	book = (struct Book *)malloc(sizeof(struct Book));
 	if(book == NULL)
 	{
-		printf("ÄÚ´æ·ÖÅäÊ§°Ü£¡\n");
+		printf("å†…å­˜åˆ†é…å¤±è´¥ï¼\n");
 		exit(1);
 	}
 	getInput(book);
@@ -43,8 +43,8 @@ void printLibrary(struct Book *library)
 	while(book != NULL)
 	{
 		printf("book%d:\n",count);
-		printf("ÊéÃû£º%s\n",book->title);
-		printf("×÷Õß£º%s\n",book->author);
+		printf("ä¹¦åï¼š%s\n",book->title);
+		printf("ä½œè€…ï¼š%s\n",book->author);
 		book = book->next;
 		count++;
 	}
@@ -65,7 +65,7 @@ int main(void)
 	int ch;
 	while(1)
 	{
-		printf("ÇëÊäÈëÊÇ·ñĞèÒªÂ¼ÈëÊé¼®ĞÅÏ¢(Y/N):");
+		printf("è¯·è¾“å…¥æ˜¯å¦éœ€è¦å½•å…¥ä¹¦ç±ä¿¡æ¯(Y/N):");
 		do
 		{
 			ch = getchar();
@@ -79,7 +79,7 @@ int main(void)
 			break;
 		}
 	}
-	printf("ÇëÊäÈëÊÇ·ñĞèÒª´òÓ¡Í¼ÊéĞÅÏ¢(Y/N):");
+	printf("è¯·è¾“å…¥æ˜¯å¦éœ€è¦æ‰“å°å›¾ä¹¦ä¿¡æ¯(Y/N):");
 	do
 	{
 		ch = getchar();

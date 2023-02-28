@@ -12,7 +12,6 @@ int sum(int n)
 int main ()
 {
 	int n,result;
-	printf("ÊäÈën:");
 	scanf("%d",&n);
 	result = sum(n);
 	printf("1+2+3+4+5+6+...+(n-1)+n: %d\n",sum(n));//result

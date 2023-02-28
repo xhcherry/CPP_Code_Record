@@ -4,10 +4,10 @@ int main(void)
 {
 	int i,num;
 	int count = 0;
-	int *ptr = NULL;//ÕâÀï±ØĞë³õÊ¼»¯Îªnull 
+	int *ptr = NULL;//è¿™é‡Œå¿…é¡»åˆå§‹åŒ–ä¸ºnull 
 	do
 	{
-		printf("ÇëÊäÈëÒ»¸öÕûÊı£¨ÊäÈë-1±íÊ¾½áÊø£©£º");
+		printf("è¯·è¾“å…¥ä¸€ä¸ªæ•´æ•°ï¼ˆè¾“å…¥-1è¡¨ç¤ºç»“æŸï¼‰ï¼š");
 		scanf("%d",&num);
 		count++;
 		ptr = (int *)realloc(ptr,count * sizeof(int));
@@ -17,7 +17,7 @@ int main(void)
 		}
 		ptr[count-1] = num; 
 	}while(num != -1);
-	printf("ÊäÈëµÄÕûÊı·Ö±ğÊÇ£º");
+	printf("è¾“å…¥çš„æ•´æ•°åˆ†åˆ«æ˜¯ï¼š");
 	for(i = 0;i < count;i++)
 	{
 		printf("%d ",ptr[i]);

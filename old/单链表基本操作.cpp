@@ -8,17 +8,17 @@ typedef struct Lnode {
 	struct Lnode *next;
 }
 Lnode, *LinkList;
-//Á´±í³õÊ¼»¯
+//é“¾è¡¨åˆå§‹åŒ–
 void InitList(Lnode *p) {
 	p=(LinkList)malloc(sizeof(Lnode));
 }
-//´´½¨Á´±í
+//åˆ›å»ºé“¾è¡¨
 Lnode *CreatList(void) {
 	{
 		LinkList p,head,q;
 		int x,n;
 		head=q=(LinkList)malloc(sizeof(Lnode)) ;
-		printf( "ÊäÈëÊı¾İ¸öÊıÎª£º \n");
+		printf( "è¾“å…¥æ•°æ®ä¸ªæ•°ä¸ºï¼š \n");
 		scanf("%d",&n);
 		for(int i =0; i<n; i++) {
 			p =(LinkList)malloc(sizeof(Lnode));
@@ -31,18 +31,18 @@ Lnode *CreatList(void) {
 		return head;
 	}
 }
-//Êä³öÁ´±í
+//è¾“å‡ºé“¾è¡¨
 void PrintList(LinkList L) {
 	LinkList p;
 	p = L->next;
-	printf("Êä³öÊı¾İ\n");
+	printf("è¾“å‡ºæ•°æ®\n");
 	while(p) {
 		printf("%d " ,p->data);
 		p=p->next;
 	}
 	printf("\n");
 }
-//²åÈëÔªËØ
+//æ’å…¥å…ƒç´ 
 bool ListInsert(LinkList L,int i,ElemType e) {
 	LinkList p,s;
 	int j = 0;
@@ -60,7 +60,7 @@ bool ListInsert(LinkList L,int i,ElemType e) {
 	PrintList(L);
 	return OK;
 }
-//É¾³ı
+//åˆ é™¤
 bool ListDelete(LinkList L,int i,ElemType e) {
 	LinkList p,s;
 	int j = 0;
@@ -74,12 +74,12 @@ bool ListDelete(LinkList L,int i,ElemType e) {
 	s=p->next;
 	p->next=s->next;
 	e=s->data;
-	printf( "É¾³ıÔªËØÎª:%d\n",e);
+	printf( "åˆ é™¤å…ƒç´ ä¸º:%d\n",e);
 	free(s);
 	PrintList(L);
 	return OK;
 }
-//²éÕÒ
+//æŸ¥æ‰¾
 bool GetElem(LinkList L,int i,ElemType e) {
 	LinkList p;
 	int j =1,flag =1;
@@ -90,7 +90,7 @@ bool GetElem(LinkList L,int i,ElemType e) {
 			flag=0;
 			i=j;
 			j++;
-			printf("²éÕÒÎ»%d",i);
+			printf("æŸ¥æ‰¾ä½%d",i);
 			break;
 		} else {
 			j++ ;
@@ -98,11 +98,11 @@ bool GetElem(LinkList L,int i,ElemType e) {
 		}
 	}
 	if(flag == 1) {
-		printf("ÎŞ´ËÔªËØ\n");
+		printf("æ— æ­¤å…ƒç´ \n");
 		return OK;
 	}
 }
-//ºÏ²¢Á´±í
+//åˆå¹¶é“¾è¡¨
 void MergeList(LinkList La,LinkList Lb,LinkList Lc) {
 	LinkList pa,pb,pc;
 	pa=La->next;
@@ -121,20 +121,20 @@ void MergeList(LinkList La,LinkList Lb,LinkList Lc) {
 	}
 	pc ->next =pa?pa:pb;
 	free(Lb);
-	printf("ºÏ²¢Á´±íÎª£º\n");
+	printf("åˆå¹¶é“¾è¡¨ä¸ºï¼š\n");
 	PrintList(Lc);
 }
 int main() {
 	LinkList L;
 	int i,e,x;
-	printf("ÇëÑ¡ÔñÒÔÏÂ²Ù×÷\n");
-	printf("1.½«±í³õÊ¼»¯\n");
-	printf("2.ÔÚ±íÖĞ²åÈëÒ»¸öĞÂÔªËØ\n");
-	printf("3.É¾³ı±íÖĞÔªËØ\n");
-	printf("4.²éÕÒÔªËØÎ»ÖÃ\n");
-	printf("5.Êä³öÁĞ±í£º\n");
-	printf("6.ºÏ²¢Á´±í£º\n");
-	printf("ÇëÑ¡Ôñ:");
+	printf("è¯·é€‰æ‹©ä»¥ä¸‹æ“ä½œ\n");
+	printf("1.å°†è¡¨åˆå§‹åŒ–\n");
+	printf("2.åœ¨è¡¨ä¸­æ’å…¥ä¸€ä¸ªæ–°å…ƒç´ \n");
+	printf("3.åˆ é™¤è¡¨ä¸­å…ƒç´ \n");
+	printf("4.æŸ¥æ‰¾å…ƒç´ ä½ç½®\n");
+	printf("5.è¾“å‡ºåˆ—è¡¨ï¼š\n");
+	printf("6.åˆå¹¶é“¾è¡¨ï¼š\n");
+	printf("è¯·é€‰æ‹©:");
 	scanf("%d",&x);
 	switch(x) {
 		case 1:
@@ -142,19 +142,19 @@ int main() {
 			break;
 		case 2:
 			L=CreatList();
-			printf("²åÈëÎ»ÖÃ£¬²åÈëÔªËØ£º");
+			printf("æ’å…¥ä½ç½®ï¼Œæ’å…¥å…ƒç´ ï¼š");
 			scanf("%d%d",&i,&e);
 			ListInsert(L,i,e);
 			break;
 		case 3:
 			L =CreatList();
-			printf( "É¾³ıÎ»ÖÃ£º");
+			printf( "åˆ é™¤ä½ç½®ï¼š");
 			scanf("%d",&i);
 			ListDelete(L,i, e);
 			break;
 		case 4:
 			L = CreatList();
-			printf("²éÕÒÔªËØ:");
+			printf("æŸ¥æ‰¾å…ƒç´ :");
 			scanf("%d",&e);
 			GetElem(L,i,e);
 			break;
@@ -169,7 +169,7 @@ int main() {
 			MergeList(La,Lb,Lc);
 			break;
 		default:
-			printf( "ÇëÊäÈë1~5!£¡£¡") ;
+			printf( "è¯·è¾“å…¥1~5!ï¼ï¼") ;
 	}
 }
 

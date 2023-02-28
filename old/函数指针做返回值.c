@@ -28,7 +28,7 @@ int main()
 	int num1,num2;
 	char op;
 	int (*fp)(int,int); 
-	printf("请输入一个式子：");
+	printf("璇疯緭鍏ヤ竴涓紡瀛愶細");
 	scanf("%d%c%d",&num1,&op,&num2); 
 	fp = select(op);
 	printf("%d%c%d = %d\n",num1,op,num2,calc(fp,num1,num2));

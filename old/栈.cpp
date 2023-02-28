@@ -8,14 +8,14 @@
 #define MAXSIZE 100 
 typedef int Status;
 typedef char SElemType;
-//´æ´¢½á¹¹
+//å­˜å‚¨ç»“æ„
  typedef struct
  {
- 	SElemType *base;//Õ»µ×Ö¸Õë
-	 SElemType *top;//Õ»¶¥Ö¸Õë
-	 int stacksize;//Õ»¿ÉÓÃ×î´óÈİÁ¿ 
+ 	SElemType *base;//æ ˆåº•æŒ‡é’ˆ
+	 SElemType *top;//æ ˆé¡¶æŒ‡é’ˆ
+	 int stacksize;//æ ˆå¯ç”¨æœ€å¤§å®¹é‡ 
  }SqStack;
-Status InitStack(SqStack &S)//³õÊ¼»¯   
+Status InitStack(SqStack &S)//åˆå§‹åŒ–   
 {  
     S.base=(SElemType*)malloc(sizeof(SElemType)*MAXSIZE);  
     if(!S.base)  
@@ -24,31 +24,31 @@ Status InitStack(SqStack &S)//³õÊ¼»¯
     S.stacksize=MAXSIZE;  
     return OK;  
 }   
-//ÈëÕ» 
+//å…¥æ ˆ 
 Status Push(SqStack &S,SElemType e)
 {
-//²åÈëeÎªĞÂµÄÕ»¶¥ÔªËØ
+//æ’å…¥eä¸ºæ–°çš„æ ˆé¡¶å…ƒç´ 
 if(S.top-S.base==S.stacksize)
-return ERROR;	//Õ»Âú
-*S.top++=e;//½«eÑ¹ÈëÕ»£¬Õ»¶¥Ö¸Õë¼Ó1 
+return ERROR;	//æ ˆæ»¡
+*S.top++=e;//å°†eå‹å…¥æ ˆï¼Œæ ˆé¡¶æŒ‡é’ˆåŠ 1 
 return OK; 
 } 
-//³öÕ»
+//å‡ºæ ˆ
 Status Pop(SqStack &S,SElemType &e)
 {
-//É¾³ıÕ»¶¥ÔªËØ£¬ÓÃe·µ»ØÆäÖµ
-if(S.top==S.base)	return ERROR;//Õ»¿Õ
+//åˆ é™¤æ ˆé¡¶å…ƒç´ ï¼Œç”¨eè¿”å›å…¶å€¼
+if(S.top==S.base)	return ERROR;//æ ˆç©º
 e=*--S.top; 
 return OK;
 } 
-//È¡Õ»¶¥ÔªËØ
+//å–æ ˆé¡¶å…ƒç´ 
 SElemType GetTop(SqStack S)
 {
-//·µ»ØÕ»¶¥ÔªËØ£¬²»ĞŞ¸ÄÕ»¶¥Ö¸Õë
+//è¿”å›æ ˆé¡¶å…ƒç´ ï¼Œä¸ä¿®æ”¹æ ˆé¡¶æŒ‡é’ˆ
 if(S.top!=S.base)
 return *(S.top-1);	
 } 
-Status In(SElemType c)//ÅĞ¶ÏcÊÇ·ñÊÇÔËËã·û 
+Status In(SElemType c)//åˆ¤æ–­cæ˜¯å¦æ˜¯è¿ç®—ç¬¦ 
 {
 	switch(c)
 	{
@@ -69,7 +69,7 @@ Status In(SElemType c)//ÅĞ¶ÏcÊÇ·ñÊÇÔËËã·û
 	default:return 0;	
 	} 
 }
-SElemType Precede(SElemType t1,SElemType t2)//ÅĞ¶ÏÁ½¸öÔËËã·ûµÄÓÅÏÈ¼¶¹ØÏµ 
+SElemType Precede(SElemType t1,SElemType t2)//åˆ¤æ–­ä¸¤ä¸ªè¿ç®—ç¬¦çš„ä¼˜å…ˆçº§å…³ç³» 
 {
 SElemType f;
 switch(t2)
@@ -117,7 +117,7 @@ case '#':
 }	
 return f;
 }
-SElemType Operate(SElemType a,SElemType theta,SElemType b)//¼ÆËãa,b²Ù×÷ºóµÄÊıÖµ 
+SElemType Operate(SElemType a,SElemType theta,SElemType b)//è®¡ç®—a,bæ“ä½œåçš„æ•°å€¼ 
 {
 SElemType c;
 a=a-48;b=b-48;
@@ -132,36 +132,36 @@ return c;
 }
  
 int EvaluateExpression()
-{//ÉèOPTR,OPND·Ö±ğÎªÔËËã·ûÕ»ºÍ²Ù×÷Õ»
+{//è®¾OPTR,OPNDåˆ†åˆ«ä¸ºè¿ç®—ç¬¦æ ˆå’Œæ“ä½œæ ˆ
 SqStack OPTR,OPND;
 char ch,a,b,x,theta;
 InitStack(OPTR);
-InitStack(OPND);//³õÊ¼»¯
-Push(OPTR,'#');//ÆğÊ¼·ûÈëÕ»
+InitStack(OPND);//åˆå§‹åŒ–
+Push(OPTR,'#');//èµ·å§‹ç¬¦å…¥æ ˆ
 //scanf("%c",&ch);
 ch=getchar();
-while(ch!='#'||GetTop(OPTR)!='#')//±í´ïÊ½Ã»ÓĞÉ¨ÃèÍê±Ï»òOPTRÕ»¶¥ÔªËØ²»Îª# 
+while(ch!='#'||GetTop(OPTR)!='#')//è¡¨è¾¾å¼æ²¡æœ‰æ‰«æå®Œæ¯•æˆ–OPTRæ ˆé¡¶å…ƒç´ ä¸ä¸º# 
 {
 if(!In(ch))
 {
 	Push(OPND,ch); 
-//scanf("%c",&ch);// ²»ÊÇÔËËã·û£¬½øOPNDÕ» 
+//scanf("%c",&ch);// ä¸æ˜¯è¿ç®—ç¬¦ï¼Œè¿›OPNDæ ˆ 
 ch=getchar();
 }
 else
-{switch(Precede(GetTop(OPTR),ch))//±È½ÏOPTRµÄÕ»¶¥ÔªËØºÍchµÄÓÅÏÈ¼¶ 
+{switch(Precede(GetTop(OPTR),ch))//æ¯”è¾ƒOPTRçš„æ ˆé¡¶å…ƒç´ å’Œchçš„ä¼˜å…ˆçº§ 
 {
 	case '<':
 	     Push(OPTR,ch);
-		 //scanf("%c",&ch);//Ñ¹ÈëÕ»£¬¶ÁÈ¡ÏÂÒ»¸ö×Ö·û 
+		 //scanf("%c",&ch);//å‹å…¥æ ˆï¼Œè¯»å–ä¸‹ä¸€ä¸ªå­—ç¬¦ 
 		 ch=getchar();
 	     break;
 	case '>':
-	    Pop(OPTR,theta); //µ¯³öÕ»¶¥ÔªËØ ÔËËã·û
+	    Pop(OPTR,theta); //å¼¹å‡ºæ ˆé¡¶å…ƒç´  è¿ç®—ç¬¦
 	    Pop(OPND,b);Pop(OPND,a); 
 	    Push(OPND,Operate(a,theta,b));
 	    break;
-	case '='://OPTRÕ»¶¥ÔªËØÊÇ'('ÇÒchÊÇ')'
+	case '='://OPTRæ ˆé¡¶å…ƒç´ æ˜¯'('ä¸”chæ˜¯')'
 	    Pop(OPTR,x);//scanf("%c",&ch);
 	    ch=getchar();
 		break; 	
@@ -171,7 +171,7 @@ return GetTop(OPND)-'0';
 }
 int main()
 {
-printf("ÇëÊäÈëËã·¨±í´ïÊ½,²¢ÒÔ#½áÎ²£º");
+printf("è¯·è¾“å…¥ç®—æ³•è¡¨è¾¾å¼,å¹¶ä»¥#ç»“å°¾ï¼š");
 //EvaluateExpression();
 printf("The result of expression is %d\n",EvaluateExpression()); 
 return 0;	

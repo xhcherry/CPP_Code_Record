@@ -1,17 +1,17 @@
-//¶ÔÊäÈëµÄÁ½¸öÕûÊı°´´óĞ¡Ë³ĞòÊä³ö£¬ÓÃº¯ÊıÊµÏÖ½»»»¹¦ÄÜ
+//å¯¹è¾“å…¥çš„ä¸¤ä¸ªæ•´æ•°æŒ‰å¤§å°é¡ºåºè¾“å‡ºï¼Œç”¨å‡½æ•°å®ç°äº¤æ¢åŠŸèƒ½
 #include<stdio.h>
 void swap(int *p1,int *p2);
 void main()
 {
 	int a,b;
 	int *pointer_1,*pointer_2;
-	printf("ÊäÈëÁ½¸öÕûÊı:"); 
+	printf("è¾“å…¥ä¸¤ä¸ªæ•´æ•°:"); 
 	scanf("%d %d",&a,&b);
 	pointer_1 = &a;
 	pointer_2 = &b;
 	if(a < b)
 	{
-		swap(pointer_1,pointer_2);//swapÊµÏÖ½»»»
+		swap(pointer_1,pointer_2);//swapå®ç°äº¤æ¢
 	}
 	printf("\n%d > %d\n",a,b);
 }

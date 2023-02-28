@@ -38,5 +38,6 @@
     },
     "window.closeWhenEmpty": true,
     "window.commandCenter": true,
-    "window.autoDetectColorScheme": false
+    "window.autoDetectColorScheme": false,
+    "C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,11 +1,11 @@
 #include<stdio.h>
-float max = 0,min = 0;//全局变量
+float max = 0,min = 0;//鍏ㄥ眬鍙橀噺
 int main(void)
 {
 	float average(float array[],int n);
 	float ave,score[10];
 	int i;
-	printf("输入十个数：");
+	printf("杈撳叆鍗佷釜鏁帮細");
 	for(i = 0;i < 10;i++)
 	{
 		scanf("%f",&score[i]);
@@ -13,7 +13,7 @@ int main(void)
 	ave = average(score,10);
 	printf("max=%6.2f,min=%6.2f,average=%6.2f\n",max,min,ave);
 }
-float average(float array[],int n)//定义函数，形参为数组
+float average(float array[],int n)//瀹氫箟鍑芥暟锛屽舰鍙備负鏁扮粍
 {
 	int i;
 	float aver,sum = array[0];

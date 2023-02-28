@@ -4,7 +4,7 @@
 
 using namespace std;
 
-typedef struct BiTNode { //¶ş²æÊ÷µÄ´æ´¢½á¹¹
+typedef struct BiTNode { //äºŒå‰æ ‘çš„å­˜å‚¨ç»“æ„
 
 	char data;
 
@@ -12,7 +12,7 @@ typedef struct BiTNode { //¶ş²æÊ÷µÄ´æ´¢½á¹¹
 
 } BiTNode,*BiTree;
 
-typedef struct { //Õ»µÄ´æ´¢½á¹¹
+typedef struct { //æ ˆçš„å­˜å‚¨ç»“æ„
 
 	BiTree *base;
 
@@ -22,7 +22,7 @@ typedef struct { //Õ»µÄ´æ´¢½á¹¹
 
 } SqStack;
 
-void InitStack(SqStack &S) { //¹¹ÔìÒ»¸ö¿ÕÕ»
+void InitStack(SqStack &S) { //æ„é€ ä¸€ä¸ªç©ºæ ˆ
 
 	S.base=new BiTree[MAXSIZE];
 
@@ -34,32 +34,32 @@ void InitStack(SqStack &S) { //¹¹ÔìÒ»¸ö¿ÕÕ»
 
 }
 
-typedef struct { //¶ÓÁĞµÄ´æ´¢½á¹¹
+typedef struct { //é˜Ÿåˆ—çš„å­˜å‚¨ç»“æ„
 
-	BiTree *base;  //´æ´¢¿Õ¼äµÄ»ùÖ¸Õë
+	BiTree *base;  //å­˜å‚¨ç©ºé—´çš„åŸºæŒ‡é’ˆ
 
-	int front; //Í·Ö¸Õë£¨Î±Ö¸Õë£©
+	int front; //å¤´æŒ‡é’ˆï¼ˆä¼ªæŒ‡é’ˆï¼‰
 
-	int rear;  //Î²Ö¸Õë£¨Î±Ö¸Õë£©
+	int rear;  //å°¾æŒ‡é’ˆï¼ˆä¼ªæŒ‡é’ˆï¼‰
 
 } SqQueue;
 
-//Ñ­»·¶ÓÁĞ³õÊ¼»¯
+//å¾ªç¯é˜Ÿåˆ—åˆå§‹åŒ–
 
 int InitQueue(SqQueue &Q) {
-	//¹¹ÔìÒ»¸ö¿Õ¶ÓÁĞQ
+	//æ„é€ ä¸€ä¸ªç©ºé˜Ÿåˆ—Q
 
-	Q.base=new BiTree[MAXSIZE];  //Îª¶ÓÁĞ·ÖÅäÒ»¸ö×î´óÈİÁ¿ÎªMAXSIZEµÄÊı×é¿Õ¼ä
+	Q.base=new BiTree[MAXSIZE];  //ä¸ºé˜Ÿåˆ—åˆ†é…ä¸€ä¸ªæœ€å¤§å®¹é‡ä¸ºMAXSIZEçš„æ•°ç»„ç©ºé—´
 
-	if(!Q.base) exit(-2);  //´æ´¢·ÖÅäÊ§°Ü
+	if(!Q.base) exit(-2);  //å­˜å‚¨åˆ†é…å¤±è´¥
 
-	Q.front=Q.rear=0;  //Í·Ö¸ÕëºÍÎ²Ö¸ÕëÖÃÎª0£¬¶ÓÁĞÎª¿Õ
+	Q.front=Q.rear=0;  //å¤´æŒ‡é’ˆå’Œå°¾æŒ‡é’ˆç½®ä¸º0ï¼Œé˜Ÿåˆ—ä¸ºç©º
 
 	return 1;
 
 }
 
-//Ñ­»·¶ÓÁĞÅĞ¿Õ
+//å¾ªç¯é˜Ÿåˆ—åˆ¤ç©º
 bool QueueEmpty(SqQueue Q) {
 
 	if(Q.front==Q.rear) return true;
@@ -68,7 +68,7 @@ bool QueueEmpty(SqQueue Q) {
 
 }
 
-// Ñ­»·¶ÓÁĞÈë¶Ó
+// å¾ªç¯é˜Ÿåˆ—å…¥é˜Ÿ
 int EnQueue(SqQueue &Q,BiTree e) {
 
 	if((Q.rear+1)%MAXSIZE==Q.front)
@@ -83,7 +83,7 @@ int EnQueue(SqQueue &Q,BiTree e) {
 
 }
 
-//Ñ­»·¶ÓÁĞµÄ³ö¶Ó
+//å¾ªç¯é˜Ÿåˆ—çš„å‡ºé˜Ÿ
 int DeQueue(SqQueue &Q,BiTree &e) {
 
 	if(Q.front==Q.rear) return 0;
@@ -96,7 +96,7 @@ int DeQueue(SqQueue &Q,BiTree &e) {
 
 }
 
-//È¡¶ÓÍ·ÔªËØ
+//å–é˜Ÿå¤´å…ƒç´ 
 BiTree GetHead(SqQueue Q) {
 
 	if(Q.front!=Q.rear)
@@ -105,7 +105,7 @@ BiTree GetHead(SqQueue Q) {
 
 }
 
-bool StackEmpty(SqStack S) { //ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ
+bool StackEmpty(SqStack S) { //åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º
 
 	if(S.top==S.base) return true;
 
@@ -113,7 +113,7 @@ bool StackEmpty(SqStack S) { //ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ
 
 }
 
-int Push(SqStack &S,BiTree e) { //ÈëÕ»
+int Push(SqStack &S,BiTree e) { //å…¥æ ˆ
 
 	if(S.top-S.base==S.stacksize)return -1;
 
@@ -123,7 +123,7 @@ int Push(SqStack &S,BiTree e) { //ÈëÕ»
 
 }
 
-int Pop(SqStack &S,BiTree &e) { //³öÕ»
+int Pop(SqStack &S,BiTree &e) { //å‡ºæ ˆ
 
 	if(S.top==S.base) return 0;
 
@@ -133,13 +133,13 @@ int Pop(SqStack &S,BiTree &e) { //³öÕ»
 
 }
 
-void createBiTree(BiTree &T) { //ÏÈĞò±éÀú´´½¨¶ş²æÊ÷ µİ¹éÊµÏÖ
+void createBiTree(BiTree &T) { //å…ˆåºéå†åˆ›å»ºäºŒå‰æ ‘ é€’å½’å®ç°
 
 	char ch;
 
 	cin>>ch;
 
-	if(ch=='#')T=NULL;   //µİ¹é³ö¿Ú
+	if(ch=='#')T=NULL;   //é€’å½’å‡ºå£
 
 	else {
 
@@ -147,9 +147,9 @@ void createBiTree(BiTree &T) { //ÏÈĞò±éÀú´´½¨¶ş²æÊ÷ µİ¹éÊµÏÖ
 
 		T->data=ch;
 
-		createBiTree(T->lchild); //´´½¨×ó×ÓÊ÷
+		createBiTree(T->lchild); //åˆ›å»ºå·¦å­æ ‘
 
-		createBiTree(T->rchild);  //´´½¨ÓÒ×ÓÊ÷
+		createBiTree(T->rchild);  //åˆ›å»ºå³å­æ ‘
 
 	}
 
@@ -157,7 +157,7 @@ void createBiTree(BiTree &T) { //ÏÈĞò±éÀú´´½¨¶ş²æÊ÷ µİ¹éÊµÏÖ
 
 
 
-void FirstOrderTraverse(BiTree T) { //ÏÈĞò±éÀú¶ş²æÊ÷£¬µİ¹éÊµÏÖ
+void FirstOrderTraverse(BiTree T) { //å…ˆåºéå†äºŒå‰æ ‘ï¼Œé€’å½’å®ç°
 
 	if(T) {
 
@@ -171,7 +171,7 @@ void FirstOrderTraverse(BiTree T) { //ÏÈĞò±éÀú¶ş²æÊ÷£¬µİ¹éÊµÏÖ
 
 }
 
-void FirstOrderTraverse_1(BiTree T) { //ÏÈĞò±éÀú¶ş²æÊ÷£¬·Çµİ¹éÊµÏÖ
+void FirstOrderTraverse_1(BiTree T) { //å…ˆåºéå†äºŒå‰æ ‘ï¼Œéé€’å½’å®ç°
 
 	SqStack S;
 
@@ -208,7 +208,7 @@ void FirstOrderTraverse_1(BiTree T) { //ÏÈĞò±éÀú¶ş²æÊ÷£¬·Çµİ¹éÊµÏÖ
 
 }
 
-void InOrderTraverse(BiTree T) { //ÖĞĞò±éÀú¶ş²æÊ÷£¬µİ¹éÊµÏÖ
+void InOrderTraverse(BiTree T) { //ä¸­åºéå†äºŒå‰æ ‘ï¼Œé€’å½’å®ç°
 
 	if(T) {
 
@@ -222,7 +222,7 @@ void InOrderTraverse(BiTree T) { //ÖĞĞò±éÀú¶ş²æÊ÷£¬µİ¹éÊµÏÖ
 
 }
 
-void InOrderTraverse_1(BiTree T) {  //ÖĞĞò±éÀú¶ş²æÊ÷£¬·Çµİ¹éÊµÏÖ
+void InOrderTraverse_1(BiTree T) {  //ä¸­åºéå†äºŒå‰æ ‘ï¼Œéé€’å½’å®ç°
 
 	SqStack S;
 
@@ -258,7 +258,7 @@ void InOrderTraverse_1(BiTree T) {  //ÖĞĞò±éÀú¶ş²æÊ÷£¬·Çµİ¹éÊµÏÖ
 
 }
 
-void LastOrderTraverse(BiTree T) { //ºóĞò±éÀú¶ş²æÊ÷£¬µİ¹éÊµÏÖ
+void LastOrderTraverse(BiTree T) { //ååºéå†äºŒå‰æ ‘ï¼Œé€’å½’å®ç°
 
 	if(T) {
 
@@ -272,7 +272,7 @@ void LastOrderTraverse(BiTree T) { //ºóĞò±éÀú¶ş²æÊ÷£¬µİ¹éÊµÏÖ
 
 }
 
-void OrderTraverse(BiTree T) { //²ã´Î±éÀú¶ş²æÊ÷£¬¶ÓÁĞÊµÏÖ
+void OrderTraverse(BiTree T) { //å±‚æ¬¡éå†äºŒå‰æ ‘ï¼Œé˜Ÿåˆ—å®ç°
 
 	SqQueue Q;
 
@@ -300,7 +300,7 @@ void OrderTraverse(BiTree T) { //²ã´Î±éÀú¶ş²æÊ÷£¬¶ÓÁĞÊµÏÖ
 
 }
 
-void DoubleOrderTraverse(BiTree T) {  //Ë«Ğò±éÀú¶ş²æÊ÷£¬µİ¹éÊµÏÖ
+void DoubleOrderTraverse(BiTree T) {  //åŒåºéå†äºŒå‰æ ‘ï¼Œé€’å½’å®ç°
 
 	if(T) {
 
@@ -316,7 +316,7 @@ void DoubleOrderTraverse(BiTree T) {  //Ë«Ğò±éÀú¶ş²æÊ÷£¬µİ¹éÊµÏÖ
 
 }
 
-void Copy(BiTree T,BiTree &NewT) { //¸´ÖÆ¶ş²æÊ÷
+void Copy(BiTree T,BiTree &NewT) { //å¤åˆ¶äºŒå‰æ ‘
 
 	if(T==NULL) {
 
@@ -340,7 +340,7 @@ void Copy(BiTree T,BiTree &NewT) { //¸´ÖÆ¶ş²æÊ÷
 
 }
 
-int Depth(BiTree T) { //¼ÆËã¶ş²æÊ÷µÄÉî¶È
+int Depth(BiTree T) { //è®¡ç®—äºŒå‰æ ‘çš„æ·±åº¦
 
 	int m,n;
 
@@ -360,7 +360,7 @@ int Depth(BiTree T) { //¼ÆËã¶ş²æÊ÷µÄÉî¶È
 
 }
 
-int NodeCount(BiTree T) { //Í³¼Æ½áµã¸öÊı
+int NodeCount(BiTree T) { //ç»Ÿè®¡ç»“ç‚¹ä¸ªæ•°
 
 	if(T==NULL) return 0;
 
@@ -372,7 +372,7 @@ int NodeCount(BiTree T) { //Í³¼Æ½áµã¸öÊı
 
 }
 
-int NodeCount_0(BiTree T) { //Í³¼ÆÒ¶×Ó½áµã¸öÊı
+int NodeCount_0(BiTree T) { //ç»Ÿè®¡å¶å­ç»“ç‚¹ä¸ªæ•°
 
 	if(T==NULL)return 0;
 
@@ -384,7 +384,7 @@ int NodeCount_0(BiTree T) { //Í³¼ÆÒ¶×Ó½áµã¸öÊı
 
 }
 
-int NodeCount_1(BiTree T) { //Í³¼Æ¶ÈÎª1µÄ½áµã¸öÊı
+int NodeCount_1(BiTree T) { //ç»Ÿè®¡åº¦ä¸º1çš„ç»“ç‚¹ä¸ªæ•°
 
 	if(T==NULL)return 0;
 
@@ -396,7 +396,7 @@ int NodeCount_1(BiTree T) { //Í³¼Æ¶ÈÎª1µÄ½áµã¸öÊı
 
 }
 
-int NodeCount_2(BiTree T) { //Í³¼Æ¶ÈÎª2µÄ½áµã¸öÊı
+int NodeCount_2(BiTree T) { //ç»Ÿè®¡åº¦ä¸º2çš„ç»“ç‚¹ä¸ªæ•°
 
 	if(T==NULL)return 0;
 
@@ -409,7 +409,7 @@ int NodeCount_2(BiTree T) { //Í³¼Æ¶ÈÎª2µÄ½áµã¸öÊı
 
 }
 
-void changeChild(BiTree &T) { //½»»»×óÓÒ×ÓÊ÷
+void changeChild(BiTree &T) { //äº¤æ¢å·¦å³å­æ ‘
 
 	BiTree t;
 
@@ -433,37 +433,37 @@ void changeChild(BiTree &T) { //½»»»×óÓÒ×ÓÊ÷
 
 }
 
-void menu() { //²Ëµ¥½çÃæ
+void menu() { //èœå•ç•Œé¢
 
-	cout<<"ÇëÑ¡Ôñ²Ù×÷£º"<<endl;
+	cout<<"è¯·é€‰æ‹©æ“ä½œï¼š"<<endl;
 
-	cout<<"      1.´´½¨¶ş²æÊ÷"<<endl;
+	cout<<"      1.åˆ›å»ºäºŒå‰æ ‘"<<endl;
 
-	cout<<"      2.ÏÈĞò±éÀú¶ş²æÊ÷"<<endl;
+	cout<<"      2.å…ˆåºéå†äºŒå‰æ ‘"<<endl;
 
-	cout<<"      3.ÖĞĞò±éÀú¶ş²æÊ÷"<<endl;
+	cout<<"      3.ä¸­åºéå†äºŒå‰æ ‘"<<endl;
 
-	cout<<"      4.ºóĞò±éÀú¶ş²æÊ÷"<<endl;
+	cout<<"      4.ååºéå†äºŒå‰æ ‘"<<endl;
 
-	cout<<"      5.²ãĞò±éÀú¶ş²æÊ÷"<<endl;
+	cout<<"      5.å±‚åºéå†äºŒå‰æ ‘"<<endl;
 
-	cout<<"      6.Ë«Ğò±éÀú¶ş²æÊ÷"<<endl;
+	cout<<"      6.åŒåºéå†äºŒå‰æ ‘"<<endl;
 
-	cout<<"      7.¸´ÖÆ¶ş²æÊ÷"<<endl;
+	cout<<"      7.å¤åˆ¶äºŒå‰æ ‘"<<endl;
 
-	cout<<"      8.¼ÆËã¶ş²æÊ÷Éî¶È"<<endl;
+	cout<<"      8.è®¡ç®—äºŒå‰æ ‘æ·±åº¦"<<endl;
 
-	cout<<"      9.Í³¼Æ½áµã¸öÊı"<<endl;
+	cout<<"      9.ç»Ÿè®¡ç»“ç‚¹ä¸ªæ•°"<<endl;
 
-	cout<<"      10.Í³¼ÆÒ¶×Ó½áµã¸öÊı"<<endl;
+	cout<<"      10.ç»Ÿè®¡å¶å­ç»“ç‚¹ä¸ªæ•°"<<endl;
 
-	cout<<"      11.Í³¼Æ¶ÈÎª1µÄ½áµã¸öÊı"<<endl;
+	cout<<"      11.ç»Ÿè®¡åº¦ä¸º1çš„ç»“ç‚¹ä¸ªæ•°"<<endl;
 
-	cout<<"      12.Í³¼Æ¶ÈÎª2µÄ½áµã¸öÊı"<<endl;
+	cout<<"      12.ç»Ÿè®¡åº¦ä¸º2çš„ç»“ç‚¹ä¸ªæ•°"<<endl;
 
-	cout<<"      13.½»»»×óÓÒ×ÓÊ÷"<<endl;
+	cout<<"      13.äº¤æ¢å·¦å³å­æ ‘"<<endl;
 
-	cout<<"      14.ÍË³ö"<<endl;
+	cout<<"      14.é€€å‡º"<<endl;
 
 }
 
@@ -481,18 +481,18 @@ int main() {
 
 			case 1: {
 
-				cout<<"Çë°´ÕÕÏÈĞò±éÀúµÄË³ĞòÊäÈëÒ»¸ö¶ş²æÊ÷£¨¿ÕÊ÷ÒÔ#±ê¼Ç£©:";
+				cout<<"è¯·æŒ‰ç…§å…ˆåºéå†çš„é¡ºåºè¾“å…¥ä¸€ä¸ªäºŒå‰æ ‘ï¼ˆç©ºæ ‘ä»¥#æ ‡è®°ï¼‰:";
 
 				createBiTree(T);
 
-				cout<<"¶ş²æÊ÷´´½¨³É¹¦£¡"<<endl;
+				cout<<"äºŒå‰æ ‘åˆ›å»ºæˆåŠŸï¼"<<endl;
 
 				break;
 			}
 
 			case 2: {
 
-				cout<<"ÏÈĞò±éÀúµÄ½á¹ûÎª:"<<endl;
+				cout<<"å…ˆåºéå†çš„ç»“æœä¸º:"<<endl;
 
 				FirstOrderTraverse(T);
 
@@ -507,7 +507,7 @@ int main() {
 
 			case 3: {
 
-				cout<<"ÖĞĞò±éÀúµÄ½á¹ûÎª:"<<endl;
+				cout<<"ä¸­åºéå†çš„ç»“æœä¸º:"<<endl;
 
 				InOrderTraverse(T);
 
@@ -522,7 +522,7 @@ int main() {
 
 			case 4: {
 
-				cout<<"ºóĞò±éÀúµÄ½á¹ûÎª:"<<endl;
+				cout<<"ååºéå†çš„ç»“æœä¸º:"<<endl;
 
 				LastOrderTraverse(T);
 
@@ -533,7 +533,7 @@ int main() {
 
 			case 5: {
 
-				cout<<"²ã´Î±éÀúµÄ½á¹ûÎª:"<<endl;
+				cout<<"å±‚æ¬¡éå†çš„ç»“æœä¸º:"<<endl;
 
 				OrderTraverse(T);
 
@@ -544,7 +544,7 @@ int main() {
 
 			case 6: {
 
-				cout<<"Ë«Ğò±éÀúµÄ½á¹ûÎª:"<<endl;
+				cout<<"åŒåºéå†çš„ç»“æœä¸º:"<<endl;
 
 				DoubleOrderTraverse(T);
 
@@ -559,9 +559,9 @@ int main() {
 
 				Copy(T,NewT);
 
-				cout<<"¸´ÖÆÍê±Ï£¡"<<endl;
+				cout<<"å¤åˆ¶å®Œæ¯•ï¼"<<endl;
 
-				cout<<"¸´ÖÆºóµÄ¶ş²æÊ÷ÏÈĞò±éÀúÎª:"<<endl;
+				cout<<"å¤åˆ¶åçš„äºŒå‰æ ‘å…ˆåºéå†ä¸º:"<<endl;
 
 				FirstOrderTraverse(NewT);
 
@@ -572,7 +572,7 @@ int main() {
 
 			case 8: {
 
-				cout<<"¶ş²æÊ÷µÄÉî¶ÈÎª:";
+				cout<<"äºŒå‰æ ‘çš„æ·±åº¦ä¸º:";
 
 				cout<<Depth(T);
 
@@ -583,7 +583,7 @@ int main() {
 
 			case 9: {
 
-				cout<<"¶ş²æÊ÷ÖĞ½áµã¸öÊıÎª:";
+				cout<<"äºŒå‰æ ‘ä¸­ç»“ç‚¹ä¸ªæ•°ä¸º:";
 
 				cout<<NodeCount(T);
 
@@ -594,7 +594,7 @@ int main() {
 
 			case 10: {
 
-				cout<<"¶ş²æÊ÷ÖĞÒ¶×Ó½áµã¸öÊıÎª:";
+				cout<<"äºŒå‰æ ‘ä¸­å¶å­ç»“ç‚¹ä¸ªæ•°ä¸º:";
 
 				cout<<NodeCount_0(T);
 
@@ -605,7 +605,7 @@ int main() {
 
 			case 11: {
 
-				cout<<"¶ş²æÊ÷ÖĞ¶ÈÎª1µÄ½áµã¸öÊıÎª:";
+				cout<<"äºŒå‰æ ‘ä¸­åº¦ä¸º1çš„ç»“ç‚¹ä¸ªæ•°ä¸º:";
 
 				cout<<NodeCount_1(T);
 
@@ -616,7 +616,7 @@ int main() {
 
 			case 12: {
 
-				cout<<"¶ş²æÊ÷ÖĞ¶ÈÎª2µÄ½áµã¸öÊıÎª:";
+				cout<<"äºŒå‰æ ‘ä¸­åº¦ä¸º2çš„ç»“ç‚¹ä¸ªæ•°ä¸º:";
 
 				cout<<NodeCount_2(T);
 
@@ -627,7 +627,7 @@ int main() {
 
 			case 13: {
 
-				cout<<"ÒÑ½»»»×óÓÒ×ÓÊ÷";
+				cout<<"å·²äº¤æ¢å·¦å³å­æ ‘";
 
 				changeChild(T);
 
@@ -638,7 +638,7 @@ int main() {
 
 			default: {
 
-				cout<<"ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë"<<endl;
+				cout<<"è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥"<<endl;
 
 				break;
 			}

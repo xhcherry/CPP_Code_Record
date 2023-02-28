@@ -4,12 +4,12 @@ int main()
 	int choose;
 	while (1)
 	{
-		cout << "           ÒøÐÐ¼ÒËã·¨£º" << endl << endl;
-		cout << "*****  1 - ³õÊ¼»¯¸÷¾ØÕó        *****" << endl;
-		cout << "*****  2 - ½ø³ÌÌá³öÇëÇó        *****" << endl;
-		cout << "*****  3 - ÏÔÊ¾¸÷½ø³Ì×ÊÔ´Çé¿ö  *****" << endl;
-		cout << "*****  0 - ½áÊø                *****" << endl << endl;
-		cout << "ÊäÈëÄãµÄÑ¡Ôñ £º ";
+		cout << "           é“¶è¡Œå®¶ç®—æ³•ï¼š" << endl << endl;
+		cout << "*****  1 - åˆå§‹åŒ–å„çŸ©é˜µ        *****" << endl;
+		cout << "*****  2 - è¿›ç¨‹æå‡ºè¯·æ±‚        *****" << endl;
+		cout << "*****  3 - æ˜¾ç¤ºå„è¿›ç¨‹èµ„æºæƒ…å†µ  *****" << endl;
+		cout << "*****  0 - ç»“æŸ                *****" << endl << endl;
+		cout << "è¾“å…¥ä½ çš„é€‰æ‹© ï¼š ";
 		cin >> choose;
 		switch (choose)
 		{
@@ -17,7 +17,7 @@ int main()
 		case 1:Init(); break;
 		case 2:Require(); break;
 		case 3:Display(); break;
-		default:cout << "ÇëÊäÈëÕýÈ·µÄÐòºÅ£º" << endl;
+		default:cout << "è¯·è¾“å…¥æ­£ç¡®çš„åºå·ï¼š" << endl;
 		}
 	}
 	system("pause");

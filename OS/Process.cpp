@@ -5,40 +5,40 @@ using namespace std;
 class Process
 {
 public:
-	string ProcessName;  // ½ø³ÌÃû×Ö
-	int Time;  //  ½ø³ÌĞèÒªÊ±¼ä
-	int leval; //  ½ø³ÌÓÅÏÈ¼¶
-	int LeftTime; // ½ø³ÌÔËĞĞÒ»¶ÎÊ±¼äºó»¹ĞèÒªµÄÊ±¼ä
+	string ProcessName;  // è¿›ç¨‹åå­—
+	int Time;  //  è¿›ç¨‹éœ€è¦æ—¶é—´
+	int leval; //  è¿›ç¨‹ä¼˜å…ˆçº§
+	int LeftTime; // è¿›ç¨‹è¿è¡Œä¸€æ®µæ—¶é—´åè¿˜éœ€è¦çš„æ—¶é—´
 };
 
-void Copy(Process proc1, Process proc2); // °Ñproc2¸³Öµ¸øproc1
-void Sort(Process  pr[], int size); // ´ËÅÅĞòºó°´ÓÅÏÈ¼¶´Ó´óµ½Ğ¡ÅÅÁĞ
-void sort1(Process  pr[], int size); //  ´ËÅÅĞòºó°´ĞèÒªµÄcpuÊ±¼ä´ÓĞ¡µ½´óÅÅÁĞ
-void Fcfs(Process pr[], int num, int Timepice); // ÏÈÀ´ÏÈ·şÎñËã·¨
-void TimeTurn(Process process[], int num, int Timepice); // Ê±¼äÆ¬ÂÖ×ªËã·¨
-void Priority(Process process[], int num, int Timepice); // ÓÅÏÈ¼¶Ëã·¨
+void Copy(Process proc1, Process proc2); // æŠŠproc2èµ‹å€¼ç»™proc1
+void Sort(Process  pr[], int size); // æ­¤æ’åºåæŒ‰ä¼˜å…ˆçº§ä»å¤§åˆ°å°æ’åˆ—
+void sort1(Process  pr[], int size); //  æ­¤æ’åºåæŒ‰éœ€è¦çš„cpuæ—¶é—´ä»å°åˆ°å¤§æ’åˆ—
+void Fcfs(Process pr[], int num, int Timepice); // å…ˆæ¥å…ˆæœåŠ¡ç®—æ³•
+void TimeTurn(Process process[], int num, int Timepice); // æ—¶é—´ç‰‡è½®è½¬ç®—æ³•
+void Priority(Process process[], int num, int Timepice); // ä¼˜å…ˆçº§ç®—æ³•
 
 void main()
 {
 	int a;
 	cout << endl;
-	cout << "  Ñ¡Ôñµ÷¶ÈËã·¨£º" << endl;
-	cout << "  1: FCFS  2: Ê±¼äÆ¬ÂÖ»» 3: ÓÅÏÈ¼¶µ÷¶È 4: ×î¶Ì×÷ÒµÓÅÏÈ 5: ×î¶ÌÊ£ÓàÊ±¼äÓÅÏÈ" << endl;
+	cout << "  é€‰æ‹©è°ƒåº¦ç®—æ³•ï¼š" << endl;
+	cout << "  1: FCFS  2: æ—¶é—´ç‰‡è½®æ¢ 3: ä¼˜å…ˆçº§è°ƒåº¦ 4: æœ€çŸ­ä½œä¸šä¼˜å…ˆ 5: æœ€çŸ­å‰©ä½™æ—¶é—´ä¼˜å…ˆ" << endl;
 	cin >> a;
 	const int Size = 30;
 	Process   process[Size];
 	int num;
 	int TimePice;
-	cout << " ÊäÈë½ø³Ì¸öÊı:" << endl;
+	cout << " è¾“å…¥è¿›ç¨‹ä¸ªæ•°:" << endl;
 	cin >> num;
-	cout << " ÊäÈë´Ë½ø³ÌÊ±¼äÆ¬´óĞ¡: " << endl;
+	cout << " è¾“å…¥æ­¤è¿›ç¨‹æ—¶é—´ç‰‡å¤§å°: " << endl;
 	cin >> TimePice;
 	for (int i = 0; i < num; i++)
 	{
 		string name;
 		int CpuTime;
 		int Leval;
-		cout << " ÊäÈëµÚ" << i + 1 << " ¸ö½ø³ÌµÄÃû×Ö¡¢cpuÊ±¼äºÍÓÅÏÈ¼¶:" << endl;
+		cout << " è¾“å…¥ç¬¬" << i + 1 << " ä¸ªè¿›ç¨‹çš„åå­—ã€cpuæ—¶é—´å’Œä¼˜å…ˆçº§:" << endl;
 		cin >> name;
 		cin >> CpuTime >> Leval;
 		process[i].ProcessName = name;
@@ -47,10 +47,10 @@ void main()
 		cout << endl;
 	}
 	for (int k = 0; k < num; k++)
-		process[k].LeftTime = process[k].Time;//¶Ô½ø³ÌÊ£ÓàÊ±¼ä³õÊ¼»¯
-	cout << " ( ËµÃ÷: ÔÚ±¾³ÌĞòËùÁĞ½ø³ÌĞÅÏ¢ÖĞ£¬ÓÅÏÈ¼¶Ò»ÏîÊÇÖ¸½ø³ÌÔËĞĞºóµÄÓÅÏÈ¼¶!! )";
+		process[k].LeftTime = process[k].Time;//å¯¹è¿›ç¨‹å‰©ä½™æ—¶é—´åˆå§‹åŒ–
+	cout << " ( è¯´æ˜: åœ¨æœ¬ç¨‹åºæ‰€åˆ—è¿›ç¨‹ä¿¡æ¯ä¸­ï¼Œä¼˜å…ˆçº§ä¸€é¡¹æ˜¯æŒ‡è¿›ç¨‹è¿è¡Œåçš„ä¼˜å…ˆçº§!! )";
 	cout << endl;   cout << endl;
-	cout << "½ø³ÌÃû×Ö" << "¹²ĞèÕ¼ÓÃCPUÊ±¼ä " << " »¹ĞèÒªÕ¼ÓÃÊ±¼ä " << " ÓÅÏÈ¼¶" << "   ×´Ì¬" << endl;
+	cout << "è¿›ç¨‹åå­—" << "å…±éœ€å ç”¨CPUæ—¶é—´ " << " è¿˜éœ€è¦å ç”¨æ—¶é—´ " << " ä¼˜å…ˆçº§" << "   çŠ¶æ€" << endl;
 	if (a == 1)
 		Fcfs(process, num, TimePice);
 	else if (a == 2)
@@ -60,7 +60,7 @@ void main()
 		Sort(process, num);
 		Priority(process, num, TimePice);
 	}
-	else   //  ×î¶Ì×÷ÒµËã·¨£¬ÏÈ°´Ê±¼ä´ÓĞ¡µ½´óÅÅĞò£¬ÔÙµ÷ÓÃFcfsËã·¨¼´¿É
+	else   //  æœ€çŸ­ä½œä¸šç®—æ³•ï¼Œå…ˆæŒ‰æ—¶é—´ä»å°åˆ°å¤§æ’åºï¼Œå†è°ƒç”¨Fcfsç®—æ³•å³å¯
 	{
 		sort1(process, num);
 		Fcfs(process, num, TimePice);
@@ -74,8 +74,8 @@ void Copy(Process proc1, Process proc2)
 	proc1.Time = proc2.Time;
 }
 
-void Sort(Process  pr[], int size)  //ÒÔ½ø³ÌÓÅÏÈ¼¶¸ßµÍÅÅĞò
-{//  Ö±½Ó²åÈëÅÅĞò
+void Sort(Process  pr[], int size)  //ä»¥è¿›ç¨‹ä¼˜å…ˆçº§é«˜ä½æ’åº
+{//  ç›´æ¥æ’å…¥æ’åº
 	for (int i = 1; i < size; i++)
 	{
 		Process temp;
@@ -87,18 +87,18 @@ void Sort(Process  pr[], int size)  //ÒÔ½ø³ÌÓÅÏÈ¼¶¸ßµÍÅÅĞò
 			j--;
 		}
 		pr[j] = temp;
-	} // Ö±½Ó²åÈëÅÅĞòºó½ø³Ì°´ÓÅÏÈ¼¶´ÓĞ¡µ½´óÅÅÁĞ
+	} // ç›´æ¥æ’å…¥æ’åºåè¿›ç¨‹æŒ‰ä¼˜å…ˆçº§ä»å°åˆ°å¤§æ’åˆ—
 	for (int d = size - 1; d > size / 2; d--)
 	{
 		Process temp;
 		temp = pr[d];
 		pr[d] = pr[size - d - 1];
 		pr[size - d - 1] = temp;
-	}  // ´ËÅÅĞòºó°´ÓÅÏÈ¼¶´Ó´óµ½Ğ¡ÅÅÁĞ
+	}  // æ­¤æ’åºåæŒ‰ä¼˜å…ˆçº§ä»å¤§åˆ°å°æ’åˆ—
 }
-/* ×î¶Ì×÷ÒµÓÅÏÈËã·¨µÄÊµÏÖ*/
-void sort1(Process  pr[], int size)  // ÒÔ½ø³ÌÊ±¼ä´ÓµÍµ½¸ßÅÅĞò
-{//  Ö±½Ó²åÈëÅÅĞò
+/* æœ€çŸ­ä½œä¸šä¼˜å…ˆç®—æ³•çš„å®ç°*/
+void sort1(Process  pr[], int size)  // ä»¥è¿›ç¨‹æ—¶é—´ä»ä½åˆ°é«˜æ’åº
+{//  ç›´æ¥æ’å…¥æ’åº
 	for (int i = 1; i < size; i++)
 	{
 		Process temp;
@@ -112,40 +112,40 @@ void sort1(Process  pr[], int size)  // ÒÔ½ø³ÌÊ±¼ä´ÓµÍµ½¸ßÅÅĞò
 		pr[j] = temp;
 	}
 }
-/*  ÏÈÀ´ÏÈ·şÎñËã·¨µÄÊµÏÖ*/
+/*  å…ˆæ¥å…ˆæœåŠ¡ç®—æ³•çš„å®ç°*/
 void Fcfs(Process process[], int num, int Timepice)
-{  // process[] ÊÇÊäÈëµÄ½ø³Ì£¬numÊÇ½ø³ÌµÄÊıÄ¿£¬TimepiceÊÇÊ±¼äÆ¬´óĞ¡
+{  // process[] æ˜¯è¾“å…¥çš„è¿›ç¨‹ï¼Œnumæ˜¯è¿›ç¨‹çš„æ•°ç›®ï¼ŒTimepiceæ˜¯æ—¶é—´ç‰‡å¤§å°
 	while (true)
 	{
 		if (num == 0)
 		{
-			cout << " ËùÓĞ½ø³Ì¶¼ÒÑ¾­Ö´ĞĞÍê±Ï!" << endl;
+			cout << " æ‰€æœ‰è¿›ç¨‹éƒ½å·²ç»æ‰§è¡Œå®Œæ¯•!" << endl;
 			exit(1);
 		}
 		if (process[0].LeftTime == 0)
 		{
-			cout << " ½ø³Ì" << process[0].ProcessName << " ÒÑ¾­Ö´ĞĞÍê±Ï!" << endl;
+			cout << " è¿›ç¨‹" << process[0].ProcessName << " å·²ç»æ‰§è¡Œå®Œæ¯•!" << endl;
 			for (int i = 0; i < num; i++)
 				process[i] = process[i + 1];
 			num--;
 		}
 		else if (process[num - 1].LeftTime == 0)
 		{
-			cout << " ½ø³Ì" << process[num - 1].ProcessName << " ÒÑ¾­Ö´ĞĞÍê±Ï!" << endl;
+			cout << " è¿›ç¨‹" << process[num - 1].ProcessName << " å·²ç»æ‰§è¡Œå®Œæ¯•!" << endl;
 			num--;
 		}
 		else
 		{
-			cout << endl;  //Êä³öÕıÔÚÔËĞĞµÄ½ø³Ì
+			cout << endl;  //è¾“å‡ºæ­£åœ¨è¿è¡Œçš„è¿›ç¨‹
 			process[0].LeftTime = process[0].LeftTime - Timepice;
 			process[0].leval = process[0].leval - 1;
 			cout << " " << process[0].ProcessName << "          " << process[0].Time << "                 ";
-			cout << process[0].LeftTime << "                 " << process[0].leval << "      ÔËĞĞ";
+			cout << process[0].LeftTime << "                 " << process[0].leval << "      è¿è¡Œ";
 			cout << endl;
 			for (int s = 1; s < num; s++)
 			{
 				cout << " " << process[s].ProcessName << "          " << process[s].Time << "                 ";
-				cout << process[s].LeftTime << "                 " << process[s].leval << "      µÈ´ı" << endl; ;
+				cout << process[s].LeftTime << "                 " << process[s].leval << "      ç­‰å¾…" << endl; ;
 
 			}
 		}  // else
@@ -155,44 +155,44 @@ void Fcfs(Process process[], int num, int Timepice)
 
 	} // while 
 }
-/* Ê±¼äÆ¬ÂÖ×ªµ÷¶ÈËã·¨ÊµÏÖ*/
+/* æ—¶é—´ç‰‡è½®è½¬è°ƒåº¦ç®—æ³•å®ç°*/
 void TimeTurn(Process process[], int num, int Timepice)
 {
 	while (true)
 	{
 		if (num == 0)
 		{
-			cout << " ËùÓĞ½ø³Ì¶¼ÒÑ¾­Ö´ĞĞÍê±Ï!" << endl;
+			cout << " æ‰€æœ‰è¿›ç¨‹éƒ½å·²ç»æ‰§è¡Œå®Œæ¯•!" << endl;
 			exit(1);
 		}
 		if (process[0].LeftTime == 0)
 		{
-			cout << " ½ø³Ì" << process[0].ProcessName << " ÒÑ¾­Ö´ĞĞÍê±Ï!" << endl;
+			cout << " è¿›ç¨‹" << process[0].ProcessName << " å·²ç»æ‰§è¡Œå®Œæ¯•!" << endl;
 			for (int i = 0; i < num; i++)
 				process[i] = process[i + 1];
 			num--;
 		}
 		if (process[num - 1].LeftTime == 0)
 		{
-			cout << " ½ø³Ì" << process[num - 1].ProcessName << " ÒÑ¾­Ö´ĞĞÍê±Ï! " << endl;
+			cout << " è¿›ç¨‹" << process[num - 1].ProcessName << " å·²ç»æ‰§è¡Œå®Œæ¯•! " << endl;
 			num--;
 		}
 		else if (process[0].LeftTime > 0)
 		{
-			cout << endl;  //Êä³öÕıÔÚÔËĞĞµÄ½ø³Ì
+			cout << endl;  //è¾“å‡ºæ­£åœ¨è¿è¡Œçš„è¿›ç¨‹
 			process[0].LeftTime = process[0].LeftTime - Timepice;
 			process[0].leval = process[0].leval - 1;
 			cout << " " << process[0].ProcessName << "          " << process[0].Time << "                 ";
-			cout << process[0].LeftTime << "                 " << process[0].leval << "      ÔËĞĞ";
+			cout << process[0].LeftTime << "                 " << process[0].leval << "      è¿è¡Œ";
 			cout << endl;
 			for (int s = 1; s < num; s++)
 			{
 				cout << " " << process[s].ProcessName << "          " << process[s].Time << "                 ";
 				cout << process[s].LeftTime << "                 " << process[s].leval;
 				if (s == 1)
-					cout << "      ¾ÍĞ÷" << endl;
+					cout << "      å°±ç»ª" << endl;
 				else
-					cout << "      µÈ´ı" << endl;
+					cout << "      ç­‰å¾…" << endl;
 
 			}
 			Process temp;
@@ -207,44 +207,44 @@ void TimeTurn(Process process[], int num, int Timepice)
 		cout << endl;
 	} // while 
 }
-/*  ÓÅÏÈ¼¶µ÷¶ÈËã·¨µÄÊµÏÖ*/
+/*  ä¼˜å…ˆçº§è°ƒåº¦ç®—æ³•çš„å®ç°*/
 void Priority(Process process[], int num, int Timepice)
 {
 	while (true)
 	{
 		if (num == 0)
 		{
-			cout << "ËùÓĞ½ø³Ì¶¼ÒÑ¾­Ö´ĞĞÍê±Ï!" << endl;
+			cout << "æ‰€æœ‰è¿›ç¨‹éƒ½å·²ç»æ‰§è¡Œå®Œæ¯•!" << endl;
 			exit(1);
 		}
 		if (process[0].LeftTime == 0)
 		{
-			cout << " ½ø³Ì" << process[0].ProcessName << " ÒÑ¾­Ö´ĞĞÍê±Ï! " << endl;
+			cout << " è¿›ç¨‹" << process[0].ProcessName << " å·²ç»æ‰§è¡Œå®Œæ¯•! " << endl;
 			for (int m = 0; m < num; m++)
-				process[m] = process[m + 1]; //Ò»¸ö½ø³ÌÖ´ĞĞÍê±Ïºó´ÓÊı×éÖĞÉ¾³ı
-			num--; // ´ËÊ±½ø³ÌÊıÄ¿¼õÉÙÒ»¸ö
+				process[m] = process[m + 1]; //ä¸€ä¸ªè¿›ç¨‹æ‰§è¡Œå®Œæ¯•åä»æ•°ç»„ä¸­åˆ é™¤
+			num--; // æ­¤æ—¶è¿›ç¨‹æ•°ç›®å‡å°‘ä¸€ä¸ª
 		}
 		if (num != 1 && process[num - 1].LeftTime == 0)
 		{
-			cout << " ½ø³Ì" << process[num - 1].ProcessName << " ÒÑ¾­Ö´ĞĞÍê±Ï! " << endl;
+			cout << " è¿›ç¨‹" << process[num - 1].ProcessName << " å·²ç»æ‰§è¡Œå®Œæ¯•! " << endl;
 			num--;
 		}
 		if (process[0].LeftTime > 0)
 		{
-			cout << endl;  //Êä³öÕıÔÚÔËĞĞµÄ½ø³Ì
+			cout << endl;  //è¾“å‡ºæ­£åœ¨è¿è¡Œçš„è¿›ç¨‹
 			process[0].LeftTime = process[0].LeftTime - Timepice;
 			process[0].leval = process[0].leval - 1;
 			cout << " " << process[0].ProcessName << "          " << process[0].Time << "                 ";
-			cout << process[0].LeftTime << "                 " << process[0].leval << "     ÔËĞĞ";
-			cout << endl;                  // Êä³öÆäËû½ø³Ì
+			cout << process[0].LeftTime << "                 " << process[0].leval << "     è¿è¡Œ";
+			cout << endl;                  // è¾“å‡ºå…¶ä»–è¿›ç¨‹
 			for (int s = 1; s < num; s++)
 			{
 				cout << " " << process[s].ProcessName << "          " << process[s].Time << "                 ";
 				cout << process[s].LeftTime << "                 " << process[s].leval;
 				if (s == 1)
-					cout << "     ¾ÍĞ÷" << endl;
+					cout << "     å°±ç»ª" << endl;
 				else
-					cout << "     µÈ´ı " << endl;
+					cout << "     ç­‰å¾… " << endl;
 			}
 		} // else
 		Sort(process, num);

@@ -16,7 +16,6 @@ void hanoi(int n,char x ,char y,char z)
 int main(void)
 {
 	int n;
-	printf("ÊäÈëººÅµËşµÄ²ãÊı£º");
 	scanf("%d",&n);
 	hanoi(n,'x','y','z');
 	return 0;

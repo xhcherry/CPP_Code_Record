@@ -1,4 +1,4 @@
-for循环和数组
+//for循环和数组
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
@@ -28,7 +28,7 @@ int main(){
 
 
 
-条件选择结构
+//条件选择结构
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
@@ -78,7 +78,7 @@ int main(){
 
 
 
-数组、swtich和循环结构
+//数组、swtich和循环结构
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -124,7 +124,7 @@ int main(){
 
 
 
-函数的模块化设计
+//函数的模块化设计
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -195,7 +195,7 @@ void error(){
 
 
 
-动态分配内存
+//动态分配内存
 #include <stdio.h>
 #include <stdlib.h>
 void input(int *n);

@@ -4,7 +4,7 @@
 #include <time.h>
 #define MAXSIZE 100
  
-//½»»»Öµ
+//äº¤æ¢å€¼
 void Swap(int* a, int* b)
 {
 	int temp = *a;
@@ -12,15 +12,15 @@ void Swap(int* a, int* b)
 	*b = temp;
 }
  
-//Ñ¡ÔñÅÅĞò ºËĞÄÊÇ¼ÇÂ¼×îÖµÏÂ±ê
+//é€‰æ‹©æ’åº æ ¸å¿ƒæ˜¯è®°å½•æœ€å€¼ä¸‹æ ‡
 void SelectSort_Up(int *arr, int length)
 {
 	for (int i = 0; i < length-1; i++)
 	{
-		int index = i;//¼ÇÂ¼×îÖµÏÂ±ê
+		int index = i;//è®°å½•æœ€å€¼ä¸‹æ ‡
 		for (int j = i + 1; j < length; j++)
 		{
-			//ÉıĞò
+			//å‡åº
 			if (arr[index] > arr[j])
 			{
 				index = j;
@@ -32,15 +32,15 @@ void SelectSort_Up(int *arr, int length)
 		}
 	}
 }
-//Ñ¡ÔñÅÅĞò ºËĞÄÊÇ¼ÇÂ¼×îÖµÏÂ±ê
+//é€‰æ‹©æ’åº æ ¸å¿ƒæ˜¯è®°å½•æœ€å€¼ä¸‹æ ‡
 void SelectSort_Down(int *arr, int length)
 {
 	for (int i = 0; i < length - 1; i++)
 	{
-		int index = i;//¼ÇÂ¼×îÖµÏÂ±ê
+		int index = i;//è®°å½•æœ€å€¼ä¸‹æ ‡
 		for (int j = i + 1; j < length; j++)
 		{
-			//½µĞò
+			//é™åº
 			if (arr[index] < arr[j])
 			{
 				index = j;
@@ -52,7 +52,7 @@ void SelectSort_Down(int *arr, int length)
 		}
 	}
 }
-//´òÓ¡Êı×éÔªËØ
+//æ‰“å°æ•°ç»„å…ƒç´ 
 void PrintArr(int* arr, int length)
 {
 	for (int i = 0; i < length; i++)
@@ -66,19 +66,19 @@ void PrintArr(int* arr, int length)
  
 int main(int argc, char *argv[])
 {
-	srand((size_t)time(NULL));//ÉèÖÃËæ»úÖÖ×Ó
+	srand((size_t)time(NULL));//è®¾ç½®éšæœºç§å­
 	int arr[MAXSIZE] = { 0 };
-	//¸øÃ¿¸öÔªËØÉèÖÃÒ»¸öËæ»úÖµ
+	//ç»™æ¯ä¸ªå…ƒç´ è®¾ç½®ä¸€ä¸ªéšæœºå€¼
 	for (int i = 0; i < MAXSIZE; i++)
 	{
 		arr[i] = rand() % 100;
 	}
-	printf("ÅÅĞòÇ°:\n");
+	printf("æ’åºå‰:\n");
 	PrintArr(arr, MAXSIZE);
-	printf("ÉıĞò:\n");
+	printf("å‡åº:\n");
 	SelectSort_Up(arr,MAXSIZE);
 	PrintArr(arr, MAXSIZE);
-	printf("½µĞò:\n");
+	printf("é™åº:\n");
 	SelectSort_Down(arr, MAXSIZE);
 	PrintArr(arr, MAXSIZE);
 	system("pause");

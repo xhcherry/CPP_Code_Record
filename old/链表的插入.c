@@ -20,7 +20,7 @@ void insertNode(struct Node **head,int value)
 	new1 = (struct Node *)malloc(sizeof(struct Node));
 	if(new1 == NULL)
 	{
-		printf("ÄÚ´æ·ÖÅäÊ§°Ü£¡");
+		printf("å†…å­˜åˆ†é…å¤±è´¥ï¼");
 		exit(1);
 	}
 	new1 -> value = value;
@@ -58,7 +58,7 @@ void deleteNode(struct Node **head,int value)
 	}
 	if(current == NULL)
 	{
-		printf("ÕÒ²»µ½Æ¥ÅäµÄ½Úµã£¡\n");
+		printf("æ‰¾ä¸åˆ°åŒ¹é…çš„èŠ‚ç‚¹ï¼\n");
 		return ;
 	}
 	 else
@@ -78,10 +78,10 @@ int main(void)
 {
 	struct Node *head = NULL;
 	int input;
-	printf("¿ªÊ¼²âÊÔ²åÈëÕûÊı...\n");
+	printf("å¼€å§‹æµ‹è¯•æ’å…¥æ•´æ•°...\n");
 	while (1)
 	{
-		printf("ÇëÊäÈëÒ»¸öÕûÊı£¨-1Ôò½áÊø£©£º");
+		printf("è¯·è¾“å…¥ä¸€ä¸ªæ•´æ•°ï¼ˆ-1åˆ™ç»“æŸï¼‰ï¼š");
 		scanf("%d",&input);
 		if(input == -1)
 		{
@@ -90,10 +90,10 @@ int main(void)
 		insertNode(&head,input);
 		printNode(head);
 	}
-	printf("¿ªÊ¼²âÊÔÉ¾³ıÕûÊı...\n");
+	printf("å¼€å§‹æµ‹è¯•åˆ é™¤æ•´æ•°...\n");
 	while (1)
 	{
-		printf("ÇëÊäÈëÒ»¸öÕûÊı£¨-1Ôò½áÊø£©£º");
+		printf("è¯·è¾“å…¥ä¸€ä¸ªæ•´æ•°ï¼ˆ-1åˆ™ç»“æŸï¼‰ï¼š");
 		scanf("%d",&input);
 		if(input == -1)
 		{

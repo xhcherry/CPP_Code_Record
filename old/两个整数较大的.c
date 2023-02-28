@@ -11,9 +11,9 @@ int max(int x,int y)
 int main()
 {
 	int a,b,c;
-	printf("ÇëÊäÈëÁ½¸öÕûÊı£º");
+	printf("è¯·è¾“å…¥ä¸¤ä¸ªæ•´æ•°ï¼š");
 	scanf("%d %d",&a,&b);
 	c = max(a,b);
-	printf("½Ï´óÖµÊÇ£º%d\n",c); 
+	printf("è¾ƒå¤§å€¼æ˜¯ï¼š%d\n",c); 
 	return 0;
 }

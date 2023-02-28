@@ -1,8 +1,7 @@
-//?¡§?(2^2)!+(3^2)!
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
-long square(int p);//???¡è?
-long factorial(int q);//?????
+long square(int p);
+long factorial(int q);
 int main(void)
 {
 	int i;

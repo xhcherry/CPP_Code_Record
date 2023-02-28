@@ -16,11 +16,11 @@ int main(void)
 		case wed:
 		case thu:
 		case fri:
-		printf("¸É»î\n");
+		printf("å¹²æ´»\n");
 		break;
 		case sat:
 		case sun:
-		printf("·Å¼Ù\n");
+		printf("æ”¾å‡\n");
 		break;
 		default:
 		printf("error\n");

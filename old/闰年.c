@@ -1,8 +1,8 @@
 #include <stdio.h>
 int main(void)
 {
-	int year,leap;//leapÊÇÅĞ¶Ï±íÊ¾ÈòÄêµÄ±êÖ¾£¬1ÈòÄê¡£0·ÇÈòÄê
-	printf("ÊäÈëÄê£º");
+	int year,leap;//leapæ˜¯åˆ¤æ–­è¡¨ç¤ºé—°å¹´çš„æ ‡å¿—ï¼Œ1é—°å¹´ã€‚0éé—°å¹´
+	printf("è¾“å…¥å¹´ï¼š");
 	scanf("%d",&year);
 	if(year%4 == 0)
 	{

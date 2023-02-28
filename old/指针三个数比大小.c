@@ -1,14 +1,14 @@
 #include<stdio.h>
 void main()
 {
-	void exchange(int *q1,int *q2,int *q3);//Ê¹µÃa>b>c;
+	void exchange(int *q1,int *q2,int *q3);//ä½¿å¾—a>b>c;
 	int a,b,c,*p1,*p2,*p3;
-	printf("ÊäÈëÈý¸öÊý:"); 
+	printf("è¾“å…¥ä¸‰ä¸ªæ•°:"); 
 	scanf("%d %d %d",&a,&b,&c);
 	p1 = &a;
 	p2 = &b;
 	p3 = &c;
-	exchange(p1,p2,p3);//È·±£a>b>c
+	exchange(p1,p2,p3);//ç¡®ä¿a>b>c
 	printf("%d %d %d\n",a,b,c);
 }
 void exchange(int *q1,int *q2,int *q3)//int *q1 = p1;

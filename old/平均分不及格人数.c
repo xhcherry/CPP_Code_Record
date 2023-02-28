@@ -4,7 +4,7 @@ int count(int s_n,int k_m) {
 	int count = 0,sum,i,j,score,max;
 	for(j = 1; j <= s_n; j++) {
 		sum = 0;
-		printf("µÚ%d¸öÑ§Éú\n",j);
+		printf("ç¬¬%dä¸ªå­¦ç”Ÿ\n",j);
 		for(i = 1; i <= k_m; i++) {
 			scanf("%d",&score);
 			sum += score;
@@ -17,9 +17,9 @@ int count(int s_n,int k_m) {
 
 void main() {
 	int stu_n,kech_n;
-	printf("Ñ§ÉúÊý:");
+	printf("å­¦ç”Ÿæ•°:");
 	scanf("%d",&stu_n);
-	printf("¿ÆÄ¿Êý:");
+	printf("ç§‘ç›®æ•°:");
 	scanf("%d",&kech_n);
-	printf("Æ½¾ù·Ö²»¼°¸ñµÄÓÐ%dÈË",count(stu_n,kech_n));
+	printf("å¹³å‡åˆ†ä¸åŠæ ¼çš„æœ‰%däºº",count(stu_n,kech_n));
 }

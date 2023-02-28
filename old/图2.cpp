@@ -1,4 +1,4 @@
-//Í¼µÄ²Ù×÷
+//å›¾çš„æ“ä½œ
 #include<stdio.h>
 #include<stdlib.h>
 #define TRUE 1
@@ -13,21 +13,21 @@ typedef int QElemType;
 typedef char VexType;
 
 typedef  struct EdgeNode {
-	int adjvex;            //¶¨µãµÄÎ»ÖÃ
-	struct EdgeNode *next;//ÏÂÒ»¸ö¶¨µãµÄÎ»ÖÃ
-} EdgeNode,*EdgeLink; //½¨Á¢ÁÚ½Ó±í
+	int adjvex;            //å®šç‚¹çš„ä½ç½®
+	struct EdgeNode *next;//ä¸‹ä¸€ä¸ªå®šç‚¹çš„ä½ç½®
+} EdgeNode,*EdgeLink; //å»ºç«‹é‚»æ¥è¡¨
 
 typedef struct Vex {
-	VexType data;      //¶¥µãµÄÊı¾İ
-	EdgeNode *firstEdge;//Ö¸ÏòµÚÒ»ÌõÁÚ½ÚµãµÄÖ¸Õë
-} VexNode,AdjList[MAX_NUM]; //½¨Á¢¶¥µãÊı×é£» //½á¹¹Êı×é
+	VexType data;      //é¡¶ç‚¹çš„æ•°æ®
+	EdgeNode *firstEdge;//æŒ‡å‘ç¬¬ä¸€æ¡é‚»èŠ‚ç‚¹çš„æŒ‡é’ˆ
+} VexNode,AdjList[MAX_NUM]; //å»ºç«‹é¡¶ç‚¹æ•°ç»„ï¼› //ç»“æ„æ•°ç»„
 
 typedef struct {
 	AdjList adjlist;
-	int vexNum,edgeNum;//¶¨µãÊıºÍ±ßµÄÊıÄ¿
-} ALGraph; //Í¼µÄÁÚ½Ó±í´æ´¢½á¹¹
+	int vexNum,edgeNum;//å®šç‚¹æ•°å’Œè¾¹çš„æ•°ç›®
+} ALGraph; //å›¾çš„é‚»æ¥è¡¨å­˜å‚¨ç»“æ„
 
-//¶ÓÁĞµÄ´æ´¢½á¹¹ Í¼µÄ¹ã¶ÈËÑË÷
+//é˜Ÿåˆ—çš„å­˜å‚¨ç»“æ„ å›¾çš„å¹¿åº¦æœç´¢
 
 typedef struct Node {
 	QElemType data;
@@ -40,7 +40,7 @@ typedef struct {
 	QueuePtr rear;
 } LinkQueue;
 
-//³õÊ¼»¯¶ÓÁĞ
+//åˆå§‹åŒ–é˜Ÿåˆ—
 
 Status InitQueue(LinkQueue *Q) {
 	Q->front = Q->rear = (QNode*)malloc(sizeof(QNode));
@@ -51,14 +51,14 @@ Status InitQueue(LinkQueue *Q) {
 }
 
 
-//ÅĞ¶ÏÊÇ·ñÎª¿Õ
+//åˆ¤æ–­æ˜¯å¦ä¸ºç©º
 
 Status IsEmpty(LinkQueue Q) {
 	if(Q.front->next == NULL) {
 		return TRUE;
 	} else return FALSE;
 }
-//Èë¶Ó
+//å…¥é˜Ÿ
 
 Status EnQueue(LinkQueue *Q, QElemType e) {
 	QueuePtr p = (QueuePtr)malloc(sizeof(QNode));
@@ -72,7 +72,7 @@ Status EnQueue(LinkQueue *Q, QElemType e) {
 
 }
 
-//³ö¶Ó(´øÓĞÍ·½áµã)
+//å‡ºé˜Ÿ(å¸¦æœ‰å¤´ç»“ç‚¹)
 
 Status DeQueue(LinkQueue *Q, QElemType *e) {
 	QueuePtr q;
@@ -89,18 +89,18 @@ Status DeQueue(LinkQueue *Q, QElemType *e) {
 }
 
 
-//´´½¨Í¼£¨ÁÚ½Ó±í±íÊ¾£©(ÎŞÏòÍ¼)
+//åˆ›å»ºå›¾ï¼ˆé‚»æ¥è¡¨è¡¨ç¤ºï¼‰(æ— å‘å›¾)
 Status CreateGraph(ALGraph *G) {
 
 	int i,j,k;
 	EdgeLink e;
-	printf("ÇëÊäÈë¶¥µãÊıºÍ±ßÊı\n");
+	printf("è¯·è¾“å…¥é¡¶ç‚¹æ•°å’Œè¾¹æ•°\n");
 	scanf("%d %d",&G->vexNum,&G->edgeNum);
 //	scanf("%d",&G->edgeNum);
-	getchar();//³Ôµô»Ø³µ
-	//ÇëÊäÈë¸ö¶¥µãµÄÊı¾İ
-	printf("ÇëÊäÈë¸÷¶¥µãµÄÊı¾İ:\n");
-	for(i=0; i<G->vexNum; i++) { //³õÊ¼»¯¶¥µãÊı×é
+	getchar();//åƒæ‰å›è½¦
+	//è¯·è¾“å…¥ä¸ªé¡¶ç‚¹çš„æ•°æ®
+	printf("è¯·è¾“å…¥å„é¡¶ç‚¹çš„æ•°æ®:\n");
+	for(i=0; i<G->vexNum; i++) { //åˆå§‹åŒ–é¡¶ç‚¹æ•°ç»„
 		scanf("%c",&G->adjlist[i].data);
 		if(G->adjlist[i].data=='\n') {
 			i--;
@@ -109,7 +109,7 @@ Status CreateGraph(ALGraph *G) {
 		G->adjlist[i].firstEdge=NULL;
 	}
 	//
-	printf("ÇëÊäÈë¶¥µã£¨vi,vj)±ß¶¨µãµÄĞòºÅ\n");
+	printf("è¯·è¾“å…¥é¡¶ç‚¹ï¼ˆvi,vj)è¾¹å®šç‚¹çš„åºå·\n");
 
 	for(k=0; k<G->edgeNum; k++) {
 		scanf("%d %d",&i,&j);
@@ -126,8 +126,8 @@ Status CreateGraph(ALGraph *G) {
 	}
 	return OK;
 }
-int visited[MAX_NUM];    //ÓÃÓÚ¼ÇÂ¼±éÀú×´Ì¬
-//* µİ¹é´ÓµÚi¸ö½áµãÉî¶ÈÓÅÏÈ±éÀúÍ¼
+int visited[MAX_NUM];    //ç”¨äºè®°å½•éå†çŠ¶æ€
+//* é€’å½’ä»ç¬¬iä¸ªç»“ç‚¹æ·±åº¦ä¼˜å…ˆéå†å›¾
 void DFS(ALGraph G, int i) {
 	EdgeLink e;
 	visited[i] = TRUE;
@@ -140,7 +140,7 @@ void DFS(ALGraph G, int i) {
 		e =e->next;
 	}
 }
-//¹ã¶È
+//å¹¿åº¦
 Status BFSTraverse(ALGraph G) {
 	int i;
 	EdgeLink p;
@@ -174,9 +174,9 @@ Status BFSTraverse(ALGraph G) {
 int main() {
 	ALGraph G;
 	CreateGraph(&G);
-	printf("Éî¶ÈÓÅÏÈ±éÀú:");
+	printf("æ·±åº¦ä¼˜å…ˆéå†:");
 	DFS(G,0);
-	printf("\n¹ã¶ÈÓÅÏÈ±éÀú:");
+	printf("\nå¹¿åº¦ä¼˜å…ˆéå†:");
 	BFSTraverse(G);
 	printf("\n");
 }

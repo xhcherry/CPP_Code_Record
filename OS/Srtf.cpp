@@ -4,49 +4,49 @@
 
 typedef struct
 {
-	int remain_time;									//½ø³ÌÊ£ÓàÖ´ĞĞÊ±¼ä
-	int arrive_time;									//½ø³Ìµ½´ïÊ±¼ä
-	int Tp;												//½øÈë¾ÍĞ÷¶ÓÁĞµÄÊ±¼ä
-	int Tc;												//½øÈëÖ´ĞĞ¶ÓÁĞµÄÊ±¼ä
-	int To;												//½ø³ÌÖ´ĞĞ½áÊøµÄÊ±¼ä
-	int number;											//½ø³Ì±àºÅ
-}Process_Block;											//¶¨Òå½ø³ÌÄ£¿é
+	int remain_time;									//è¿›ç¨‹å‰©ä½™æ‰§è¡Œæ—¶é—´
+	int arrive_time;									//è¿›ç¨‹åˆ°è¾¾æ—¶é—´
+	int Tp;												//è¿›å…¥å°±ç»ªé˜Ÿåˆ—çš„æ—¶é—´
+	int Tc;												//è¿›å…¥æ‰§è¡Œé˜Ÿåˆ—çš„æ—¶é—´
+	int To;												//è¿›ç¨‹æ‰§è¡Œç»“æŸçš„æ—¶é—´
+	int number;											//è¿›ç¨‹ç¼–å·
+}Process_Block;											//å®šä¹‰è¿›ç¨‹æ¨¡å—
 
 typedef struct _Queue
 {
 	Process_Block PB;
 	struct _Queue* next;
-}_Block, * Process;										//¶¨ÒåÒ»¸ö½ø³ÌÄ£¿é¶ÓÁĞÖĞ½áµã
+}_Block, * Process;										//å®šä¹‰ä¸€ä¸ªè¿›ç¨‹æ¨¡å—é˜Ÿåˆ—ä¸­ç»“ç‚¹
 
 typedef struct
 {
-	Process head;										//¶ÓÁĞÍ·Ö¸Õë
-	Process end;										//¶ÓÁĞÎ²Ö¸Õë
-}Process_Queue;											//½ø³Ì¶ÓÁĞ
+	Process head;										//é˜Ÿåˆ—å¤´æŒ‡é’ˆ
+	Process end;										//é˜Ÿåˆ—å°¾æŒ‡é’ˆ
+}Process_Queue;											//è¿›ç¨‹é˜Ÿåˆ—
 
-Process_Queue	PQ;										//¶¨ÒåÒ»¸öÈ«¾Ö¶ÓÁĞ±äÁ¿
-int				t;										//È«¾ÖÊ±¼ä
-Process			Run_Now;							//µ±Ç°ÕıÔÚÔËĞĞµÄ½ø³Ì£¬×÷ÎªÈ«¾Ö±äÁ¿
+Process_Queue	PQ;										//å®šä¹‰ä¸€ä¸ªå…¨å±€é˜Ÿåˆ—å˜é‡
+int				t;										//å…¨å±€æ—¶é—´
+Process			Run_Now;							//å½“å‰æ­£åœ¨è¿è¡Œçš„è¿›ç¨‹ï¼Œä½œä¸ºå…¨å±€å˜é‡
 
 void InitQueue(Process_Queue PQ)
 {
 	PQ.head->next = NULL;
 	PQ.end->next = PQ.head;
-}/*³õÊ¼»¯¶ÓÁĞ*/
+}/*åˆå§‹åŒ–é˜Ÿåˆ—*/
 int IsEmpty(Process_Queue PQ)
 {
 	if (PQ.end->next == PQ.head)
-		return 1;					//¶ÓÁĞ¿ÕµÄÌõ¼şÎªÍ·Ö¸ÕëÖ¸ÏòÎ²Ö¸Õë²¢ÇÒÎ²Ö¸ÕëÖ¸ÏòÍ·Ö¸Õë
+		return 1;					//é˜Ÿåˆ—ç©ºçš„æ¡ä»¶ä¸ºå¤´æŒ‡é’ˆæŒ‡å‘å°¾æŒ‡é’ˆå¹¶ä¸”å°¾æŒ‡é’ˆæŒ‡å‘å¤´æŒ‡é’ˆ
 	else
 		return 0;
-}/*ÅĞ¶¨¶ÓÁĞÊÇ·ñÎª¿Õ¶ÓÁĞ*/
+}/*åˆ¤å®šé˜Ÿåˆ—æ˜¯å¦ä¸ºç©ºé˜Ÿåˆ—*/
 void EnQueue(Process_Queue PQ, Process P)
 {
 	Process temp = (Process)malloc(sizeof(_Block));
 	temp = PQ.end;
 	temp->next->next = P;
 	PQ.end->next = P;
-}/*²åÈë¶ÓÁĞ²Ù×÷*/
+}/*æ’å…¥é˜Ÿåˆ—æ“ä½œ*/
 Process DeQueue(Process_Queue PQ)
 {
 	if (IsEmpty(PQ))
@@ -56,10 +56,10 @@ Process DeQueue(Process_Queue PQ)
 	if (PQ.end->next == temp)
 		PQ.end->next = PQ.head;
 	return temp;
-}/*³öÁĞ²Ù×÷*/
+}/*å‡ºåˆ—æ“ä½œ*/
 Process ShortestProcess(Process_Queue PQ)
 {
-	if (IsEmpty(PQ))									//Èç¹û¶ÓÁĞÎª¿Õ£¬·µ»Ø
+	if (IsEmpty(PQ))									//å¦‚æœé˜Ÿåˆ—ä¸ºç©ºï¼Œè¿”å›
 	{
 		if (!Run_Now)
 			return NULL;
@@ -68,38 +68,38 @@ Process ShortestProcess(Process_Queue PQ)
 	}
 	Process temp, shortest, prev;
 	int min_time;
-	if (Run_Now)										//Èç¹ûµ±Ç°ÓĞ½ø³ÌÕıÔÚÖ´ĞĞ£¬
+	if (Run_Now)										//å¦‚æœå½“å‰æœ‰è¿›ç¨‹æ­£åœ¨æ‰§è¡Œï¼Œ
 	{
-		shortest = Run_Now;			  	//ÄÇÃ´×î¶Ì½ø³Ì³õÊ¼»¯Îªµ±Ç°ÕıÔÚÖ´ĞĞµÄ½ø³Ì£¬
+		shortest = Run_Now;			  	//é‚£ä¹ˆæœ€çŸ­è¿›ç¨‹åˆå§‹åŒ–ä¸ºå½“å‰æ­£åœ¨æ‰§è¡Œçš„è¿›ç¨‹ï¼Œ
 		min_time = Run_Now->PB.remain_time;
 	}
-	else											//Èç¹ûµ±Ç°Ã»ÓĞ½ø³ÌÖ´ĞĞ£¬
+	else											//å¦‚æœå½“å‰æ²¡æœ‰è¿›ç¨‹æ‰§è¡Œï¼Œ
 	{
-		shortest = PQ.head->next;					//Ôò×î¶Ì½ø³Ì³õÊ¼»¯Îª¶ÓÁĞÖĞµÚÒ»¸ö½ø³Ì
+		shortest = PQ.head->next;					//åˆ™æœ€çŸ­è¿›ç¨‹åˆå§‹åŒ–ä¸ºé˜Ÿåˆ—ä¸­ç¬¬ä¸€ä¸ªè¿›ç¨‹
 		min_time = PQ.head->next->PB.remain_time;
 	}
 	temp = PQ.head;
 	prev = temp;
 	while (temp->next)
 	{
-		if (temp->next->PB.remain_time < min_time)	//Èç¹ûµ±Ç°½ø³ÌµÄÊ£ÓàÊ±¼ä±Èmin_time¶Ì£¬
+		if (temp->next->PB.remain_time < min_time)	//å¦‚æœå½“å‰è¿›ç¨‹çš„å‰©ä½™æ—¶é—´æ¯”min_timeçŸ­ï¼Œ
 		{
-			shortest = temp->next;					//Ôò±£´æµ±Ç°½ø³Ì£¬
+			shortest = temp->next;					//åˆ™ä¿å­˜å½“å‰è¿›ç¨‹ï¼Œ
 			min_time = shortest->PB.remain_time;
-			prev = temp;								//¼°ÆäÇ°Çı
+			prev = temp;								//åŠå…¶å‰é©±
 		}
 		temp = temp->next;
 	}
-	if (shortest == PQ.end->next)			//Èç¹û×î¶ÌÊ£ÓàÊ±¼ä½ø³ÌÊÇ¶ÓÁĞÖĞ×îºóÒ»¸ö½ø³Ì£¬
-		PQ.end->next = prev;					//ÔòĞèÒªĞŞ¸ÄÎ²Ö¸ÕëÖ¸ÏòÆäÇ°Çı
-	prev->next = shortest->next;				//ĞŞ¸ÄÖ¸Õë½«×î¶ÌÊ£ÓàÊ±¼ä½ø³Ì²åÈëµ½¶ÓÍ·
+	if (shortest == PQ.end->next)			//å¦‚æœæœ€çŸ­å‰©ä½™æ—¶é—´è¿›ç¨‹æ˜¯é˜Ÿåˆ—ä¸­æœ€åä¸€ä¸ªè¿›ç¨‹ï¼Œ
+		PQ.end->next = prev;					//åˆ™éœ€è¦ä¿®æ”¹å°¾æŒ‡é’ˆæŒ‡å‘å…¶å‰é©±
+	prev->next = shortest->next;				//ä¿®æ”¹æŒ‡é’ˆå°†æœ€çŸ­å‰©ä½™æ—¶é—´è¿›ç¨‹æ’å…¥åˆ°é˜Ÿå¤´
 	return shortest;
-}/*µ÷¶È×î¶ÌÊ£ÓàÊ±¼äµÄ½ø³ÌÖÁ¶ÓÍ·*/
+}/*è°ƒåº¦æœ€çŸ­å‰©ä½™æ—¶é—´çš„è¿›ç¨‹è‡³é˜Ÿå¤´*/
 void Run()
 {
-	Run_Now->PB.remain_time--;						//Ä³Ò»Ê±¼äÔËĞĞËüµÄÊ£ÓàÊ±¼ä¼õ
+	Run_Now->PB.remain_time--;						//æŸä¸€æ—¶é—´è¿è¡Œå®ƒçš„å‰©ä½™æ—¶é—´å‡
 	return;
-}/*ÔËĞĞº¯Êı*/
+}/*è¿è¡Œå‡½æ•°*/
 void Wait()
 {
 	return;
@@ -118,8 +118,8 @@ int main()
 	Run_Now = (Process)malloc(sizeof(_Block));
 	Run_Now = NULL;
 	InitQueue(PQ);
-	int i, N, Total_Time = 0;							//Total_TimeÎªËùÓĞ½ø³ÌµÄÖ´ĞĞÊ±¼äÖ®ºÍ
-	printf("ÇëÊäÈë¼ÆËã»úÖĞµÄ½ø³ÌÊıÄ¿:\n");
+	int i, N, Total_Time = 0;							//Total_Timeä¸ºæ‰€æœ‰è¿›ç¨‹çš„æ‰§è¡Œæ—¶é—´ä¹‹å’Œ
+	printf("è¯·è¾“å…¥è®¡ç®—æœºä¸­çš„è¿›ç¨‹æ•°ç›®:\n");
 	scanf("%d", &N);
 	Process* P, temp;
 	P = (Process*)malloc(N * sizeof(Process));
@@ -133,45 +133,45 @@ int main()
 		P[i]->next = NULL;
 		wt[i] = 0;
 		circle_t[i] = 0;
-		printf("ÊäÈëµÚ%d¸ö½ø³ÌµÄµ½´ïÊ±¼ä¼°Ê£ÓàÖ´ĞĞÊ±¼ä:\n", i + 1);
+		printf("è¾“å…¥ç¬¬%dä¸ªè¿›ç¨‹çš„åˆ°è¾¾æ—¶é—´åŠå‰©ä½™æ‰§è¡Œæ—¶é—´:\n", i + 1);
 		scanf("%d %d", &P[i]->PB.arrive_time, &P[i]->PB.remain_time);
 	}
 	for (i = 0; i < N; i++)
 		Total_Time += P[i]->PB.remain_time;
-	printf("\n½ø³Ì°´Ë³ĞòÔËĞĞÒÀ´ÎÎª:\n");
+	printf("\nè¿›ç¨‹æŒ‰é¡ºåºè¿è¡Œä¾æ¬¡ä¸º:\n");
 	i = 0;
 	int k = 0;
 	for (t = 0;; t++)
 	{
-		if (Run_Now)										//Èç¹ûµ±Ç°ÓĞ½ø³ÌÕıÔÚÖ´ĞĞ
+		if (Run_Now)										//å¦‚æœå½“å‰æœ‰è¿›ç¨‹æ­£åœ¨æ‰§è¡Œ
 		{
 			Run();
-			if (t == P[i]->PB.arrive_time)				//Èç¹ûµ±Ç°Ê±¼äÕıºÃÓĞ½ø³Ì½øÈë
+			if (t == P[i]->PB.arrive_time)				//å¦‚æœå½“å‰æ—¶é—´æ­£å¥½æœ‰è¿›ç¨‹è¿›å…¥
 			{
 				if (P[i]->PB.remain_time < Run_Now->PB.remain_time)
 				{
 					temp = P[i];
 					P[i] = Run_Now;
-					Run_Now = temp;							//Ôòµ÷¶ÈËüÖÁÔËĞĞ¶ÓÁĞÖĞ£¬
+					Run_Now = temp;							//åˆ™è°ƒåº¦å®ƒè‡³è¿è¡Œé˜Ÿåˆ—ä¸­ï¼Œ
 					Run_Now->PB.Tp = t;
 					Run_Now->PB.Tc = t;
 					wt[Run_Now->PB.number - 1] += Run_Now->PB.Tc - Run_Now->PB.Tp;
 					printf("%d ", Run_Now->PB.number);
 				}
-				EnQueue(PQ, P[i]);					//²¢½«µ±Ç°ÔËĞĞ½ø³ÌÖØĞÂ²åÈë¶ÓÁĞÖĞ
+				EnQueue(PQ, P[i]);					//å¹¶å°†å½“å‰è¿è¡Œè¿›ç¨‹é‡æ–°æ’å…¥é˜Ÿåˆ—ä¸­
 				P[i]->PB.Tp = t;
 				k++;
 				i = (i + 1) > (N - 1) ? (N - 1) : (i + 1);
 
 			}
-			if (Run_Now->PB.remain_time == 0)					//Èç¹ûµ±Ç°½ø³ÌÔËĞĞ½áÊø£¬
+			if (Run_Now->PB.remain_time == 0)					//å¦‚æœå½“å‰è¿›ç¨‹è¿è¡Œç»“æŸï¼Œ
 			{
-				Run_Now->PB.To = t;								//½ø³ÌÔËĞĞ½áÊøµÄÊ±¼ä
+				Run_Now->PB.To = t;								//è¿›ç¨‹è¿è¡Œç»“æŸçš„æ—¶é—´
 				circle_t[Run_Now->PB.number - 1] += t - Run_Now->PB.arrive_time;
-				free(Run_Now);								//Ôò½«ËüËùÕ¼×ÊÔ´ÊÍ·Åµô£¬
-				Run_Now = NULL;								//²¢ĞŞ¸ÄRun_NowÎªNULL
-				Run_Now = ShortestProcess(PQ);	//´Ó¾ÍĞ÷¶ÓÁĞÖĞµ÷³ö×î¶ÌÊ£ÓàÊ±¼ä½ø³ÌÖÁ¶ÓÍ·£¬
-				if (!Run_Now)							//Èç¹û¶ÓÁĞÎª¿Õ£¬×ªÎªµÈ´ı×´Ì¬
+				free(Run_Now);								//åˆ™å°†å®ƒæ‰€å èµ„æºé‡Šæ”¾æ‰ï¼Œ
+				Run_Now = NULL;								//å¹¶ä¿®æ”¹Run_Nowä¸ºNULL
+				Run_Now = ShortestProcess(PQ);	//ä»å°±ç»ªé˜Ÿåˆ—ä¸­è°ƒå‡ºæœ€çŸ­å‰©ä½™æ—¶é—´è¿›ç¨‹è‡³é˜Ÿå¤´ï¼Œ
+				if (!Run_Now)							//å¦‚æœé˜Ÿåˆ—ä¸ºç©ºï¼Œè½¬ä¸ºç­‰å¾…çŠ¶æ€
 				{
 					if (IsEmpty(PQ) && k >= N) break;
 					Wait();
@@ -186,13 +186,13 @@ int main()
 				}
 			}
 		}
-		else											//Èç¹ûµ±Ç°ÔËĞĞ½ø³ÌÎª¿Õ£¬ÄÇÃ´
+		else											//å¦‚æœå½“å‰è¿è¡Œè¿›ç¨‹ä¸ºç©ºï¼Œé‚£ä¹ˆ
 		{
-			if (t == P[i]->PB.arrive_time)				//Èç¹ûÕıºÃÕâÊ±ÓĞ½ø³ÌÈë¶Ó
+			if (t == P[i]->PB.arrive_time)				//å¦‚æœæ­£å¥½è¿™æ—¶æœ‰è¿›ç¨‹å…¥é˜Ÿ
 			{
 				k++;
 				EnQueue(PQ, P[i]);
-				Run_Now = DeQueue(PQ);					//ÔòÖ±½Ó±»µ÷ÈëÔËĞĞ¶ÓÁĞÖĞ
+				Run_Now = DeQueue(PQ);					//åˆ™ç›´æ¥è¢«è°ƒå…¥è¿è¡Œé˜Ÿåˆ—ä¸­
 				Run_Now->PB.Tp = t;
 				Run_Now->PB.Tc = t;
 				printf("%d ", Run_Now->PB.number);
@@ -207,7 +207,7 @@ int main()
 
 	}
 	printf("\n");
-	printf("Æ½¾ùµÈ´ıÊ±¼äÊÇ:\n%f\n", ((float)sum(wt, N)) / N);
-	printf("Æ½¾ùÖÜ×ªÊ±¼äÊÇ:\n%f\n", ((float)sum(circle_t, N)) / N);
+	printf("å¹³å‡ç­‰å¾…æ—¶é—´æ˜¯:\n%f\n", ((float)sum(wt, N)) / N);
+	printf("å¹³å‡å‘¨è½¬æ—¶é—´æ˜¯:\n%f\n", ((float)sum(circle_t, N)) / N);
 	return 0;
 }

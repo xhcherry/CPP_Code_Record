@@ -1,46 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctime>
-#define maxsize 20//È«¾Ö¶¨Òå
+#define maxsize 20//å…¨å±€å®šä¹‰
 
 #define OK 1
 #define OVERFLOW -2
 typedef struct {
-	int key;//¹Ø¼ü×Ö
+	int key;//å…³é”®å­—
 } ElemType;
 typedef struct {
 	ElemType *elem;
 	int length;
 } sqlist;
 int initList(sqlist &L) {
-	L.elem=new ElemType[maxsize];//·ÖÅäÊı×é´æ´¢¿Õ¼ä
+	L.elem=new ElemType[maxsize];//åˆ†é…æ•°ç»„å­˜å‚¨ç©ºé—´
 	if(!L.elem) exit (OVERFLOW);
 	L.length=0;
 	return OK;
 }
-void display(sqlist &L) { //×Ô¶¨ÒåÊä³öº¯Êı£¬½«Ë³Ğò±íµÄkeyÖµÊä³ö¡£
+void display(sqlist &L) { //è‡ªå®šä¹‰è¾“å‡ºå‡½æ•°ï¼Œå°†é¡ºåºè¡¨çš„keyå€¼è¾“å‡ºã€‚
 	int i;
 	for(i=0; i<L.length; i++)
 		printf("%d ",L.elem[i].key);
 	printf("\n");
 }
-void get(sqlist &L,int size) { //3.×Ô¶¨ÒåÈ¡Öµº¯ÊıÀûÓÃÑ­»·ÒÀ´ÎÎªelem[i].keyÈ¡Öµ£¬
+void get(sqlist &L,int size) { //3.è‡ªå®šä¹‰å–å€¼å‡½æ•°åˆ©ç”¨å¾ªç¯ä¾æ¬¡ä¸ºelem[i].keyå–å€¼ï¼Œ
 	for(int i=0; i<size; i++) {
 		scanf("%d",&L.elem[i].key);
 		L.length++;
 	}
 }
-int search(sqlist L,int key) { //×Ô¶¨ÒåË³Ğò²éÕÒº¯Êı£¬ÔÚË³Ğò±íLÖĞË³Ğò²éÕÒÆä¹Ø¼ü×ÖµÈÓÚkeyµÄÊı¾İÔªËØ£¬ÈôÕÒµ½£¬Ôòº¯ÊıÖµÎª¸ÃÔªËØÔÚ±íÖĞµÄÎ»ÖÃ£¬·ñÔòÎª0.
+int search(sqlist L,int key) { //è‡ªå®šä¹‰é¡ºåºæŸ¥æ‰¾å‡½æ•°ï¼Œåœ¨é¡ºåºè¡¨Lä¸­é¡ºåºæŸ¥æ‰¾å…¶å…³é”®å­—ç­‰äºkeyçš„æ•°æ®å…ƒç´ ï¼Œè‹¥æ‰¾åˆ°ï¼Œåˆ™å‡½æ•°å€¼ä¸ºè¯¥å…ƒç´ åœ¨è¡¨ä¸­çš„ä½ç½®ï¼Œå¦åˆ™ä¸º0.
 	clock_t start1,finish1;
 	start1=clock();
 	for(int i=L.length; i>=1; --i)
 		if(L.elem[i].key==key)  return i;
 		finish1=clock();
 		double Cost_time1 = (double)(finish1-start1)/CLOCKS_PER_SEC;
-		printf("Ë³Ğò²éÕÒËù»¨·ÑµÄÊ±¼äÎª£º%d Ãë",Cost_time1);
+		printf("é¡ºåºæŸ¥æ‰¾æ‰€èŠ±è´¹çš„æ—¶é—´ä¸ºï¼š%d ç§’",Cost_time1);
 	return 0;
 }
-int search_Bin(sqlist L,int key) { //6.×Ô¶¨ÒåÕÛ°ë²éÕÒº¯Êı£¬ÖÃ²éÕÒÇø¼ä³õÖµ£¬lowÎª1£¬highÎª±í³¤£»µ±lowĞ¡ÓÚµÈÓÚhighÊ±£¬midÈ¡lowºÍhighµÄÖĞ¼äÖµ£¬½«¸ø¶¨ÖµkeyÓëÖĞ¼äÎ»ÖÃ¼ÇÂ¼µÄ¹Ø¼ü×Ö½øĞĞ±È½Ï£¬Èô²éÕÒ³É¹¦·µ»Ømid£¬Èô²»ÏàµÈÔòÀûÓÃÖĞ¼äÎ»ÖÃ¼ÇÂ¼½«±í¶Ô·Ö³ÉÇ°ºóÁ½¸ö×Ó±í¡£Èç¹ûkey±ÈÖĞ¼äÎ»ÖÃ¼ÇÂ¼µÄ¹Ø¼ü×ÖĞ¡£¬ÔòhighÈ¡Îªmid-1,·ñÔòlowÈ¡Îªmid+1£»Ñ­»·½áÊø£¬ËµÃ÷²éÕÒÇø¼äÎª¿Õ£¬Ôò²éÕÒÊ§°Ü£¬·µ»Ø0.
+int search_Bin(sqlist L,int key) { //6.è‡ªå®šä¹‰æŠ˜åŠæŸ¥æ‰¾å‡½æ•°ï¼Œç½®æŸ¥æ‰¾åŒºé—´åˆå€¼ï¼Œlowä¸º1ï¼Œhighä¸ºè¡¨é•¿ï¼›å½“lowå°äºç­‰äºhighæ—¶ï¼Œmidå–lowå’Œhighçš„ä¸­é—´å€¼ï¼Œå°†ç»™å®šå€¼keyä¸ä¸­é—´ä½ç½®è®°å½•çš„å…³é”®å­—è¿›è¡Œæ¯”è¾ƒï¼Œè‹¥æŸ¥æ‰¾æˆåŠŸè¿”å›midï¼Œè‹¥ä¸ç›¸ç­‰åˆ™åˆ©ç”¨ä¸­é—´ä½ç½®è®°å½•å°†è¡¨å¯¹åˆ†æˆå‰åä¸¤ä¸ªå­è¡¨ã€‚å¦‚æœkeyæ¯”ä¸­é—´ä½ç½®è®°å½•çš„å…³é”®å­—å°ï¼Œåˆ™highå–ä¸ºmid-1,å¦åˆ™lowå–ä¸ºmid+1ï¼›å¾ªç¯ç»“æŸï¼Œè¯´æ˜æŸ¥æ‰¾åŒºé—´ä¸ºç©ºï¼Œåˆ™æŸ¥æ‰¾å¤±è´¥ï¼Œè¿”å›0.
 	clock_t start2,finish2;
 	start2=clock();
 	int low=1,high=L.length,mid;
@@ -52,7 +52,7 @@ int search_Bin(sqlist L,int key) { //6.×Ô¶¨ÒåÕÛ°ë²éÕÒº¯Êı£¬ÖÃ²éÕÒÇø¼ä³õÖµ£¬lowÎª
 	}
 	finish2=clock();
 	double Cost_time2 = (double)(finish2-start2)/CLOCKS_PER_SEC;
-	printf("ÕÛ°ë²éÕÒËù»¨·ÑµÄÊ±¼äÎª£º%d Ãë",Cost_time2);
+	printf("æŠ˜åŠæŸ¥æ‰¾æ‰€èŠ±è´¹çš„æ—¶é—´ä¸ºï¼š%d ç§’",Cost_time2);
 	return 0;
 }
 
@@ -63,26 +63,26 @@ int main() {
 	sqlist L,M;
 	initList(L);
 	initList(M);
-	printf("ÇëÊäÈëË³Ğò±íµÄ³¤¶È(Ë³Ğò²éÕÒ)\n");
+	printf("è¯·è¾“å…¥é¡ºåºè¡¨çš„é•¿åº¦(é¡ºåºæŸ¥æ‰¾)\n");
 	scanf("%d",&m);
-	printf("ÇëÊäÈëÒ»ÅúÊı¾İ\n");
+	printf("è¯·è¾“å…¥ä¸€æ‰¹æ•°æ®\n");
 	get(L,m);
-	printf("ÒÔÏÂÎªÊäÈëµÄË³Ğò±í(Ë³Ğò²éÕÒ)\n");
+	printf("ä»¥ä¸‹ä¸ºè¾“å…¥çš„é¡ºåºè¡¨(é¡ºåºæŸ¥æ‰¾)\n");
 	display(L);
-	printf("ÇëÊäÈëÄãÏë²éÕÒµÄÔªËØ(Ë³Ğò²éÕÒ)\n");
+	printf("è¯·è¾“å…¥ä½ æƒ³æŸ¥æ‰¾çš„å…ƒç´ (é¡ºåºæŸ¥æ‰¾)\n");
 	scanf("%d",&x);
 	y=search(L,x);
-	printf("¾­¹ıË³Ğò²éÕÒ·¢ÏÖ²éÕÒµÄÔªËØÔÚµÚ%dÎ»\n",y+1);
-	printf("ÇëÊäÈëË³Ğò±íµÄ³¤¶È(ÕÛ°ë²éÕÒ)\n");
+	printf("ç»è¿‡é¡ºåºæŸ¥æ‰¾å‘ç°æŸ¥æ‰¾çš„å…ƒç´ åœ¨ç¬¬%dä½\n",y+1);
+	printf("è¯·è¾“å…¥é¡ºåºè¡¨çš„é•¿åº¦(æŠ˜åŠæŸ¥æ‰¾)\n");
 	scanf("%d",&m1);
-	printf("Çë°´ÓÉ´óµ½Ğ¡ÊäÈëÒ»ÅúÊı¾İ(ÕÛ°ë²éÕÒ)\n");
+	printf("è¯·æŒ‰ç”±å¤§åˆ°å°è¾“å…¥ä¸€æ‰¹æ•°æ®(æŠ˜åŠæŸ¥æ‰¾)\n");
 	get(M,m1);
-	printf("ÒÔÏÂÎªÊäÈëµÄË³Ğò±í(ÕÛ°ë²éÕÒ)\n");
+	printf("ä»¥ä¸‹ä¸ºè¾“å…¥çš„é¡ºåºè¡¨(æŠ˜åŠæŸ¥æ‰¾)\n");
 	display(M);
-	printf("ÇëÊäÈëÄãÏë²éÕÒµÄÔªËØ(ÕÛ°ë²éÕÒ)\n");
+	printf("è¯·è¾“å…¥ä½ æƒ³æŸ¥æ‰¾çš„å…ƒç´ (æŠ˜åŠæŸ¥æ‰¾)\n");
 	scanf("%d",&x1);
 	y1=search_Bin(M,x1);
-	printf("¾­¹ıÕÛ°ë²éÕÒ·¢ÏÖ²éÕÒµÄÔªËØÔÚµÚ%dÎ»\n",y1+1);
+	printf("ç»è¿‡æŠ˜åŠæŸ¥æ‰¾å‘ç°æŸ¥æ‰¾çš„å…ƒç´ åœ¨ç¬¬%dä½\n",y1+1);
 	
 	return 0;
 

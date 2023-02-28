@@ -16,8 +16,8 @@ long fact(int num)
 int main(void)
 {
 	int num;
-	printf("ÇëÊäÈëÒ»¸öÕıÕûÊı£º");
+	printf("è¯·è¾“å…¥ä¸€ä¸ªæ­£æ•´æ•°ï¼š");
 	scanf("%d",&num);
-	printf("%dµÄ½×³Ë£º%d\n",num,fact(num));
+	printf("%dçš„é˜¶ä¹˜ï¼š%d\n",num,fact(num));
 	return 0;
 }

@@ -1,129 +1,129 @@
 #include<stdio.h>
-#define n 5  //Ò¶×ÓÊıÄ¿
-#define m (2*n-1)    //½áµã×ÜÊı
+#define n 5  //å¶å­æ•°ç›®
+#define m (2*n-1)    //ç»“ç‚¹æ€»æ•°
 #define maxval 10000.0
-#define maxsize 100   //¹ş·òÂü±àÂëµÄ×î´óÎ»Êı
+#define maxsize 100   //å“ˆå¤«æ›¼ç¼–ç çš„æœ€å¤§ä½æ•°
 typedef struct {
 	char ch;
 	float weight;
 	int lchild,rchild,parent;
 } hufmtree;
 typedef struct {
-	char bits[n];   //Î»´®
-	int start;      //±àÂëÔÚÎ»´®ÖĞµÄÆğÊ¼Î»ÖÃ
-	char ch;        //×Ö·û
+	char bits[n];   //ä½ä¸²
+	int start;      //ç¼–ç åœ¨ä½ä¸²ä¸­çš„èµ·å§‹ä½ç½®
+	char ch;        //å­—ç¬¦
 } codetype;
 
-void huffman(hufmtree tree[]);//½¨Á¢¹ş·òÂüÊ÷
-void huffmancode(codetype code[],hufmtree tree[]);//¸ù¾İ¹ş·òÂüÊ÷Çó³ö¹ş·òÂü±àÂë
-void decode(hufmtree tree[]);//ÒÀ´Î¶ÁÈëµçÎÄ£¬¸ù¾İ¹ş·òÂüÊ÷ÒëÂë
+void huffman(hufmtree tree[]);//å»ºç«‹å“ˆå¤«æ›¼æ ‘
+void huffmancode(codetype code[],hufmtree tree[]);//æ ¹æ®å“ˆå¤«æ›¼æ ‘æ±‚å‡ºå“ˆå¤«æ›¼ç¼–ç 
+void decode(hufmtree tree[]);//ä¾æ¬¡è¯»å…¥ç”µæ–‡ï¼Œæ ¹æ®å“ˆå¤«æ›¼æ ‘è¯‘ç 
 
 int main() {
-	printf("                            ¡ª¡ª¹ş·òÂü±àÂë¡ª¡ª\n");
-	printf("×Ü¹²ÓĞ%d¸ö×Ö·û\n",n);
+	printf("                            â€”â€”å“ˆå¤«æ›¼ç¼–ç â€”â€”\n");
+	printf("æ€»å…±æœ‰%dä¸ªå­—ç¬¦\n",n);
 	hufmtree tree[m];
 	codetype code[n];
-	int i,j;//Ñ­»·±äÁ¿
-	huffman(tree);//½¨Á¢¹ş·òÂüÊ÷
-	huffmancode(code,tree);//¸ù¾İ¹ş·òÂüÊ÷Çó³ö¹ş·òÂü±àÂë
-	printf("¡¾Êä³öÃ¿¸ö×Ö·ûµÄ¹ş·òÂü±àÂë¡¿\n");
+	int i,j;//å¾ªç¯å˜é‡
+	huffman(tree);//å»ºç«‹å“ˆå¤«æ›¼æ ‘
+	huffmancode(code,tree);//æ ¹æ®å“ˆå¤«æ›¼æ ‘æ±‚å‡ºå“ˆå¤«æ›¼ç¼–ç 
+	printf("ã€è¾“å‡ºæ¯ä¸ªå­—ç¬¦çš„å“ˆå¤«æ›¼ç¼–ç ã€‘\n");
 	for(i=0; i<n; i++) {
 		printf("%c: ",code[i].ch);
 		for(j=code[i].start; j<n; j++)
 			printf("%c ",code[i].bits[j]);
 		printf("\n");
 	}
-	printf("¡¾¶ÁÈëµçÎÄ£¬²¢½øĞĞÒëÂë¡¿\n");
-	decode(tree);//ÒÀ´Î¶ÁÈëµçÎÄ£¬¸ù¾İ¹ş·òÂüÊ÷ÒëÂë
+	printf("ã€è¯»å…¥ç”µæ–‡ï¼Œå¹¶è¿›è¡Œè¯‘ç ã€‘\n");
+	decode(tree);//ä¾æ¬¡è¯»å…¥ç”µæ–‡ï¼Œæ ¹æ®å“ˆå¤«æ›¼æ ‘è¯‘ç 
 }
 
-void huffman(hufmtree tree[]) { //½¨Á¢¹ş·òÂüÊ÷
-	int i,j,p1,p2;//p1,p2·Ö±ğ¼Ç×¡Ã¿´ÎºÏ²¢Ê±È¨Öµ×îĞ¡ºÍ´ÎĞ¡µÄÁ½¸ö¸ù½áµãµÄÏÂ±ê
+void huffman(hufmtree tree[]) { //å»ºç«‹å“ˆå¤«æ›¼æ ‘
+	int i,j,p1,p2;//p1,p2åˆ†åˆ«è®°ä½æ¯æ¬¡åˆå¹¶æ—¶æƒå€¼æœ€å°å’Œæ¬¡å°çš„ä¸¤ä¸ªæ ¹ç»“ç‚¹çš„ä¸‹æ ‡
 	float small1,small2,f;
 	char c;
-	for(i=0; i<m; i++) { //³õÊ¼»¯
+	for(i=0; i<m; i++) { //åˆå§‹åŒ–
 		tree[i].parent=0;
 		tree[i].lchild=-1;
 		tree[i].rchild=-1;
 		tree[i].weight=0.0;
 	}
-	printf("¡¾ÒÀ´Î¶ÁÈëÇ°%d¸ö½áµãµÄ×Ö·û¼°È¨Öµ(ÖĞ¼äÓÃ¿Õ¸ñ¸ô¿ª)¡¿\n",n);
-	for(i=0; i<n; i++) { //¶ÁÈëÇ°n¸ö½áµãµÄ×Ö·û¼°È¨Öµ
-		printf("ÊäÈëµÚ%d¸ö×Ö·ûÎªºÍÈ¨Öµ",i+1);
+	printf("ã€ä¾æ¬¡è¯»å…¥å‰%dä¸ªç»“ç‚¹çš„å­—ç¬¦åŠæƒå€¼(ä¸­é—´ç”¨ç©ºæ ¼éš”å¼€)ã€‘\n",n);
+	for(i=0; i<n; i++) { //è¯»å…¥å‰nä¸ªç»“ç‚¹çš„å­—ç¬¦åŠæƒå€¼
+		printf("è¾“å…¥ç¬¬%dä¸ªå­—ç¬¦ä¸ºå’Œæƒå€¼",i+1);
 		scanf("%c %f",&c,&f);
 		getchar();
 		tree[i].ch=c;
 		tree[i].weight=f;
 	}
-	for(i=n; i<m; i++) {  //½øĞĞn-1´ÎºÏ²¢£¬²úÉún-1¸öĞÂ½áµã
+	for(i=n; i<m; i++) {  //è¿›è¡Œn-1æ¬¡åˆå¹¶ï¼Œäº§ç”Ÿn-1ä¸ªæ–°ç»“ç‚¹
 		p1=0;
 		p2=0;
 		small1=maxval;
-		small2=maxval;   //maxvalÊÇfloatÀàĞÍµÄ×î´óÖµ
-		for(j=0; j<i; j++)  //Ñ¡³öÁ½¸öÈ¨Öµ×îĞ¡µÄ¸ù½áµã
+		small2=maxval;   //maxvalæ˜¯floatç±»å‹çš„æœ€å¤§å€¼
+		for(j=0; j<i; j++)  //é€‰å‡ºä¸¤ä¸ªæƒå€¼æœ€å°çš„æ ¹ç»“ç‚¹
 			if(tree[j].parent==0)
 				if(tree[j].weight<small1) {
-					small2=small1;  //¸Ä±ä×îĞ¡È¨¡¢´ÎĞ¡È¨¼°¶ÔÓ¦µÄÎ»ÖÃ
+					small2=small1;  //æ”¹å˜æœ€å°æƒã€æ¬¡å°æƒåŠå¯¹åº”çš„ä½ç½®
 					small1=tree[j].weight;
 					p2=p1;
 					p1=j;
 				} else if(tree[j].weight<small2) {
-					small2=tree[j].weight;  //¸Ä±ä´ÎĞ¡È¨¼°Î»ÖÃ
+					small2=tree[j].weight;  //æ”¹å˜æ¬¡å°æƒåŠä½ç½®
 					p2=j;
 				}
 		tree[p1].parent=i;
 		tree[p2].parent=i;
-		tree[i].lchild=p1;  //×îĞ¡È¨¸ù½áµãÊÇĞÂ½áµãµÄ×óº¢×Ó
-		tree[i].rchild=p2;  //´ÎĞ¡È¨¸ù½áµãÊÇĞÂ½áµãµÄÓÒº¢×Ó
+		tree[i].lchild=p1;  //æœ€å°æƒæ ¹ç»“ç‚¹æ˜¯æ–°ç»“ç‚¹çš„å·¦å­©å­
+		tree[i].rchild=p2;  //æ¬¡å°æƒæ ¹ç»“ç‚¹æ˜¯æ–°ç»“ç‚¹çš„å³å­©å­
 		tree[i].weight=tree[p1].weight+tree[p2].weight;
 	}
 }//huffman
 
-void huffmancode(codetype code[],hufmtree tree[])//¸ù¾İ¹ş·òÂüÊ÷Çó³ö¹ş·òÂü±àÂë
-//codetype code[]ÎªÇó³öµÄ¹ş·òÂü±àÂë
-//hufmtree tree[]ÎªÒÑÖªµÄ¹ş·òÂüÊ÷
+void huffmancode(codetype code[],hufmtree tree[])//æ ¹æ®å“ˆå¤«æ›¼æ ‘æ±‚å‡ºå“ˆå¤«æ›¼ç¼–ç 
+//codetype code[]ä¸ºæ±‚å‡ºçš„å“ˆå¤«æ›¼ç¼–ç 
+//hufmtree tree[]ä¸ºå·²çŸ¥çš„å“ˆå¤«æ›¼æ ‘
 {
 	int i,c,p;
-	codetype cd;   //»º³å±äÁ¿
+	codetype cd;   //ç¼“å†²å˜é‡
 	for(i=0; i<n; i++) {
 		cd.start=n;
 		cd.ch=tree[i].ch;
-		c=i;       //´ÓÒ¶½áµã³ö·¢ÏòÉÏ»ØËİ
-		p=tree[i].parent;   //tree[p]ÊÇtree[i]µÄË«Ç×
+		c=i;       //ä»å¶ç»“ç‚¹å‡ºå‘å‘ä¸Šå›æº¯
+		p=tree[i].parent;   //tree[p]æ˜¯tree[i]çš„åŒäº²
 		while(p!=0) {
 			cd.start--;
 			if(tree[p].lchild==c)
-				cd.bits[cd.start]='0';   //tree[i]ÊÇ×ó×ÓÊ÷£¬Éú³É´úÂë'0'
+				cd.bits[cd.start]='0';   //tree[i]æ˜¯å·¦å­æ ‘ï¼Œç”Ÿæˆä»£ç '0'
 			else
-				cd.bits[cd.start]='1';   //tree[i]ÊÇÓÒ×ÓÊ÷£¬Éú³É´úÂë'1'
+				cd.bits[cd.start]='1';   //tree[i]æ˜¯å³å­æ ‘ï¼Œç”Ÿæˆä»£ç '1'
 			c=p;
 			p=tree[p].parent;
 		}
-		code[i]=cd;    //µÚi+1¸ö×Ö·ûµÄ±àÂë´æÈëcode[i]
+		code[i]=cd;    //ç¬¬i+1ä¸ªå­—ç¬¦çš„ç¼–ç å­˜å…¥code[i]
 	}
 }//huffmancode
 
-void decode(hufmtree tree[]) { //ÒÀ´Î¶ÁÈëµçÎÄ£¬¸ù¾İ¹ş·òÂüÊ÷ÒëÂë
+void decode(hufmtree tree[]) { //ä¾æ¬¡è¯»å…¥ç”µæ–‡ï¼Œæ ¹æ®å“ˆå¤«æ›¼æ ‘è¯‘ç 
 	int i,j=0;
 	char b[maxsize];
-	char endflag='2';    //µçÎÄ½áÊø±êÖ¾È¡2
-	i=m-1;             //´Ó¸ù½áµã¿ªÊ¼ÍùÏÂËÑË÷
-	printf("ÊäÈë·¢ËÍµÄ±àÂë(ÒÔ'2'Îª½áÊø±êÖ¾)£º");
+	char endflag='2';    //ç”µæ–‡ç»“æŸæ ‡å¿—å–2
+	i=m-1;             //ä»æ ¹ç»“ç‚¹å¼€å§‹å¾€ä¸‹æœç´¢
+	printf("è¾“å…¥å‘é€çš„ç¼–ç (ä»¥'2'ä¸ºç»“æŸæ ‡å¿—)ï¼š");
 	gets(b);
-	printf("ÒëÂëºóµÄ×Ö·ûÎª");
+	printf("è¯‘ç åçš„å­—ç¬¦ä¸º");
 	while(b[j]!='2') {
 		if(b[j]=='0')
-			i=tree[i].lchild;   //×ßÏò×óº¢×Ó
+			i=tree[i].lchild;   //èµ°å‘å·¦å­©å­
 		else
-			i=tree[i].rchild;   //×ßÏòÓÒº¢×Ó
-		if(tree[i].lchild==-1) {   //tree[i]ÊÇÒ¶½áµã
+			i=tree[i].rchild;   //èµ°å‘å³å­©å­
+		if(tree[i].lchild==-1) {   //tree[i]æ˜¯å¶ç»“ç‚¹
 			printf("%c",tree[i].ch);
-			i=m-1;      //»Øµ½¸ù½áµã
+			i=m-1;      //å›åˆ°æ ¹ç»“ç‚¹
 		}
 		j++;
 	}
 	printf("\n");
-	if(tree[i].lchild!=-1&&b[j]!='2')   //µçÎÄ¶ÁÍê£¬µ«ÉĞÎ´µ½Ò¶×Ó½áµã
-		printf("\nERROR\n");  //ÊäÈëµçÎÄÓĞ´í
+	if(tree[i].lchild!=-1&&b[j]!='2')   //ç”µæ–‡è¯»å®Œï¼Œä½†å°šæœªåˆ°å¶å­ç»“ç‚¹
+		printf("\nERROR\n");  //è¾“å…¥ç”µæ–‡æœ‰é”™
 }//decode
 

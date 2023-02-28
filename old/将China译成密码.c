@@ -1,4 +1,4 @@
-顺序结构
+//顺序结构
 #include<stdio.h>
 int main(){
   char c1='C',c2='h',c3='i',c4='n',c5='a';
@@ -14,7 +14,7 @@ int main(){
 
 
 
-数组
+//数组
 #include<stdio.h>
 int main() {
 	int i;
@@ -27,7 +27,7 @@ int main() {
 
 
 
-函数的模块化设计
+//函数的模块化设计
 #include <stdio.h>
 #include <stdlib.h>
 void encrypt(char pw[], int c);                       //定义加密函数
@@ -48,7 +48,7 @@ void encrypt(char pw[], int c){
 
 
 
-动态分配内存
+//动态分配内存
 #include <stdio.h>
 #include <stdlib.h>
 void input(char *p);

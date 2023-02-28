@@ -14,7 +14,7 @@ char *getWord(char c)
 int main()
 {
 	char input;
-	printf("ÊäÈëÒ»¸ö×ÖÄ¸£º");
+	printf("è¾“å…¥ä¸€ä¸ªå­—æ¯ï¼š");
 	scanf("%c",&input);
 	printf("%s\n",getWord(input)); 
 	return 0;

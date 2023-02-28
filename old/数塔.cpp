@@ -21,8 +21,8 @@ void tower_walk() {
 }
 
 void print_result() {
-	printf("×î´óÂ·¾¶ºÍ£º%d\n",dp[0][0]);
-	printf("×î´óÂ·¾¶£º%d",data[0][0]);
+	printf("æœ€å¤§è·¯å¾„å’Œï¼š%d\n",dp[0][0]);
+	printf("æœ€å¤§è·¯å¾„ï¼š%d",data[0][0]);
 	int node_value;
 	int j = 0;
 	for (int i = 1; i < n; ++i) {
@@ -33,9 +33,9 @@ void print_result() {
 }
 
 int main() {
-	printf("ÊäÈëËþµÄ²ãÊýn=");
+	printf("è¾“å…¥å¡”çš„å±‚æ•°n=");
 	scanf("%d",&n);
-	printf("ÊäÈëËþµÄ½ÚµãÊý¾Ý(µÚi²ãÓÐi¸ö½Úµã)£º\n");
+	printf("è¾“å…¥å¡”çš„èŠ‚ç‚¹æ•°æ®(ç¬¬iå±‚æœ‰iä¸ªèŠ‚ç‚¹)ï¼š\n");
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j <= i; ++j) {
 			scanf("%d",&data[i][j]);

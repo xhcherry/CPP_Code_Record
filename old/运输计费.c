@@ -1,9 +1,9 @@
 #include <stdio.h>
 int main(void)
 {
-	int c,s;//sÂ·³Ì pÃ¿¹«ÀïÃ¿¶Ö»õÎïµÄ»ù±¾ÔË·Ñ 
-	float p,w,d,f;//»õÎïÖØw ÕÛ¿Û
-	printf("ÊäÈëp  w  s£º");
+	int c,s;//sè·¯ç¨‹ pæ¯å…¬é‡Œæ¯å¨è´§ç‰©çš„åŸºæœ¬è¿è´¹ 
+	float p,w,d,f;//è´§ç‰©é‡w æŠ˜æ‰£
+	printf("è¾“å…¥p  w  sï¼š");
 	scanf("%f%f%d",&p,&w,&s);
 	if(s>=3000)
 	{

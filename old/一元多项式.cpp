@@ -1,14 +1,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct LNode	//½áµã
+typedef struct LNode	//ç»“ç‚¹
 {
-	float coef; //ÏµÊı
-	int expn;   //Ö¸Êı
-	struct LNode *next;	//ÏÂÒ»¸ö½áµãµÄÖ¸Õë
-}*LinkList;	//LNodeÖ¸ÕëµÄ±ğÃû
+	float coef; //ç³»æ•°
+	int expn;   //æŒ‡æ•°
+	struct LNode *next;	//ä¸‹ä¸€ä¸ªç»“ç‚¹çš„æŒ‡é’ˆ
+}*LinkList;	//LNodeæŒ‡é’ˆçš„åˆ«å
 
-typedef LinkList polynomial;	//¶àÏîÊ½
+typedef LinkList polynomial;	//å¤šé¡¹å¼
 //----------------------------------------------------------------------------
 void CreatList(LinkList &p, float _coef, int _expn);
 void addAtTail(LinkList &p, float _coef, int _expn);
@@ -18,25 +18,25 @@ bool isZero(polynomial &p);
 void addPolyn(polynomial &pa, polynomial &pb);
 //----------------------------------------------------------------------------
 /*
-	´´½¨Ò»¸ö´øÍ·½áµãµÄÁ´±í
-	LinkList &p:±»´´½¨µÄÁ´±íµÄµØÖ·
-	float _coef:Í·½áµãµÄÏµÊı
-	int _expn:Í·½áµãµÄÖ¸Êı
+	åˆ›å»ºä¸€ä¸ªå¸¦å¤´ç»“ç‚¹çš„é“¾è¡¨
+	LinkList &p:è¢«åˆ›å»ºçš„é“¾è¡¨çš„åœ°å€
+	float _coef:å¤´ç»“ç‚¹çš„ç³»æ•°
+	int _expn:å¤´ç»“ç‚¹çš„æŒ‡æ•°
 	@Return void
 */
 void CreatList(LinkList &p, float _coef, int _expn)
 {
-	p = (LinkList)malloc(sizeof(LNode));	//ÎªÁ´±íp·ÖÅäÒ»¸ö½áµãµÄÄÚ´æ
-	p->next = NULL;	//Í·½áµãµÄÏÂÒ»¸ö½ÚµãÖ¸Õë¸³ÖµÎªNULL
-	p->coef = _coef;	//Í·½áµãµÄÏµÊı¸³ÖµÎª_coef
-	p->expn = _expn;	//Í·½áµãµÄÖ¸Êı¸³ÖµÎª_expn
+	p = (LinkList)malloc(sizeof(LNode));	//ä¸ºé“¾è¡¨påˆ†é…ä¸€ä¸ªç»“ç‚¹çš„å†…å­˜
+	p->next = NULL;	//å¤´ç»“ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹æŒ‡é’ˆèµ‹å€¼ä¸ºNULL
+	p->coef = _coef;	//å¤´ç»“ç‚¹çš„ç³»æ•°èµ‹å€¼ä¸º_coef
+	p->expn = _expn;	//å¤´ç»“ç‚¹çš„æŒ‡æ•°èµ‹å€¼ä¸º_expn
 }
 //----------------------------------------------------------------------------
 /*
-	ÔÚÁ´±íÄ©Î²´´½¨Ò»¸ö½Úµã
-	LinkList &p:±»´´½¨µÄÁ´±íµÄµØÖ·
-	float _coef:Î²½áµãµÄÏµÊı
-	int _expn:Î²½áµãµÄÖ¸Êı
+	åœ¨é“¾è¡¨æœ«å°¾åˆ›å»ºä¸€ä¸ªèŠ‚ç‚¹
+	LinkList &p:è¢«åˆ›å»ºçš„é“¾è¡¨çš„åœ°å€
+	float _coef:å°¾ç»“ç‚¹çš„ç³»æ•°
+	int _expn:å°¾ç»“ç‚¹çš„æŒ‡æ•°
 	@Return void
 */
 void addAtTail(LinkList &p, float _coef, int _expn)
@@ -44,28 +44,28 @@ void addAtTail(LinkList &p, float _coef, int _expn)
 	if (p)
 	{
 		/*
-			Á´±íp²»ÎªNULLµÄÇé¿ö
-			´´½¨Ò»¸öĞÂ½áµã²¢Îª´Ë·ÖÅäÄÚ´æ
-			Õâ¸öĞÂ½áµãÖĞµÄÏµÊıºÍÖ¸Êı·Ö±ğ¸³ÖµÎª_coefºÍ_expn
-			°ÑÕâ¸öĞÂ½Úµã·Åµ½Á´±ípµÄÄ©Î²
+			é“¾è¡¨pä¸ä¸ºNULLçš„æƒ…å†µ
+			åˆ›å»ºä¸€ä¸ªæ–°ç»“ç‚¹å¹¶ä¸ºæ­¤åˆ†é…å†…å­˜
+			è¿™ä¸ªæ–°ç»“ç‚¹ä¸­çš„ç³»æ•°å’ŒæŒ‡æ•°åˆ†åˆ«èµ‹å€¼ä¸º_coefå’Œ_expn
+			æŠŠè¿™ä¸ªæ–°èŠ‚ç‚¹æ”¾åˆ°é“¾è¡¨pçš„æœ«å°¾
 		*/
-		LinkList cur;	//ĞÂµÄ½áµãcur
+		LinkList cur;	//æ–°çš„ç»“ç‚¹cur
 		cur = (LinkList)malloc(sizeof(LNode));
 		cur->next = NULL;
 		cur->coef = _coef;
 		cur->expn = _expn;
-		LinkList temp;	//ÓÃÀ´Ö¸ÏòÁ´±íp×îºóÒ»ÏîµÄÖ¸Õëtemp
-		temp = p;		//Ê×ÏÈÖ¸ÕëtempÖ¸ÏòÁ´±ípµÄÍ·½áµã
-		while (temp->next)	//ÈôÏÂÒ»¸ö½áµã²»ÎªNULL,Ö¸Õëtemp¾ÍÖ¸ÏòÏÂÒ»¸ö½áµã,Ö±µ½ÏÂÒ»¸ö½áµãÎªNULL
+		LinkList temp;	//ç”¨æ¥æŒ‡å‘é“¾è¡¨pæœ€åä¸€é¡¹çš„æŒ‡é’ˆtemp
+		temp = p;		//é¦–å…ˆæŒ‡é’ˆtempæŒ‡å‘é“¾è¡¨pçš„å¤´ç»“ç‚¹
+		while (temp->next)	//è‹¥ä¸‹ä¸€ä¸ªç»“ç‚¹ä¸ä¸ºNULL,æŒ‡é’ˆtempå°±æŒ‡å‘ä¸‹ä¸€ä¸ªç»“ç‚¹,ç›´åˆ°ä¸‹ä¸€ä¸ªç»“ç‚¹ä¸ºNULL
 			temp = temp->next;
-		temp->next = cur;	//´ËÊ±Ö¸ÕëtempÖ¸ÏòÁ´±íµÄÎ²½Úµã,°Ñ½áµãcur·Åµ½ºóÃæ×÷ÎªĞÂµÄÎ²½áµã
+		temp->next = cur;	//æ­¤æ—¶æŒ‡é’ˆtempæŒ‡å‘é“¾è¡¨çš„å°¾èŠ‚ç‚¹,æŠŠç»“ç‚¹curæ”¾åˆ°åé¢ä½œä¸ºæ–°çš„å°¾ç»“ç‚¹
 	}
 	else
 	{
 		/*
-			Á´±ípÎªNULLµÄÇé¿ö
-			¸øÁ´±íp·ÖÅäÒ»¸ö½áµãµÄÄÚ´æ,Õâ¸ö½áµã¾ÍÊÇÁ´±ípµÄÍ·½áµã
-			Õâ¸öÍ·½áµãÖĞµÄÏµÊıºÍÖ¸Êı·Ö±ğ¸³ÖµÎª_coefºÍ_expn
+			é“¾è¡¨pä¸ºNULLçš„æƒ…å†µ
+			ç»™é“¾è¡¨påˆ†é…ä¸€ä¸ªç»“ç‚¹çš„å†…å­˜,è¿™ä¸ªç»“ç‚¹å°±æ˜¯é“¾è¡¨pçš„å¤´ç»“ç‚¹
+			è¿™ä¸ªå¤´ç»“ç‚¹ä¸­çš„ç³»æ•°å’ŒæŒ‡æ•°åˆ†åˆ«èµ‹å€¼ä¸º_coefå’Œ_expn
 		*/
 		p = (LinkList)malloc(sizeof(LNode));
 		p->next = NULL;
@@ -75,8 +75,8 @@ void addAtTail(LinkList &p, float _coef, int _expn)
 }
 //----------------------------------------------------------------------------
 /*
-	ÏÔÊ¾¶àÏîÊ½,°Ñ¶àÏîÊ½´òÓ¡³öÀ´
-	polynomial &p:±»ÏÔÊ¾µÄ¶àÏîÊ½µÄµØÖ·
+	æ˜¾ç¤ºå¤šé¡¹å¼,æŠŠå¤šé¡¹å¼æ‰“å°å‡ºæ¥
+	polynomial &p:è¢«æ˜¾ç¤ºçš„å¤šé¡¹å¼çš„åœ°å€
 	@Return void
 */
 void show(polynomial &p)
@@ -85,29 +85,29 @@ void show(polynomial &p)
 	{
 		polynomial temp;
 		temp = p;
-		int flag = 0;	//flag±êÇ©,Èç¹ûÇ°¼¸ÏîÏµÊıÎªÁã,ÄÇÃ´flagÎª1,½«²»´òÓ¡ÏµÊıÎªÁãµÄÏî,Ö±µ½Óöµ½ÏµÊı²»ÎªÁãµÄÏî
-		if (temp->coef != 0)	//³£ÊıÏî²»ÎªÁãµÄ´òÓ¡Çé¿ö
+		int flag = 0;	//flagæ ‡ç­¾,å¦‚æœå‰å‡ é¡¹ç³»æ•°ä¸ºé›¶,é‚£ä¹ˆflagä¸º1,å°†ä¸æ‰“å°ç³»æ•°ä¸ºé›¶çš„é¡¹,ç›´åˆ°é‡åˆ°ç³»æ•°ä¸ä¸ºé›¶çš„é¡¹
+		if (temp->coef != 0)	//å¸¸æ•°é¡¹ä¸ä¸ºé›¶çš„æ‰“å°æƒ…å†µ
 		{
 			printf("%.3f", temp->coef);
 			flag = 0;
 		}
-		else	//³£ÊıÏîÎªÁãµÄÇé¿ö,´ËÊ±flagÖÃÎª1
+		else	//å¸¸æ•°é¡¹ä¸ºé›¶çš„æƒ…å†µ,æ­¤æ—¶flagç½®ä¸º1
 			flag = 1;
 
-		while (temp->next)	//·Ç³£ÊıÏîµÄ´òÓ¡Çé¿ö
+		while (temp->next)	//éå¸¸æ•°é¡¹çš„æ‰“å°æƒ…å†µ
 		{
 			temp = temp->next;
-			if (temp->coef > 0 && flag == 0)	//Èç¹ûÏµÊıÎªÕıÇÒflagÎª0µÄÇé¿ö
+			if (temp->coef > 0 && flag == 0)	//å¦‚æœç³»æ•°ä¸ºæ­£ä¸”flagä¸º0çš„æƒ…å†µ
 				if (temp->expn == 1)
 					printf(" + %.3fx", temp->coef);
 				else
 					printf(" + %.3fx^%d", temp->coef, temp->expn);
-			if (temp->coef < 0 && flag == 0)	//Èç¹ûÏµÊıÎª¸ºÇÒflagÎª0µÄÇé¿ö
+			if (temp->coef < 0 && flag == 0)	//å¦‚æœç³»æ•°ä¸ºè´Ÿä¸”flagä¸º0çš„æƒ…å†µ
 				if (temp->expn == 1)
 					printf(" - %.3fx", -temp->coef);
 				else
 					printf(" - %.3fx^%d", -temp->coef, temp->expn);
-			if (temp->coef != 0 && flag == 1)	//Èç¹ûÏµÊı²»ÎªÁãÇÒflagÎª1µÄÇé¿ö,´ËÊ±Ö®Ç°µÄÏî¶¼Î´´òÓ¡
+			if (temp->coef != 0 && flag == 1)	//å¦‚æœç³»æ•°ä¸ä¸ºé›¶ä¸”flagä¸º1çš„æƒ…å†µ,æ­¤æ—¶ä¹‹å‰çš„é¡¹éƒ½æœªæ‰“å°
 			{
 				if (temp->expn == 1)
 					printf("%.3fx^%d", temp->coef, temp->expn);
@@ -117,7 +117,7 @@ void show(polynomial &p)
 			}
 		}
 
-		if (flag == 1)	//Èç¹ûËùÓĞÏµÊıºÍ³£ÊıÏî¶¼ÎªÁã,ÔòÖ»´òÓ¡Ò»¸ö0
+		if (flag == 1)	//å¦‚æœæ‰€æœ‰ç³»æ•°å’Œå¸¸æ•°é¡¹éƒ½ä¸ºé›¶,åˆ™åªæ‰“å°ä¸€ä¸ª0
 			printf("0");
 		printf("\n");
 	}
@@ -126,10 +126,10 @@ void show(polynomial &p)
 }
 //----------------------------------------------------------------------------
 /*
-	ÅĞ¶Ï¶àÏîÊ½ÊÇ·ñÎªÁã
-	ÈôÎªÁã»òÊäÈëµÄÁ´±íÎªNULL,Ôò·µ»Øtrue
-	Èô²»ÎªÁã,Ôò·µ»Øfalse
-	polynomial &p:±»ÅĞ¶ÏµÄ¶àÏîÊ½µÄµØÖ·
+	åˆ¤æ–­å¤šé¡¹å¼æ˜¯å¦ä¸ºé›¶
+	è‹¥ä¸ºé›¶æˆ–è¾“å…¥çš„é“¾è¡¨ä¸ºNULL,åˆ™è¿”å›true
+	è‹¥ä¸ä¸ºé›¶,åˆ™è¿”å›false
+	polynomial &p:è¢«åˆ¤æ–­çš„å¤šé¡¹å¼çš„åœ°å€
 	@Return bool
 */
 bool isZero(polynomial &p)
@@ -159,21 +159,21 @@ bool isZero(polynomial &p)
 }
 //----------------------------------------------------------------------------
 /*
-	´´½¨Ò»¸ö¶àÏîÊ½
-	polynomial &p:±»´´½¨µÄ¶àÏîÊ½µÄµØÖ·
-	int m:¶àÏîÊ½µÄÏîÊı
+	åˆ›å»ºä¸€ä¸ªå¤šé¡¹å¼
+	polynomial &p:è¢«åˆ›å»ºçš„å¤šé¡¹å¼çš„åœ°å€
+	int m:å¤šé¡¹å¼çš„é¡¹æ•°
 	@Return void
 */
 void CreatPolyn(polynomial &p, int m)
 {
-	p = NULL;	//ÕâÒ»ĞĞÉ¾µô³ÌĞòÁ¢Âí±ÀÀ£,²»ĞÅÄãÊÔÊÔ
+	p = NULL;	//è¿™ä¸€è¡Œåˆ æ‰ç¨‹åºç«‹é©¬å´©æºƒ,ä¸ä¿¡ä½ è¯•è¯•
 	for (int i = 0; i < m; i++)
 	{
 		float _coef;
 		if (i == 0)
-			printf("ÇëÊäÈë³£ÊıÏîµÄÖµ(¹²%dÏî):", m);
+			printf("è¯·è¾“å…¥å¸¸æ•°é¡¹çš„å€¼(å…±%dé¡¹):", m);
 		else
-			printf("ÇëÊäÈëÖ¸ÊıÎª%dµÄÏîµÄÏµÊı(¹²%dÏî):", i, m);
+			printf("è¯·è¾“å…¥æŒ‡æ•°ä¸º%dçš„é¡¹çš„ç³»æ•°(å…±%dé¡¹):", i, m);
 		scanf("%f", &_coef);
 		addAtTail(p, _coef, i);
 	}
@@ -181,9 +181,9 @@ void CreatPolyn(polynomial &p, int m)
 }
 //----------------------------------------------------------------------------
 /*
-	°ÑÁ½¸ö¶àÏîÊ½Ïà¼Ó,pa = pa + pb
-	polynomial &pa:±»¼ÓµÄ¶àÏîÊ½,ËüµÄÖµ»á¸Ä±ä
-	polynomial &pb:¼ÓÉÏµÄ¶àÏîÊ½,ËüµÄÖµ²»»á¸Ä±ä
+	æŠŠä¸¤ä¸ªå¤šé¡¹å¼ç›¸åŠ ,pa = pa + pb
+	polynomial &pa:è¢«åŠ çš„å¤šé¡¹å¼,å®ƒçš„å€¼ä¼šæ”¹å˜
+	polynomial &pb:åŠ ä¸Šçš„å¤šé¡¹å¼,å®ƒçš„å€¼ä¸ä¼šæ”¹å˜
 	@Return void
 */
 void addPolyn(polynomial &pa, polynomial &pb)
@@ -191,21 +191,21 @@ void addPolyn(polynomial &pa, polynomial &pb)
 	if (!isZero(pa) && !isZero(pb))
 	{
 		/*
-			¶àÏîÊ½paºÍ¶àÏîÊ½pb¶¼²»ÎªÁãÇÒ¶¼²»ÎªNULLµÄÇé¿ö
+			å¤šé¡¹å¼paå’Œå¤šé¡¹å¼pbéƒ½ä¸ä¸ºé›¶ä¸”éƒ½ä¸ä¸ºNULLçš„æƒ…å†µ
 		*/
-		polynomial tempa;	//Ö¸Ïò¶àÏîÊ½pa¸÷¸ö½áµãµÄÖ¸Õëtempa
-		polynomial tempb;	//Ö¸Ïò¶àÏîÊ½pb¸÷¸ö½áµãµÄÖ¸Õëtempb
-		tempa = pa;	//Ö¸ÕëtempaÊ×ÏÈÖ¸Ïò¶àÏîÊ½paµÄÍ·½áµã
-		tempb = pb;	//Ö¸ÕëtempbÊ×ÏÈÖ¸Ïò¶àÏîÊ½pbµÄÍ·½áµã
-		tempa->coef += tempb->coef;	//¶àÏîÊ½pa³£ÊıÏî = ¶àÏîÊ½pa³£ÊıÏî + ¶àÏîÊ½pb³£ÊıÏî
+		polynomial tempa;	//æŒ‡å‘å¤šé¡¹å¼paå„ä¸ªç»“ç‚¹çš„æŒ‡é’ˆtempa
+		polynomial tempb;	//æŒ‡å‘å¤šé¡¹å¼pbå„ä¸ªç»“ç‚¹çš„æŒ‡é’ˆtempb
+		tempa = pa;	//æŒ‡é’ˆtempaé¦–å…ˆæŒ‡å‘å¤šé¡¹å¼paçš„å¤´ç»“ç‚¹
+		tempb = pb;	//æŒ‡é’ˆtempbé¦–å…ˆæŒ‡å‘å¤šé¡¹å¼pbçš„å¤´ç»“ç‚¹
+		tempa->coef += tempb->coef;	//å¤šé¡¹å¼paå¸¸æ•°é¡¹ = å¤šé¡¹å¼paå¸¸æ•°é¡¹ + å¤šé¡¹å¼pbå¸¸æ•°é¡¹
 
-		while (tempa->next&&tempb->next)	//Ö¸ÕëtempaºÍtempb¶¼Ö¸ÏòÏÂÒ»¸ö½áµã,Ö±µ½ÆäÖĞÒ»¸öÖ¸ÕëµÄÏÂÒ»¸ö½áµãÎªNULL
+		while (tempa->next&&tempb->next)	//æŒ‡é’ˆtempaå’Œtempbéƒ½æŒ‡å‘ä¸‹ä¸€ä¸ªç»“ç‚¹,ç›´åˆ°å…¶ä¸­ä¸€ä¸ªæŒ‡é’ˆçš„ä¸‹ä¸€ä¸ªç»“ç‚¹ä¸ºNULL
 		{
 			tempa = tempa->next;
 			tempb = tempb->next;
-			tempa->coef += tempb->coef;	//¶àÏîÊ½paÄ³ÏîÏµÊı = ¶àÏîÊ½paÄ³ÏîÏµÊı + ¶àÏîÊ½pbÄ³ÏîÏµÊı
+			tempa->coef += tempb->coef;	//å¤šé¡¹å¼paæŸé¡¹ç³»æ•° = å¤šé¡¹å¼paæŸé¡¹ç³»æ•° + å¤šé¡¹å¼pbæŸé¡¹ç³»æ•°
 		}
-		while (!tempa->next&&tempb->next)	//Èô¶àÏîÊ½paµÄÏîÊıĞ¡ÓÚpbµÄÏîÊı,¾Í°Ñpb¶à³öÀ´µÄÏî¸³Öµ¸øpa
+		while (!tempa->next&&tempb->next)	//è‹¥å¤šé¡¹å¼paçš„é¡¹æ•°å°äºpbçš„é¡¹æ•°,å°±æŠŠpbå¤šå‡ºæ¥çš„é¡¹èµ‹å€¼ç»™pa
 		{
 			tempb = tempb->next;
 			addAtTail(tempa, tempb->coef, tempb->expn);
@@ -214,7 +214,7 @@ void addPolyn(polynomial &pa, polynomial &pb)
 	}
 	if (isZero(pa) && !isZero(pb))
 		/*
-			¶àÏîÊ½paÎªÁã»òÎªNULLµÄÇé¿ö,ÕâÊ±Ö±½Ó½«pbµÄÍ·½áµã¸³Öµ¸øpa
+			å¤šé¡¹å¼paä¸ºé›¶æˆ–ä¸ºNULLçš„æƒ…å†µ,è¿™æ—¶ç›´æ¥å°†pbçš„å¤´ç»“ç‚¹èµ‹å€¼ç»™pa
 		*/
 		pa = pb;
 }
@@ -223,9 +223,9 @@ int main()
 {
 	LinkList p1;
 	int n1;
-	printf("ÇëÊäÈë¶àÏîÊ½p1µÄÏîÊı:");
+	printf("è¯·è¾“å…¥å¤šé¡¹å¼p1çš„é¡¹æ•°:");
 	scanf("%d", &n1);
-	printf("\nÏÖÔÚÕıÔÚÊäÈë¶àÏîÊ½p1\n");
+	printf("\nç°åœ¨æ­£åœ¨è¾“å…¥å¤šé¡¹å¼p1\n");
 	CreatPolyn(p1, n1);
 	printf("p1 = ");
 	show(p1);
@@ -233,9 +233,9 @@ int main()
 
 	LinkList p2;
 	int n2;
-	printf("ÇëÊäÈë¶àÏîÊ½p2µÄÏîÊı:");
+	printf("è¯·è¾“å…¥å¤šé¡¹å¼p2çš„é¡¹æ•°:");
 	scanf("%d", &n2);
-	printf("\nÏÖÔÚÕıÔÚÊäÈë¶àÏîÊ½p2\n");
+	printf("\nç°åœ¨æ­£åœ¨è¾“å…¥å¤šé¡¹å¼p2\n");
 	CreatPolyn(p2, n2);
 	printf("p2 = ");
 	show(p2);

@@ -1,12 +1,12 @@
 #include"Banker.h"
 
-#define MAX_SOURCE 6 //¿É´òÓ¡µÄ×î´ó×ÊÔ´Êı
+#define MAX_SOURCE 6 //å¯æ‰“å°çš„æœ€å¤§èµ„æºæ•°
 
-#define STATE 4 //±í¸ñÖĞµÄËÄÁĞ
-vector<vector<int>> Allocation;//ÏµÍ³¸ø´Ë½ø³ÌÒÑ·ÖÅä×ÊÔ´
-vector<vector<int>> Need;//´Ë½ø³Ì»¹Ğè·ÖÅä×ÊÔ´
-vector<vector<int>> Max;//´Ë½ø³ÌĞèÒª×î´ó×ÊÔ´
-vector<int> Available;//ÏµÍ³¿ÉÓÃ×ÊÔ´
+#define STATE 4 //è¡¨æ ¼ä¸­çš„å››åˆ—
+vector<vector<int>> Allocation;//ç³»ç»Ÿç»™æ­¤è¿›ç¨‹å·²åˆ†é…èµ„æº
+vector<vector<int>> Need;//æ­¤è¿›ç¨‹è¿˜éœ€åˆ†é…èµ„æº
+vector<vector<int>> Max;//æ­¤è¿›ç¨‹éœ€è¦æœ€å¤§èµ„æº
+vector<int> Available;//ç³»ç»Ÿå¯ç”¨èµ„æº
 
 void Dis_char(int i, char ch)
 {
@@ -19,15 +19,15 @@ void Dis_char(int i, char ch)
 void Display()
 {
 	char Name[] = "ABCDEFGH";
-	int n = Need.size();//½ø³ÌÊı
-	int m = Need[0].size();//×ÊÔ´Êı
+	int n = Need.size();//è¿›ç¨‹æ•°
+	int m = Need[0].size();//èµ„æºæ•°
 	int i, j, tmp;
 
-	//1.´òÓ¡±íÍ·
-	printf("|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª-|\n");
-	printf("%-8s%-19s%-19s%-19s%-20s", "|½ø\\×ÊÔ´", "|       Max        ", "|    Allocation    ", "|       Need       ", "|     Available    |\n");
-	printf("|   \\Çé |¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|\n");
-	printf("|³Ì  \\¿ö");
+	//1.æ‰“å°è¡¨å¤´
+	printf("|â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”-|\n");
+	printf("%-8s%-19s%-19s%-19s%-20s", "|è¿›\\èµ„æº", "|       Max        ", "|    Allocation    ", "|       Need       ", "|     Available    |\n");
+	printf("|   \\æƒ… |â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|\n");
+	printf("|ç¨‹  \\å†µ");
 	for (i = 0; i < STATE; i++)
 	{
 		cout << "|";
@@ -35,68 +35,68 @@ void Display()
 		{
 			printf(" %c ", Name[j]);
 		}
-		tmp = MAX_SOURCE - m;//³¬³öµÄÓÃ¿Õ¸ñÃÖ²¹
+		tmp = MAX_SOURCE - m;//è¶…å‡ºçš„ç”¨ç©ºæ ¼å¼¥è¡¥
 		Dis_char(tmp * 3, ' ');
 	}
 	cout << "|\n";
-	printf("|-------|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|\n");
+	printf("|-------|â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|\n");
 
 
 
-	//2.´òÓ¡Ã¿Ò»ĞĞ
+	//2.æ‰“å°æ¯ä¸€è¡Œ
 	for (i = 0; i < n; i++)
 	{
 		printf("|  P%-2d  ", i);
-		for (j = 0; j < m; j++)//MaxÊı¾İ
+		for (j = 0; j < m; j++)//Maxæ•°æ®
 		{
 			cout << "|";
 			for (j = 0; j < m; j++)
 			{
 				printf(" %d ", Max[i][j]);
 			}
-			tmp = MAX_SOURCE - m;//³¬³öµÄÓÃ¿Õ¸ñÃÖ²¹
+			tmp = MAX_SOURCE - m;//è¶…å‡ºçš„ç”¨ç©ºæ ¼å¼¥è¡¥
 			Dis_char(tmp * 3, ' ');
 		}
 
 
-		for (j = 0; j < m; j++)//AllcoationÊı¾İ
+		for (j = 0; j < m; j++)//Allcoationæ•°æ®
 		{
 			cout << "|";
 			for (j = 0; j < m; j++)
 			{
 				printf(" %d ", Allocation[i][j]);
 			}
-			tmp = MAX_SOURCE - m;//³¬³öµÄÓÃ¿Õ¸ñÃÖ²¹
+			tmp = MAX_SOURCE - m;//è¶…å‡ºçš„ç”¨ç©ºæ ¼å¼¥è¡¥
 			Dis_char(tmp * 3, ' ');
 		}
 
-		for (j = 0; j < m; j++)//NeedÊı¾İ
+		for (j = 0; j < m; j++)//Needæ•°æ®
 		{
 			cout << "|";
 			for (j = 0; j < m; j++)
 			{
 				printf(" %d ", Need[i][j]);
 			}
-			tmp = MAX_SOURCE - m;//³¬³öµÄÓÃ¿Õ¸ñÃÖ²¹
+			tmp = MAX_SOURCE - m;//è¶…å‡ºçš„ç”¨ç©ºæ ¼å¼¥è¡¥
 			Dis_char(tmp * 3, ' ');
 		}
 
 
 		cout << "|";
-		for (j = 0; j < m; j++)//AvailableÊı¾İ
+		for (j = 0; j < m; j++)//Availableæ•°æ®
 		{
 			printf(" %d ", Available[j]);
 		}
 
-		tmp = MAX_SOURCE - m;//³¬³öµÄÓÃ¿Õ¸ñÃÖ²¹
+		tmp = MAX_SOURCE - m;//è¶…å‡ºçš„ç”¨ç©ºæ ¼å¼¥è¡¥
 		Dis_char(tmp * 3, ' ');
 
 		cout << "|\n";
-		printf("|-------|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª|\n");
+		printf("|-------|â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|â€”â€”â€”â€”â€”â€”â€”â€”â€”|\n");
 	}
 }
 
-bool operator <= (vector<int>& Request, vector<int>& Need)//±È½ÏÊÇ·ñRequest¶¼Ğ¡ÓÚµÈÓÚNeed
+bool operator <= (vector<int>& Request, vector<int>& Need)//æ¯”è¾ƒæ˜¯å¦Requestéƒ½å°äºç­‰äºNeed
 {
 	for (int i = 0; i < Request.size(); i++)
 	{
@@ -108,7 +108,7 @@ bool operator <= (vector<int>& Request, vector<int>& Need)//±È½ÏÊÇ·ñRequest¶¼Ğ¡Ó
 	return true;
 }
 
-bool operator ==(vector<int>& Need, int n)//NeedµÄÃ¿Ò»Ïî¶¼µÈÓÚ0,
+bool operator ==(vector<int>& Need, int n)//Needçš„æ¯ä¸€é¡¹éƒ½ç­‰äº0,
 {
 	for (auto& e : Need)
 	{
@@ -121,11 +121,11 @@ bool operator ==(vector<int>& Need, int n)//NeedµÄÃ¿Ò»Ïî¶¼µÈÓÚ0,
 }
 
 
-void Display_Security(pair<vector<int>, Status>& tmp)//ÏÔÊ¾ÊÇ·ñ°²È«
+void Display_Security(pair<vector<int>, Status>& tmp)//æ˜¾ç¤ºæ˜¯å¦å®‰å…¨
 {
 	if (tmp.second == SUCCESS)
 	{
-		cout << "°²È«ĞòÁĞÎª£º";
+		cout << "å®‰å…¨åºåˆ—ä¸ºï¼š";
 		for (auto& e : tmp.first)
 		{
 			cout << "P" << e << "->";
@@ -141,7 +141,7 @@ void Display_Security(pair<vector<int>, Status>& tmp)//ÏÔÊ¾ÊÇ·ñ°²È«
 			{
 				cout << "P" << e << "->";
 			}
-			cout << "ÕÒµ½P" << tmp.first[tmp.first.size() - 1] << "½ø³ÌºóÔÙÕÒ²»µ½°²È«ĞòÁĞ£¡\n";
+			cout << "æ‰¾åˆ°P" << tmp.first[tmp.first.size() - 1] << "è¿›ç¨‹åå†æ‰¾ä¸åˆ°å®‰å…¨åºåˆ—ï¼\n";
 		}
 	}
 }
@@ -150,12 +150,12 @@ void Init()
 	pair<vector<int>, Status> retval;
 	int PcbNum, Source;
 	int i, j, tmp;
-	cout << "ÊäÈë½ø³ÌµÄ¸öÊı£º";
+	cout << "è¾“å…¥è¿›ç¨‹çš„ä¸ªæ•°ï¼š";
 	cin >> PcbNum;
-	cout << "ÊäÈë×ÊÔ´µÄÖÖÀà£º";
+	cout << "è¾“å…¥èµ„æºçš„ç§ç±»ï¼š";
 	cin >> Source;
 
-	cout << "ÊäÈëÏµÍ³Ê£Óà×ÊÔ´(Available):";
+	cout << "è¾“å…¥ç³»ç»Ÿå‰©ä½™èµ„æº(Available):";
 	for (i = 0; i < Source; i++)
 	{
 		cin >> tmp;
@@ -163,7 +163,7 @@ void Init()
 	}
 	cout << endl;
 
-	cout << "ÊäÈëAllocation¾ØÕó" << endl;
+	cout << "è¾“å…¥AllocationçŸ©é˜µ" << endl;
 
 	for (i = 0; i < PcbNum; i++)
 	{
@@ -179,7 +179,7 @@ void Init()
 	}
 	cout << endl;
 
-	cout << "ÊäÈëNeed¾ØÕó" << endl;
+	cout << "è¾“å…¥NeedçŸ©é˜µ" << endl;
 
 	for (i = 0; i < PcbNum; i++)
 	{
@@ -192,32 +192,32 @@ void Init()
 			Max[i][j] += tmp;
 		}
 	}
-	cout << "\n³õÊ¼»¯Íê±Ï!\n\n";
-	cout << "¼ì²âÏµÍ³ÊÇ·ñ°²È«.......\n";
+	cout << "\nåˆå§‹åŒ–å®Œæ¯•!\n\n";
+	cout << "æ£€æµ‹ç³»ç»Ÿæ˜¯å¦å®‰å…¨.......\n";
 	retval = AlgoSecurity();
 	if (retval.second == SECURITY)
 	{
-		cout << "ÏµÍ³´ËÊ±Îª°²È«×´Ì¬\n";
+		cout << "ç³»ç»Ÿæ­¤æ—¶ä¸ºå®‰å…¨çŠ¶æ€\n";
 		Display();
 	}
 
 	else
 	{
-		cout << "ÏµÍ³´ËÊ±´¦ÓÚ²»°²È«×´Ì¬£¬Çë¼ì²éÄãµÄÊı¾İÊÇ·ñºÏÀí\n";
+		cout << "ç³»ç»Ÿæ­¤æ—¶å¤„äºä¸å®‰å…¨çŠ¶æ€ï¼Œè¯·æ£€æŸ¥ä½ çš„æ•°æ®æ˜¯å¦åˆç†\n";
 	}
 
 }
 
-void Require()//½ø³ÌÇëÇó×ÊÔ´
+void Require()//è¿›ç¨‹è¯·æ±‚èµ„æº
 {
 	int Pid, tmp;
 	vector<int>Requset;
 	pair<vector<int>, Status> retval;
 
-	cout << "ÊäÈëÒªÏëÏµÍ³ÇëÇó×ÊÔ´µÄ½ø³ÌId£º";
+	cout << "è¾“å…¥è¦æƒ³ç³»ç»Ÿè¯·æ±‚èµ„æºçš„è¿›ç¨‹Idï¼š";
 	cin >> Pid;
 
-	cout << "ÊäÈëÒªÏëÏòÏµÍ³ÇëÇó×ÊÔ´µÄ´óĞ¡£º";
+	cout << "è¾“å…¥è¦æƒ³å‘ç³»ç»Ÿè¯·æ±‚èµ„æºçš„å¤§å°ï¼š";
 	for (int i = 0; i < Available.size(); i++)
 	{
 		cin >> tmp;
@@ -228,43 +228,43 @@ void Require()//½ø³ÌÇëÇó×ÊÔ´
 
 	switch (retval.second)
 	{
-	case NEED_REQUEST:cout << "\nÇëÇó³ö´í£¡´Ë½ø³ÌÇëÇó×ÊÔ´³¬¹ıËüĞû²¼µÄ×î´óĞèÇó£¡£¡£¡\n"; cout << "µ±Ç°Ê±¿Ì×ÊÔ´·ÖÅä±í\n"; Display(); break;
-	case AVAILABLE_REQUEST:cout << "\nÇëÇó³ö´í£¡´ËÇëÇóËùĞè×ÊÔ´³¬¹ıÏµÍ³×ÊÔ´£¬P" << Pid << "½ø³ÌµÈ´ı£¡£¡£¡\n"; cout << "µ±Ç°Ê±¿Ì×ÊÔ´·ÖÅä±í\n"; Display(); ; break;
-	case SUCCESS:cout << "\nÔ¤·ÖÅä³É¹¦£¡\n"; Display_Security(retval); cout << "µ±Ç°Ê±¿Ì×ÊÔ´·ÖÅä±í\n"; Display(); break;
-	case FAIL:cout << "\n·ÖÅäÊ§°Ü£¡´Ë´Î·ÖÅä»áµ¼ÖÂÏµÍ³½ø³öÈë²»°²È«×´Ì¬£¡£¡£¡\n"; Display_Security(retval); cout << "µ±Ç°Ê±¿Ì×ÊÔ´·ÖÅä±í\n"; Display(); break;
+	case NEED_REQUEST:cout << "\nè¯·æ±‚å‡ºé”™ï¼æ­¤è¿›ç¨‹è¯·æ±‚èµ„æºè¶…è¿‡å®ƒå®£å¸ƒçš„æœ€å¤§éœ€æ±‚ï¼ï¼ï¼\n"; cout << "å½“å‰æ—¶åˆ»èµ„æºåˆ†é…è¡¨\n"; Display(); break;
+	case AVAILABLE_REQUEST:cout << "\nè¯·æ±‚å‡ºé”™ï¼æ­¤è¯·æ±‚æ‰€éœ€èµ„æºè¶…è¿‡ç³»ç»Ÿèµ„æºï¼ŒP" << Pid << "è¿›ç¨‹ç­‰å¾…ï¼ï¼ï¼\n"; cout << "å½“å‰æ—¶åˆ»èµ„æºåˆ†é…è¡¨\n"; Display(); ; break;
+	case SUCCESS:cout << "\né¢„åˆ†é…æˆåŠŸï¼\n"; Display_Security(retval); cout << "å½“å‰æ—¶åˆ»èµ„æºåˆ†é…è¡¨\n"; Display(); break;
+	case FAIL:cout << "\nåˆ†é…å¤±è´¥ï¼æ­¤æ¬¡åˆ†é…ä¼šå¯¼è‡´ç³»ç»Ÿè¿›å‡ºå…¥ä¸å®‰å…¨çŠ¶æ€ï¼ï¼ï¼\n"; Display_Security(retval); cout << "å½“å‰æ—¶åˆ»èµ„æºåˆ†é…è¡¨\n"; Display(); break;
 	}
 }
 
 
-pair<vector<int>, Status> AlgoBanker(int Pid, vector<int>& Requset)//ÒøĞĞ¼ÒËã·¨,´«Èë½ø³ÌIdºÍÇëÇó·ÖÅä´óĞ¡
+pair<vector<int>, Status> AlgoBanker(int Pid, vector<int>& Requset)//é“¶è¡Œå®¶ç®—æ³•,ä¼ å…¥è¿›ç¨‹Idå’Œè¯·æ±‚åˆ†é…å¤§å°
 {
-	pair<vector<int>, Status> retval;//first---°²È«ĞòÁĞ£¬second---·ÖÅä×´Ì¬
+	pair<vector<int>, Status> retval;//first---å®‰å…¨åºåˆ—ï¼Œsecond---åˆ†é…çŠ¶æ€
 
-	if (!(Requset <= Need[Pid]))//ÇëÇó´óÓÚËùĞè´óĞ¡
+	if (!(Requset <= Need[Pid]))//è¯·æ±‚å¤§äºæ‰€éœ€å¤§å°
 	{
 		retval.second = NEED_REQUEST;
 	}
 
-	else if (!(Requset <= Available))//ÇëÇó´óÓÚÏµÍ³ÓµÓĞ×ÊÔ´
+	else if (!(Requset <= Available))//è¯·æ±‚å¤§äºç³»ç»Ÿæ‹¥æœ‰èµ„æº
 	{
 		retval.second = AVAILABLE_REQUEST;
 	}
 
 	else
 	{
-		for (int i = 0; i < Available.size(); i++)//ÊÔ×Å·ÖÅä¸øËû
+		for (int i = 0; i < Available.size(); i++)//è¯•ç€åˆ†é…ç»™ä»–
 		{
 			Available[i] -= Requset[i];
 			Allocation[Pid][i] += Requset[i];
 			Need[Pid][i] -= Requset[i];
 		}
-		cout << "Ô¤·ÖÅä×´Ì¬±í£º\n";
+		cout << "é¢„åˆ†é…çŠ¶æ€è¡¨ï¼š\n";
 		Display();
 		retval = AlgoSecurity();
 
-		if (retval.second == SECURITY)//Èô´¦ÓÚ°²È«×´Ì¬
+		if (retval.second == SECURITY)//è‹¥å¤„äºå®‰å…¨çŠ¶æ€
 		{
-			if (Need[Pid] == 0)//²»ÔÙĞèÇó×ÊÔ´£¬»ØÊÕ
+			if (Need[Pid] == 0)//ä¸å†éœ€æ±‚èµ„æºï¼Œå›æ”¶
 			{
 				for (int i = 0; i < Available.size(); i++)
 				{
@@ -272,13 +272,13 @@ pair<vector<int>, Status> AlgoBanker(int Pid, vector<int>& Requset)//ÒøĞĞ¼ÒËã·¨,
 					Allocation[Pid][i] = 0;
 				}
 			}
-			else//Õâ´ÎÇëÇóºó»¹Î´Íê³É(Need[Pid]!=0)£¬²»ÄÜ»ØÊÕ
+			else//è¿™æ¬¡è¯·æ±‚åè¿˜æœªå®Œæˆ(Need[Pid]!=0)ï¼Œä¸èƒ½å›æ”¶
 			{
 				//do nothing
 			}
-			retval.second = SUCCESS;//·ÖÅä³É¹¦
+			retval.second = SUCCESS;//åˆ†é…æˆåŠŸ
 		}
-		else//²»ÊÇ°²È«×´Ì¬£¬±¾´Î·ÖÅä×÷·Ï£¬»Ø¸´Ô­À´×´Ì¬¡£´Ë½ø³ÌµÈ´ı
+		else//ä¸æ˜¯å®‰å…¨çŠ¶æ€ï¼Œæœ¬æ¬¡åˆ†é…ä½œåºŸï¼Œå›å¤åŸæ¥çŠ¶æ€ã€‚æ­¤è¿›ç¨‹ç­‰å¾…
 		{
 			for (int i = 0; i < Available.size(); i++)
 			{
@@ -292,53 +292,53 @@ pair<vector<int>, Status> AlgoBanker(int Pid, vector<int>& Requset)//ÒøĞĞ¼ÒËã·¨,
 	return retval;
 }
 
-pair<vector<int>, Status> AlgoSecurity()//°²È«ĞÔËã·¨
+pair<vector<int>, Status> AlgoSecurity()//å®‰å…¨æ€§ç®—æ³•
 {
-	pair<vector<int>, Status> retval;//first---°²È«ĞòÁĞ£¬second---·ÖÅä×´Ì¬
+	pair<vector<int>, Status> retval;//first---å®‰å…¨åºåˆ—ï¼Œsecond---åˆ†é…çŠ¶æ€
 
-	//¢Ù³õÊ¼»¯Á½¸öÏòÁ¿
-	vector<int> Work(Available);//¹¤×÷ÏòÁ¿
-	vector<bool> Finish(Need.size(), false);//¿É·ÖÅä±êÖ¾
+	//â‘ åˆå§‹åŒ–ä¸¤ä¸ªå‘é‡
+	vector<int> Work(Available);//å·¥ä½œå‘é‡
+	vector<bool> Finish(Need.size(), false);//å¯åˆ†é…æ ‡å¿—
 	int i, j;
-	int flag;//Ã¿ÕÒµ½Ò»¸ö½ø³ÌÂú×ã°²È«×´Ì¬£¬flag--£¬¼õµ½0ËµÃ÷ÏµÍ³³öÓÚ°²È«×´Ì¬
+	int flag;//æ¯æ‰¾åˆ°ä¸€ä¸ªè¿›ç¨‹æ»¡è¶³å®‰å…¨çŠ¶æ€ï¼Œflag--ï¼Œå‡åˆ°0è¯´æ˜ç³»ç»Ÿå‡ºäºå®‰å…¨çŠ¶æ€
 	int tag;
 
-	//¢Ú,²éÕÒ
+	//â‘¡,æŸ¥æ‰¾
 	while (1)
 	{
-		flag = count(Finish.begin(), Finish.end(), false);//flag¼ÇÂ¼ÔİÊ±²»ÄÜ·ÖÅäµÄ½ø³Ì¸öÊı
-		tag = flag;//¼ÇÂ¼flag´óĞ¡
+		flag = count(Finish.begin(), Finish.end(), false);//flagè®°å½•æš‚æ—¶ä¸èƒ½åˆ†é…çš„è¿›ç¨‹ä¸ªæ•°
+		tag = flag;//è®°å½•flagå¤§å°
 
 		for (i = 0; i < Need.size(); i++)
 		{
-			if (Need[i] <= Work && Finish[i] == false)//ÕÒµ½Ò»¸ö½ø³ÌÂú×ã·ÖÅäĞèÇóÇÒ×´Ì¬ÊÇÎ´·ÖÅä
+			if (Need[i] <= Work && Finish[i] == false)//æ‰¾åˆ°ä¸€ä¸ªè¿›ç¨‹æ»¡è¶³åˆ†é…éœ€æ±‚ä¸”çŠ¶æ€æ˜¯æœªåˆ†é…
 			{
-				//¢Û
+				//â‘¢
 				for (j = 0; j < Work.size(); j++)
 				{
 					Work[j] += Allocation[i][j];
 				}
 				Finish[i] = true;
 				flag--;
-				retval.first.push_back(i);//½«½ø³Ìid  push ½ø°²È«ĞòÁĞÖĞ
+				retval.first.push_back(i);//å°†è¿›ç¨‹id  push è¿›å®‰å…¨åºåˆ—ä¸­
 			}
 		}
 
-		//¢Ü £¬ËùÓĞ½ø³ÌFinish==true,±íÊ¾ÏµÍ³°²È«
+		//â‘£ ï¼Œæ‰€æœ‰è¿›ç¨‹Finish==true,è¡¨ç¤ºç³»ç»Ÿå®‰å…¨
 		if (flag == 0)
 		{
 			retval.second = SECURITY;
 			break;
 		}
 
-		//½øÈëËÀËø£¬²»°²È«
+		//è¿›å…¥æ­»é”ï¼Œä¸å®‰å…¨
 		if (tag == flag)
 		{
 			retval.second = UNSECURITY;
 			break;
 		}
 
-		else //Ñ­»·²éÕÒ
+		else //å¾ªç¯æŸ¥æ‰¾
 		{
 			//do nothing
 		}

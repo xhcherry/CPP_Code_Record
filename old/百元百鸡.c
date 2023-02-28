@@ -7,7 +7,7 @@ int main() {
 			rooster = (4 * chick - 300) / 3;
 			hen = (600 - 7 * chick) / 3;
 			if (hen >= 0)
-				printf("¹«¼¦: %d, Ä¸¼¦: %d, Ð¡¼¦: %d\n", rooster, hen, chick);
+				printf("rooster %d, hen %d, é¸¡ï¼š %d\n", rooster, hen, chick);
 			else break;
 		}
 	}

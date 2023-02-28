@@ -15,22 +15,22 @@ void SelectSort(int *arr, int length)
 	for(int i = 0; i < length - 1; ++i)
 	{
 		int mini = i;
-		//¿ªÊ¼¼ÙÉè×îĞ¡Î»ÖÃÎªÊ×Î»
+		//å¼€å§‹å‡è®¾æœ€å°ä½ç½®ä¸ºé¦–ä½
 		for(int j = i + 1; j <= length - 1; ++j)
 		{
 			if(arr[j] < arr[mini])
 				mini = j; 
-			//Èç¹ûÓĞ¸üĞ¡Êı¾İÔò¸üĞÂÏÂ±ê
+			//å¦‚æœæœ‰æ›´å°æ•°æ®åˆ™æ›´æ–°ä¸‹æ ‡
 		}
 		
 		if(mini != i)
 			swap(&arr[i], &arr[mini]);
-		//Èç¹ûÏÂ±ê·¢Éú±ä»¯£¬Ôò½«×îĞ¡Öµ·Å»ØÕıÈ·Î»ÖÃ
+		//å¦‚æœä¸‹æ ‡å‘ç”Ÿå˜åŒ–ï¼Œåˆ™å°†æœ€å°å€¼æ”¾å›æ­£ç¡®ä½ç½®
 	}
 		while(begin < end)
 	{
 		int min = begin, max = end;
-			//Ë«ÏòÍ¬Ê±²éÕÒ×î´ó×îĞ¡Öµ
+			//åŒå‘åŒæ—¶æŸ¥æ‰¾æœ€å¤§æœ€å°å€¼
 		for(i = begin; i <= end; ++i)
 		{
 			if(arr[max] < arr[i])
@@ -38,14 +38,14 @@ void SelectSort(int *arr, int length)
 			
 			if(arr[min] > arr[i])
 				min = i;
-			//Èç¹ûÓĞĞÂµÄ×î´ó×îĞ¡ÖµÔò¸üĞÂÏÂ±ê
+			//å¦‚æœæœ‰æ–°çš„æœ€å¤§æœ€å°å€¼åˆ™æ›´æ–°ä¸‹æ ‡
 		}
 		
 		swap(&arr[begin], &arr[min]);
 		
 		if(begin == max)
 			max = min;
-		//Èç¹ûÊ×Î»Îª×î´óÖµ£¬ÇÒÓë×îĞ¡Öµ½øĞĞ½»»»£¬Ôò¸üĞÂÏÂ±ê
+		//å¦‚æœé¦–ä½ä¸ºæœ€å¤§å€¼ï¼Œä¸”ä¸æœ€å°å€¼è¿›è¡Œäº¤æ¢ï¼Œåˆ™æ›´æ–°ä¸‹æ ‡
 		swap(&arr[end], &arr[max]);
 			
 		++begin;
@@ -53,7 +53,7 @@ void SelectSort(int *arr, int length)
 	}
 }
 
-//´òÓ¡Êı×éÔªËØ
+//æ‰“å°æ•°ç»„å…ƒç´ 
 void PrintArr(int* arr, int length)
 {
 	for (int i = 0; i < length; i++)
@@ -67,16 +67,16 @@ void PrintArr(int* arr, int length)
  
 int main(int argc, char *argv[])
 {
-	srand((size_t)time(NULL));//ÉèÖÃËæ»úÖÖ×Ó
+	srand((size_t)time(NULL));//è®¾ç½®éšæœºç§å­
 	int arr[MAXSIZE] = { 0 };
-	//¸øÃ¿¸öÔªËØÉèÖÃÒ»¸öËæ»úÖµ
+	//ç»™æ¯ä¸ªå…ƒç´ è®¾ç½®ä¸€ä¸ªéšæœºå€¼
 	for (int i = 0; i < MAXSIZE; i++)
 	{
 		arr[i] = rand() % 100;
 	}
-	printf("ÅÅĞòÇ°:\n");
+	printf("æ’åºå‰:\n");
 	PrintArr(arr, MAXSIZE);
-	printf("ÉıĞò:\n");
+	printf("å‡åº:\n");
 	SelectSort(arr,MAXSIZE);
 	PrintArr(arr, MAXSIZE);
 	system("pause");

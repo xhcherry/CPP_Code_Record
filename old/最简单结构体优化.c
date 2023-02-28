@@ -12,7 +12,7 @@ int main(void)
 	date = (PDATE)malloc(sizeof(DATE));
 	if(date == NULL)
 	{
-		printf("ÄÚ´æ·ÖÅäÊ§°Ü£¡\n");
+		printf("å†…å­˜åˆ†é…å¤±è´¥ï¼\n");
 		exit(1);
 	}
 	date->year = 2021;

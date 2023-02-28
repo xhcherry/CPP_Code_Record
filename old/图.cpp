@@ -2,19 +2,19 @@
 #include<stdlib.h>
 typedef struct ArcNode
 {
-	int adjvex;  //ÁÚ½ÓµãÓò
-	struct ArcNode *nextarc; //Ö¸ÏòÏÂÒ»¸öÁÚ½ÓµãµÄÖ¸ÕëÓò
+	int adjvex;  //é‚»æ¥ç‚¹åŸŸ
+	struct ArcNode *nextarc; //æŒ‡å‘ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹çš„æŒ‡é’ˆåŸŸ
 	int weight;
-} ArcNode; //±ß½áµã
+} ArcNode; //è¾¹ç»“ç‚¹
 typedef struct VNode {
-	char vertex;   //¶¥µãÓò
-	ArcNode *firstarc;//µÚÒ»Ìõ±ßµÄÖ¸Õë
-} VNode,AdjList[10]; //¶¥µã½áµãÏòÁ¿
+	char vertex;   //é¡¶ç‚¹åŸŸ
+	ArcNode *firstarc;//ç¬¬ä¸€æ¡è¾¹çš„æŒ‡é’ˆ
+} VNode,AdjList[10]; //é¡¶ç‚¹ç»“ç‚¹å‘é‡
 typedef struct {
 	AdjList adjlist;
 	int vexnum,arcnum;
 } ALGraph;
-//Í¼µÄÁÚ½Ó¾ØÕó
+//å›¾çš„é‚»æ¥çŸ©é˜µ
 typedef struct {
 	int adj;
 } AdjMatrix[10][10];
@@ -23,7 +23,7 @@ typedef struct {
 	AdjMatrix arcs;
 	int vexnum,arcnum;
 } MGraph;
-int LocateVex(ALGraph &G,char v) { //²éÕÒ¶¥µãĞÅÏ¢
+int LocateVex(ALGraph &G,char v) { //æŸ¥æ‰¾é¡¶ç‚¹ä¿¡æ¯
 	int k,j=0;
 	for(k=0; k<G.vexnum; k++)
 		if(G.adjlist[k].vertex==v) {
@@ -33,33 +33,33 @@ int LocateVex(ALGraph &G,char v) { //²éÕÒ¶¥µãĞÅÏ¢
 	return j;
 }
 void CreateALGraph(ALGraph &G) {
-	//½¨Á¢ÎŞÏòÍ¼µÄÁÚ½Ó±í±íÊ¾
+	//å»ºç«‹æ— å‘å›¾çš„é‚»æ¥è¡¨è¡¨ç¤º
 	int i,j,k,w;
 	char v1,v2;
 	ArcNode *s;
-	printf("ÇëÊäÈë¶¥µãÊıºÍ±ßÊı£¨vexnum,arcnum£©:");
+	printf("è¯·è¾“å…¥é¡¶ç‚¹æ•°å’Œè¾¹æ•°ï¼ˆvexnum,arcnumï¼‰:");
 	scanf("%d,%d",&G.vexnum,&G.arcnum);
 	for(i=0; i<G.vexnum; i++) {
-		//½¨Á¢¶¥µã±í
+		//å»ºç«‹é¡¶ç‚¹è¡¨
 		getchar();
-		printf("ÇëÊäÈëµÚ%d¶¥µãĞÅÏ¢£º",i+1);
-		scanf("%c",&G.adjlist[i].vertex);//¶ÁÈë¶¥µãĞÅÏ¢
-		G.adjlist[i].firstarc=NULL;//±ß±íÖÃÎª¿Õ±í
+		printf("è¯·è¾“å…¥ç¬¬%dé¡¶ç‚¹ä¿¡æ¯ï¼š",i+1);
+		scanf("%c",&G.adjlist[i].vertex);//è¯»å…¥é¡¶ç‚¹ä¿¡æ¯
+		G.adjlist[i].firstarc=NULL;//è¾¹è¡¨ç½®ä¸ºç©ºè¡¨
 	}
 	for(k=0; k<G.arcnum; k++)
 	{
-		//½¨Á¢±ß±í
+		//å»ºç«‹è¾¹è¡¨
 		getchar();
-		printf("ÇëÊäÈëµÚ%d±ßµÄ¶¥µã¶ÔĞòºÅºÍ±ßµÄÈ¨Öµ£¨v1,v2,w£©£º",k+1);
+		printf("è¯·è¾“å…¥ç¬¬%dè¾¹çš„é¡¶ç‚¹å¯¹åºå·å’Œè¾¹çš„æƒå€¼ï¼ˆv1,v2,wï¼‰ï¼š",k+1);
 		scanf("%c,%c,%d",&v1,&v2,&w);
 		j=LocateVex(G,v2);
 		i=LocateVex(G,v1);
-		s=(ArcNode*)malloc(sizeof(ArcNode)); //Éú³É±ß±í½áµã
-		s->adjvex=j;//ÁÚ½ÓµãĞòºÅÎªj
-		s->weight=w;//È¨Öµ
+		s=(ArcNode*)malloc(sizeof(ArcNode)); //ç”Ÿæˆè¾¹è¡¨ç»“ç‚¹
+		s->adjvex=j;//é‚»æ¥ç‚¹åºå·ä¸ºj
+		s->weight=w;//æƒå€¼
 		s->nextarc=G.adjlist[i].firstarc;
-		G.adjlist[i].firstarc=s; //½«ĞÂ½áµã*s²åÈë¶¥µãviµÄ±ß±íÍ·²¿
-		//ÈôÍ¼ÎªÎŞÏòÍ¼Ôò¼ÓÉÏÏÂÃæµÄËÄ¾ä´úÂë£¬ÈôÍ¼ÎªÓĞÏòÍ¼Ôò×¢ÊÍÏÂÃæµÄËÄ¾ä´úÂë
+		G.adjlist[i].firstarc=s; //å°†æ–°ç»“ç‚¹*sæ’å…¥é¡¶ç‚¹viçš„è¾¹è¡¨å¤´éƒ¨
+		//è‹¥å›¾ä¸ºæ— å‘å›¾åˆ™åŠ ä¸Šä¸‹é¢çš„å››å¥ä»£ç ï¼Œè‹¥å›¾ä¸ºæœ‰å‘å›¾åˆ™æ³¨é‡Šä¸‹é¢çš„å››å¥ä»£ç 
 		s=(ArcNode*)malloc(sizeof(ArcNode));
 		s->adjvex=i;
 		s->weight=w;
@@ -69,7 +69,7 @@ void CreateALGraph(ALGraph &G) {
 }
 bool visited[20];
 int v;
-void DFS(ALGraph &G,int v)//Éî¶È±éÀúÊä³ö
+void DFS(ALGraph &G,int v)//æ·±åº¦éå†è¾“å‡º
 {
 	visited[v]=true;
 	printf("%c ",G.adjlist[v].vertex);
@@ -78,7 +78,7 @@ void DFS(ALGraph &G,int v)//Éî¶È±éÀúÊä³ö
 		if(!visited[w->adjvex])
 			DFS(G,w->adjvex);
 }
-void DFSTraverse(ALGraph &G)//Í¼µÄÉî¶È±éÀú²Ù×÷
+void DFSTraverse(ALGraph &G)//å›¾çš„æ·±åº¦éå†æ“ä½œ
 {
 	for(v=0; v<G.vexnum; v++)
 		visited[v]=false;
@@ -86,7 +86,7 @@ void DFSTraverse(ALGraph &G)//Í¼µÄÉî¶È±éÀú²Ù×÷
 		if(!visited[v])
 			DFS(G,v);
 }
-//¶ÓÁĞ
+//é˜Ÿåˆ—
 typedef struct QNode
 {
 	int data;
@@ -97,12 +97,12 @@ typedef struct
 	QueuePtr front;
 	QueuePtr rear;
 } LinkQueue;
-void InitQueue(LinkQueue &Q)//¹¹ÔìÒ»¸ö¿Õ¶ÓÁĞ Q
+void InitQueue(LinkQueue &Q)//æ„é€ ä¸€ä¸ªç©ºé˜Ÿåˆ— Q
 {
 	Q.rear=Q.front=(QueuePtr)malloc(sizeof(QNode));
 	Q.front->next=NULL;
 }
-void EnQueue(LinkQueue &Q,int e)//Èë¶Ó
+void EnQueue(LinkQueue &Q,int e)//å…¥é˜Ÿ
 {
 	QNode *p;
 	p=(QueuePtr)malloc(sizeof(QNode));
@@ -113,7 +113,7 @@ void EnQueue(LinkQueue &Q,int e)//Èë¶Ó
 }
 void DeQueue(LinkQueue &Q,int &e2)
 {
-	//³ö¶Ó
+	//å‡ºé˜Ÿ
 	QNode *p;
 	p=Q.front->next;
 	e2=p->data;
@@ -124,7 +124,7 @@ void DeQueue(LinkQueue &Q,int &e2)
 }
 bool visited1[20];
 
-void BFSTraverse(ALGraph &G)//Í¼µÄ¹ã¶ÈÓÅÏÈ±éÀú
+void BFSTraverse(ALGraph &G)//å›¾çš„å¹¿åº¦ä¼˜å…ˆéå†
 {
 
 	for(v=0; v<G.vexnum; v++)
@@ -152,9 +152,9 @@ void BFSTraverse(ALGraph &G)//Í¼µÄ¹ã¶ÈÓÅÏÈ±éÀú
 			}
 		}
 }
-void display(ALGraph &G)//Êä³öÍ¼µÄ¶¥µãĞÅÏ¢
+void display(ALGraph &G)//è¾“å‡ºå›¾çš„é¡¶ç‚¹ä¿¡æ¯
 {
-	printf("½¨Á¢µÄÁÚ½Ó±íÎ»£º\n");
+	printf("å»ºç«‹çš„é‚»æ¥è¡¨ä½ï¼š\n");
 	int i;
 	for(i=0; i<G.vexnum; i++)
 	{
@@ -192,9 +192,9 @@ void Create(MGraph &G)
 {
 	int i,j,k;
 	int v1=0,v2=0,w=0;
-	printf("ÇëÊäÈëÍ¼µÄ¶¥µãÊı£º");
+	printf("è¯·è¾“å…¥å›¾çš„é¡¶ç‚¹æ•°ï¼š");
 	scanf("%d",&G.vexnum);
-	printf("ÇëÊäÈëÍ¼µÄ±ßÊı£º");
+	printf("è¯·è¾“å…¥å›¾çš„è¾¹æ•°ï¼š");
 	scanf("%d",&G.arcnum);
 	for(i=0; i<G.vexnum; i++)
 		G.vexs[i]=i+1;
@@ -203,7 +203,7 @@ void Create(MGraph &G)
 			G.arcs[i][j].adj=0;
 	for(k=0; k<G.arcnum; k++)
 	{
-		printf("ÇëÊäÈëÒ»Ìõ±ßÒÀ¸½µÄ¶¥µãv1,v2¼°È¨Öµ£¨v1,v2,w£©:");
+		printf("è¯·è¾“å…¥ä¸€æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹v1,v2åŠæƒå€¼ï¼ˆv1,v2,wï¼‰:");
 		scanf("%d,%d,%d",&v1,&v2,&w);
 		i=LocateVex(G,v1);
 		j=LocateVex(G,v2);
@@ -225,7 +225,7 @@ void display(MGraph &G)
 int main()
 {
 	int z;
-	printf("ÇëÊäÈëÑ¡Ôñ:\n-1-½¨Á¢Í¼µÄÁÚ½Ó¾ØÕó\n-2-½¨Á¢Í¼µÄÁÚ½Ó±í\n");
+	printf("è¯·è¾“å…¥é€‰æ‹©:\n-1-å»ºç«‹å›¾çš„é‚»æ¥çŸ©é˜µ\n-2-å»ºç«‹å›¾çš„é‚»æ¥è¡¨\n");
 	scanf("%d",&z);
 	if(z==1)
 	{
@@ -237,14 +237,14 @@ int main()
 	if(z==2)
 	{
 		ALGraph G;
-		CreateALGraph(G);//½¨Á¢ÎŞÏòÍ¼ÁÚ½Ó±í
-		display(G);//Êä³öÍ¼µÄµÄ¶¥µãĞÅÏ¢
+		CreateALGraph(G);//å»ºç«‹æ— å‘å›¾é‚»æ¥è¡¨
+		display(G);//è¾“å‡ºå›¾çš„çš„é¡¶ç‚¹ä¿¡æ¯
 		printf("\n\n");
-		printf("Í¼µÄÉî¶È±éÀúÎª£º\n");
+		printf("å›¾çš„æ·±åº¦éå†ä¸ºï¼š\n");
 		DFSTraverse(G);
 		printf("\n");
 		printf("\n\n");
-		printf("Í¼µÄ¹ã¶È±éÀúÎª£º");
+		printf("å›¾çš„å¹¿åº¦éå†ä¸ºï¼š");
 		BFSTraverse(G);
 		printf("\n");
 	}

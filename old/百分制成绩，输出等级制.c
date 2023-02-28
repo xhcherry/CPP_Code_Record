@@ -1,4 +1,4 @@
-switch选择结构
+//switch选择结构
 #include <stdio.h>
 #include <stdlib.h>
 int main()
@@ -28,8 +28,8 @@ int main()
 }
 
 
-条件结构
-#include <stdio.h>
+//条件结构
+/*#include <stdio.h>
 #include <stdlib.h>
 int main()
 {
@@ -145,3 +145,4 @@ void score_output(double *s)
 	default: break;
 	}
 }
+*/

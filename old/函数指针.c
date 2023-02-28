@@ -8,7 +8,7 @@ int main()
 {
 	int num;
 	int (*fp)(int);
-	printf("输入一个整数：");
+	printf("杈撳叆涓�涓暣鏁帮細");
 	scanf("%d",&num);
 	fp = &square;//fp = square;
 	printf("%d * %d = %d\n",num,num,(*fp)(num));//fp(num)

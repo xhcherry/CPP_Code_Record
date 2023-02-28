@@ -8,23 +8,23 @@
 #include<cstdlib>
 using namespace std;
 
-enum Status//ÏµÍ³¿ÉÄÜ³öÏÖµÄ×´Ì¬
+enum Status//ç³»ç»Ÿå¯èƒ½å‡ºç°çš„çŠ¶æ€
 {
-	NEED_REQUEST = 0,//ËùĞè×ÊÔ´³¬¹ı´Ë½ø³ÌĞû²¼µÄ×î´óÖµ
-	AVAILABLE_REQUEST,//ËùĞè×ÊÔ´³¬¹ı´ËÏµÍ³µ±Ç°×ÊÔ´
-	SECURITY,//°²È«×´Ì¬
-	UNSECURITY,//²»°²È«×´Ì¬
-	SUCCESS,//·ÖÅä³É¹¦
-	FAIL//·ÖÅäÊ§°Ü
+	NEED_REQUEST = 0,//æ‰€éœ€èµ„æºè¶…è¿‡æ­¤è¿›ç¨‹å®£å¸ƒçš„æœ€å¤§å€¼
+	AVAILABLE_REQUEST,//æ‰€éœ€èµ„æºè¶…è¿‡æ­¤ç³»ç»Ÿå½“å‰èµ„æº
+	SECURITY,//å®‰å…¨çŠ¶æ€
+	UNSECURITY,//ä¸å®‰å…¨çŠ¶æ€
+	SUCCESS,//åˆ†é…æˆåŠŸ
+	FAIL//åˆ†é…å¤±è´¥
 };
 
-void Init();//³õÊ¼»¯
-void Display();//ÏÔÊ¾¸÷¸ö½ø³Ì×ÊÔ´Çé¿ö
-void Dis_char(int i, char ch);//½«ch×Ö·ûÏÔÊ¾i´Î
-bool operator <= (vector<int>& Request, vector<int>& Need);//±È½ÏÊÇ·ñRequest¶¼Ğ¡ÓÚµÈÓÚNeed
-bool operator ==(vector<int>& Need, int n);//NeedµÄÃ¿Ò»Ïî¶¼µÈÓÚ0
-void Display_Security(pair<vector<int>, Status>& val);//ÏÔÊ¾°²È«ĞòÁĞ
-void Display_Security2(pair<vector<int>, Status>& val);//ÏÔÊ¾¸÷¸ö½ø³Ì°²È«Çé¿ö
-void Require();//½ø³ÌÇëÇó×ÊÔ´
-pair<vector<int>, Status> AlgoBanker(int Pid, vector<int>& Requset);//ÒøĞĞ¼ÒËã·¨
-pair<vector<int>, Status> AlgoSecurity();//°²È«ĞÔËã·¨
+void Init();//åˆå§‹åŒ–
+void Display();//æ˜¾ç¤ºå„ä¸ªè¿›ç¨‹èµ„æºæƒ…å†µ
+void Dis_char(int i, char ch);//å°†chå­—ç¬¦æ˜¾ç¤ºiæ¬¡
+bool operator <= (vector<int>& Request, vector<int>& Need);//æ¯”è¾ƒæ˜¯å¦Requestéƒ½å°äºç­‰äºNeed
+bool operator ==(vector<int>& Need, int n);//Needçš„æ¯ä¸€é¡¹éƒ½ç­‰äº0
+void Display_Security(pair<vector<int>, Status>& val);//æ˜¾ç¤ºå®‰å…¨åºåˆ—
+void Display_Security2(pair<vector<int>, Status>& val);//æ˜¾ç¤ºå„ä¸ªè¿›ç¨‹å®‰å…¨æƒ…å†µ
+void Require();//è¿›ç¨‹è¯·æ±‚èµ„æº
+pair<vector<int>, Status> AlgoBanker(int Pid, vector<int>& Requset);//é“¶è¡Œå®¶ç®—æ³•
+pair<vector<int>, Status> AlgoSecurity();//å®‰å…¨æ€§ç®—æ³•

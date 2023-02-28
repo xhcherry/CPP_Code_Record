@@ -1,4 +1,4 @@
-//ÇófibonacciÇ°40¸öÊý£¬µÚÒ»¶þ¸öÊýÎª1£¬µÚÈý¸öÎªÇ°Á½¸öºÍ
+//æ±‚fibonacciå‰40ä¸ªæ•°ï¼Œç¬¬ä¸€äºŒä¸ªæ•°ä¸º1ï¼Œç¬¬ä¸‰ä¸ªä¸ºå‰ä¸¤ä¸ªå’Œ
 #include<stdio.h>
 void main()
 {
