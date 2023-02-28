@@ -34,7 +34,8 @@
         "cerrno": "cpp",
         "list": "cpp",
         "deque": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "algorithm": "cpp"
     },
     "window.closeWhenEmpty": true,
     "window.commandCenter": true,
