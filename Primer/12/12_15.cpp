@@ -49,5 +49,6 @@ int main()
     destination d;
     f(d);
     f1(d);
+    cout << __VERSION__ << endl;
     return 0;
 }
