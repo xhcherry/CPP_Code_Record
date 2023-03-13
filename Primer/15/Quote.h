@@ -15,6 +15,11 @@ public:
     // 派生类负责改写并使用不同的折扣计算算法
     virtual double net_price(std::size_t n) const { return n * price; }
     virtual ~Quote() = default; // 对析构函数进行动态绑定
+    virtual void debug() const
+    {
+        std::cout << "data members:\n"
+                  << "\tbookNo= " << bookNo << "\tprice=" << price << std::endl;
+    }
 
 private:
     std::string bookNo; // 书籍的 ISBN 编号

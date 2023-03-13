@@ -10,6 +10,11 @@ public:
     Limited_quote(const std::string &, double, std::size_t, double);
     // 覆盖基类的函数版本以实现基于大量购买的折扣政策
     virtual double net_price(std::size_t) const override;
+    virtual void debug() const override
+    {
+        quote::debug();
+        std::cout << "\tmax_qty = " << max_qty << "\tdiscount = " << discount << std::endl;
+    }
 
 private:
     std::size_t max_qty = 0;
