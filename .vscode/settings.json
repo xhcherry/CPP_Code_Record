@@ -40,5 +40,5 @@
     "window.closeWhenEmpty": true,
     "window.commandCenter": true,
     "window.autoDetectColorScheme": false,
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "enabled"
 }
