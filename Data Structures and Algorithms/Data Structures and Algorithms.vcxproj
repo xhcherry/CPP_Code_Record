@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Editor.cpp" />
     <ClCompile Include="QueHun.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
