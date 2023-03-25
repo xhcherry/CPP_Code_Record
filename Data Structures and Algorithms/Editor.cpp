@@ -54,12 +54,10 @@ public:
 			cin >> s;
 			int i = 0;
 			while (i < s.length()) {  // 处理当前字符串
-				if (i < s.length() - 2 && s[i] == s[i + 1] &&
-					s[i] == s[i + 2]) {  // 判断是否符合第一条规则
+				if (i < s.length() - 2 && s[i] == s[i + 1] && s[i] == s[i + 2]) {  // 判断是否符合第一条规则
 					s.erase(i + 2, 1);  // 删除第三个相同字符
 				}
-				else if (i < s.length() - 3 && s[i] == s[i + 1] &&
-					s[i + 2] == s[i + 3]) {  // 判断是否符合第二条规则
+				else if (i < s.length() - 3 && s[i] == s[i + 1] && s[i + 2] == s[i + 3]) {  // 判断是否符合第二条规则
 					s.erase(i + 3, 1);  // 删除后面一对相同字符中的一个
 				}
 				else {
