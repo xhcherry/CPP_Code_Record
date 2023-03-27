@@ -24,5 +24,17 @@
     <ClCompile Include="KongLianShun.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ZhaoLing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TeZhengTiQu.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BiYeLvXing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RobotJump.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
