@@ -24,11 +24,12 @@ int main()
         exit(-1);
     }
     // 通信
-    char receiveBuffer[1024] = {0};
-    int i = 0;
+    int num = 0;
     while (1)
     {
-        sprintf(receiveBuffer, "data : %d\n", i++);
+        char receiveBuffer[1024] = {0};
+        //sprintf(receiveBuffer, "data : %d\n", i++);
+        fgets(receiveBuffer, sizeof(receiveBuffer), stdin);
         // 给服务端发送数据
         write(fileDescriptor, receiveBuffer, strlen(receiveBuffer) + 1);
         
