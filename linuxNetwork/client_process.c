@@ -48,7 +48,7 @@ int main()
             printf("server closed...");
             break;
         }
-        sleep(1);
+        usleep(1000);
     }
     close(fileDescriptor);
     return 0;
