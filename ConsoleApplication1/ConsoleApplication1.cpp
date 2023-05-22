@@ -6,26 +6,31 @@
 using namespace std;
 class Solution {
 public:
-    int jump(vector<int>& nums) {
-        int begin = 0, end = 0;
-        int res = 0;
-        while (end < nums.size() - 1) {
-            int temp = 0;
-            for (int i = begin; i <= end; i++) {
-                temp = max(temp, nums[i] + i);
+    vector<int> partitionLabels(string s) {
+        vector<int>res;
+        int hash[26] = { 0 };
+        for (int i = 0; i < s.size(); i++) {
+            hash[s[i] - 'a'] = i;
+        }
+        int left = 0, right = 0;
+        for (int i = 0; i < s.size(); i++) {
+            right = max(hash[s[i] - 'a'], right);
+            if (i == right) {
+                res.push_back(right - left + 1);
+                left = i + 1;
             }
-            begin = end + 1;
-            end = temp;
-            res++;
         }
         return res;
     }
 };
 int main()
 {
-    vector<int>a = { 2,3,1,1,4 };
+    string a = { "ababcbacadefegdehijhklij" };
     Solution s;
-    cout << s.jump(a) << endl;
+    vector<int>res = s.partitionLabels(a);
+    for (int i = 0; i < res.size(); i++) {
+        cout << res[i] << endl;
+    }
 	return 0;
 }
 
