@@ -16,10 +16,8 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-TreeNode *createTree(vector<int> nodes);
-
-TreeNode *createTree(vector<int> nodes) {
-    if (!nodes.size()) {
+TreeNode *createTree(const vector<int>& nodes) {
+    if (nodes.empty()) {
         return nullptr;
     }
     queue<TreeNode *> que;
@@ -89,7 +87,7 @@ public:
 int main() {
     vector<int> tree = {4, 2, 7, 1, 3, 6, 9};
     TreeNode *root = createTree(tree);
-    // cout << root << endl;
+    cout << root << endl;
     Solution s = Solution();
     vector<int> travel = s.inorderTraversal(root);
     for (auto a: travel) {
