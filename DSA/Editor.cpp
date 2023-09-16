@@ -48,7 +48,7 @@ using namespace std;
 
 class SmartEditor {
 public:
-	void checkSpelling(int n) {
+	static void checkSpelling(int n) {
 		while (n--) {  // 处理n个字符串
 			string s;
 			cin >> s;
@@ -72,7 +72,6 @@ public:
 int main() {
 	int n;
 	cin >> n;
-	SmartEditor editor;
-	editor.checkSpelling(n);
+	SmartEditor::checkSpelling(n);
 	return 0;
 }
