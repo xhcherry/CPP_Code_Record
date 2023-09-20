@@ -1,4 +1,4 @@
-#include"Banker.h"
+﻿#include"Banker.h"
 
 #define MAX_SOURCE 6 //可打印的最大资源数
 
@@ -26,8 +26,8 @@ void Display()
 	//1.打印表头
 	printf("|—————————————————————————————————————————-|\n");
 	printf("%-8s%-19s%-19s%-19s%-20s", "|进\\资源", "|       Max        ", "|    Allocation    ", "|       Need       ", "|     Available    |\n");
-	printf("|   \\情 |—————————|—————————|—————————|—————————|\n");
-	printf("|程  \\况");
+	printf("|   情 |—————————|—————————|—————————|—————————|\n");
+	printf("|程  况");
 	for (i = 0; i < STATE; i++)
 	{
 		cout << "|";
