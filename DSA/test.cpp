@@ -1,40 +1,47 @@
+//#include <iostream>
+//
+//using namespace std;
+//
+//class T {
+//public:
+//    T(int i = 0) : x(i) {
+//        c++;
+//        show();
+//    }
+//
+//    ~T() {
+//        c--;
+//        show();
+//    }
+//
+//    static void show() { cout << c; }
+//
+//private:
+//    static int c;
+//    int x;
+//};
+//
+//int T::c = 0;
+//
+//int main() {
+//    T *i = new T[3];
+//    T *j = new T(8);
+//    delete[] i;
+//    delete j;
+//    return 0;
+//}
 #include <iostream>
-#include <string>
+using namespace std;
+template <class T>
+void fun(T temp){
 
-class Person {
-private:
-    std::string name;
+    cout << temp << endl;cout << "A" << endl;
+}
 
-public:
+void fun(int temp){
+    cout << temp << endl;cout << "B"<< endl;}
+int main(){
 
-    void feedCat() {
-        std::cout << name << "喂猫" << std::endl;
-    }
-
-    explicit Person(const char string[7]) {
-        name = string;
-    }
-};
-
-int main() {
-    Person xiaohong("小红");
-    Person xiaolan("小兰");
-    Person xiaoming("小明");
-    while (true) {
-        std::string catAction;
-        std::cout << "请输入猫的动作(jump、meow、roll)'exit'退出：";
-        std::cin >> catAction;
-        if (catAction == "jump") {
-            xiaohong.feedCat();
-        } else if (catAction == "meow") {
-            xiaolan.feedCat();
-        } else if (catAction == "exit") {
-            break;
-        } else if (catAction == "roll") {
-            xiaoming.feedCat();
-        } else {
-            std::cout << "无效的猫的动作输入" << std::endl;
-        }
-    }
+    fun(30);
     return 0;
 }
