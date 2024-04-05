@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClCompile Include="Banker.cpp" />
     <ClCompile Include="Banker_main.cpp" />
+    <ClCompile Include="FileName.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
